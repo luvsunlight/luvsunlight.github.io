@@ -1,244 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[hexo next主题配置]]></title>
-      <url>/2017/10/10/hexo-next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>解决了博客的最基本的发文章和上传至同步之后，面临的问题自然是为自己的网站添加更多功能，当然可以选择DIY，但是想到自己能力有限，就算做出来想必也是优化和性能上有很大问题，就还是按部就班地来吧</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>说实话，网上的教程很多，但是我仔细观察，发现基本上都是抄来抄去，也就是说错误类型一致，我配置站点的过程中参考了n篇教程，列一篇最有效的以供参考<a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="external">Moorez</a>。本文大部分配置都是参考之，非常感谢大大。如果大家想要手把手从头开始配置建议参考他的文章，因为我的文章没有附图，很难看到效果，但是本文的坑全是我自己踩出来的，是得到了实践证明的。</p>
-<h1 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h1><h2 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h2><h3 id="在站点根目录下执行以下命令"><a href="#在站点根目录下执行以下命令" class="headerlink" title="在站点根目录下执行以下命令"></a>在站点根目录下执行以下命令</h3><p><code>$ npm install hexo-generator-searchdb --save</code></p>
-<h3 id="在站点文件里任意位置加上"><a href="#在站点文件里任意位置加上" class="headerlink" title="在站点文件里任意位置加上"></a>在站点文件里任意位置加上</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">search:</div><div class="line">	path: search.xml</div><div class="line">	field: post</div></pre></td></tr></table></figure>
-<h3 id="在主题配置文件里更改（默认为false）"><a href="#在主题配置文件里更改（默认为false）" class="headerlink" title="在主题配置文件里更改（默认为false）"></a>在主题配置文件里更改（默认为false）</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Local search</span></div><div class="line"><span class="attr">local_search:</span></div><div class="line">	<span class="attr">enable:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
-<p>顺便多说一句，网上的大部分教程都只说了前两步，而没有提到第三步，最后的结果应该是这样的<br><img src="http://img.hb.aicdn.com/bccc1873543ce6864c59fdbb24e1f0d6e2aff05d4140-y62wsw_fw192" alt="search"></p>
-<h2 id="百度统计"><a href="#百度统计" class="headerlink" title="百度统计"></a>百度统计</h2><h3 id="首先登录百度统计"><a href="#首先登录百度统计" class="headerlink" title="首先登录百度统计"></a>首先登录<a href="http://tongji.baidu.com/" target="_blank" rel="external">百度统计</a></h3><p>注意这个账号不是你的百度账号（搞不懂为什么明明是一家人不用一组账号…），之后跳出来的页面中，只需要复制<code>hm.js?</code>后面的id即可</p>
-<h3 id="编辑主题配置文件"><a href="#编辑主题配置文件" class="headerlink" title="编辑主题配置文件"></a>编辑主题配置文件</h3><p>修改<code>baidu_analytics</code>的值为你之前复制的id即可</p>
-<h3 id="最后成果"><a href="#最后成果" class="headerlink" title="最后成果"></a>最后成果</h3><p>当我兴高采烈地弄完上面的步骤后发现还是不对，始终没有刷新出来，后来才恍然大悟，原来我还是在用本地的seerver看，而百度的服务是针对你的网站本身的，所以在上传之后应该是可以成功显示百度统计的功能的</p>
-<h2 id="评论区"><a href="#评论区" class="headerlink" title="评论区"></a>评论区</h2><blockquote>
-<p>在参考了网上的多篇文章之后，最终还是决定使用<a href="https://livere.com/" target="_blank" rel="external">来必力</a></p>
-</blockquote>
-<p>原因有几点</p>
-<ol>
-<li>界面好看</li>
-<li>没有奇怪的标语</li>
-<li>UI美观</li>
-</ol>
-<h3 id="登录来必力，获取id"><a href="#登录来必力，获取id" class="headerlink" title="登录来必力，获取id"></a>登录<a href="https://livere.com/" target="_blank" rel="external">来必力</a>，获取id</h3><blockquote>
-<p>注册时可能需要梯子</p>
-</blockquote>
-<p>来必力的官网有点奇怪，明明都是正常的中文，但是在登录时会莫名其妙地切换成汉语，原本是打算在chromedev里更改html的head里的<code>lang</code>为<code>ko</code>然后让Chrome自动翻译，但是这个方法行不通，它需要页面一开始加载时<code>lang</code>值更改才会出现需要翻译的提示。当然我们也可以选择百度翻译，这才知道原来是向我的邮箱里发送了验证码，一番折腾之后终于得到了id</p>
-<h3 id="编辑主题配置文件-1"><a href="#编辑主题配置文件-1" class="headerlink" title="编辑主题配置文件"></a>编辑主题配置文件</h3><p>编辑<code>livere_uid</code>字段如下</p>
-<p><code>livere_uid: #your livere_uid</code>    </p>
-<h2 id="文章内链接颜色修改"><a href="#文章内链接颜色修改" class="headerlink" title="文章内链接颜色修改"></a>文章内链接颜色修改</h2><p>实际上就是修改css的事，只要知道了css的位置就能很容易地修改（但是说实话这个项目不愧是大工程，我还没讲过分类这么细的css，以后接触的项目越多应该就会习以为常吧）<br>进入文件</p>
-<p><code>themes\next\source\css\_common\components\post\post.styl</code></p>
-<p>在末尾加上</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 文章内链接文本样式</span></div><div class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> <span class="selector-tag">a</span>&#123;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#0593d3</span>;</div><div class="line">  <span class="attribute">border-bottom</span>: none;</div><div class="line">  <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#0593d3</span>;</div><div class="line">  &amp;:hover &#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#fc6423</span>;</div><div class="line">    <span class="attribute">border-bottom</span>: none;</div><div class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#fc6423</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其中选择<code>.post-body</code>是为了不影响标题，选择<code>p</code>是为了不影响首页“阅读全文”的显示样式,颜色可以自己定义。</p>
-<h2 id="修改代码块自定义样式"><a href="#修改代码块自定义样式" class="headerlink" title="修改代码块自定义样式"></a>修改代码块自定义样式</h2><p>打开<code>\themes\next\source\css\_custom\custom.styl</code>修改为</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Custom styles.</span></div><div class="line"><span class="selector-tag">code</span> &#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#ff7600</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#fbf7f8</span>;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">2px</span>;</div><div class="line">&#125;</div><div class="line">&lt;!--<span class="comment">// 大代码块的自定义样式</span></div><div class="line"><span class="selector-class">.highlight</span>, pre &#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">5px</span> <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">5px</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">3px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.highlight</span>, <span class="selector-tag">code</span>, pre &#123;</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#d6d6d6</span>;</div><div class="line">&#125;--&gt;</div></pre></td></tr></table></figure>
-<h2 id="主页文章添加阴影效果"><a href="#主页文章添加阴影效果" class="headerlink" title="主页文章添加阴影效果"></a>主页文章添加阴影效果</h2><p>同上，在<code>custom</code>里添加</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 主页文章添加阴影效果</span></div><div class="line"> <span class="selector-class">.post</span> &#123;</div><div class="line">   <span class="attribute">margin-top</span>: <span class="number">60px</span>;</div><div class="line">   <span class="attribute">margin-bottom</span>: <span class="number">60px</span>;</div><div class="line">   <span class="attribute">padding</span>: <span class="number">25px</span>;</div><div class="line">   -webkit-<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> rgba(<span class="number">202</span>, <span class="number">203</span>, <span class="number">203</span>, .<span class="number">5</span>);</div><div class="line">   -moz-<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> rgba(<span class="number">202</span>, <span class="number">203</span>, <span class="number">204</span>, .<span class="number">5</span>);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="显示每篇文章的字数和大概阅读时间"><a href="#显示每篇文章的字数和大概阅读时间" class="headerlink" title="显示每篇文章的字数和大概阅读时间"></a>显示每篇文章的字数和大概阅读时间</h2><h3 id="在根目录下安装hexo-wordcount"><a href="#在根目录下安装hexo-wordcount" class="headerlink" title="在根目录下安装hexo-wordcount"></a>在根目录下安装<code>hexo-wordcount</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> npm install hexo-wordcount --save</span></div></pre></td></tr></table></figure>
-<h3 id="在主题的配置文件中，修改如下"><a href="#在主题的配置文件中，修改如下" class="headerlink" title="在主题的配置文件中，修改如下"></a>在主题的配置文件中，修改如下</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Post wordcount display settings</span></div><div class="line"><span class="comment"># Dependencies: https://github.com/willin/hexo-wordcount</span></div><div class="line"><span class="attr">post_wordcount:</span></div><div class="line"><span class="attr">  item_text:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  wordcount:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  min2read:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
-<p>但是，如果光是这样设置，我们会发现没有单位显示。这时候打开<code>Blog\themes\next\layout\_macro\post.swig</code><br>找到</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123; __('post.wordcount') &#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span></span></div><div class="line"><span class="xml">     </span><span class="template-variable">&#123;&#123; wordcount(post.content) &#125;&#125;</span><span class="xml"></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>修改成</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123; __('post.wordcount') &#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span></span></div><div class="line"><span class="xml">     </span><span class="template-variable">&#123;&#123; wordcount(post.content) &#125;&#125;</span><span class="xml"> 字</span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>后面一个修改时间的同理，找到</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123; __('post.min2read') &#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span></span></div><div class="line"><span class="xml">   </span><span class="template-variable">&#123;&#123; min2read(post.content) &#125;&#125;</span><span class="xml"></span></div><div class="line"><span class="xml"> <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>改成</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"</span></span></span><span class="template-variable">&#123;&#123; __('post.min2read') &#125;&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span></span></div><div class="line"><span class="xml">   </span><span class="template-variable">&#123;&#123; min2read(post.content) &#125;&#125;</span><span class="xml"> 分钟</span></div><div class="line"><span class="xml"> <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>事实就是修改span的内容，说起来很简单的东西，但是我发现修改了之后死活没有变化，按理来说这里的原理并不复杂应该不会有什么变数才对，后来我发现需要重新配置环境，直接刷新是不行的，关闭终端，重新<code>hexo serve</code>就ok了</p>
-<h2 id="添加顶部加载条"><a href="#添加顶部加载条" class="headerlink" title="添加顶部加载条"></a>添加顶部加载条</h2><p>因为我参考的文章作者的pull request被merge了，所以现在只需要在<strong>站点配置文件</strong>中修改<code>pace</code>为<code>true</code>即可.<strong>站点配置文件</strong>里还有各种loading的主题可以选择,我把里面的主题都尝试了一遍，最终还是决定采用<code>pace-theme-minimal</code>主题。</p>
-<h2 id="添加动态背景"><a href="#添加动态背景" class="headerlink" title="添加动态背景"></a>添加动态背景</h2><p>如果<code>hexo</code>是最新版本的话，只需要在<strong>主题配置文件</strong>里找到<code>canvas-nest</code>，将其属性改为<code>true</code>。当然，事实上文档里有很多主题，我选用的是另外一个<code>canvas-lines</code></p>
-<blockquote>
-<p>但是，我发现添加了动态背景之后主页文章透明度太低了，有点奇怪的感觉。那还是打开刚才的<code>costom.styl</code>,添加如下的代码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> backgroung-color: rgba(255, 255, 255, .5);</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
-</blockquote>
-<p>我之前还奇怪为什么hexo的库里会有three，现在终于明白了，是用来当背景使用的</p>
-<h2 id="推荐网站"><a href="#推荐网站" class="headerlink" title="推荐网站"></a>推荐网站</h2><p>也就是在文章的右侧可以设置推荐网站，其实很简单，打开<code>主题配置文件</code>，找到<code>links</code>,将代码更改为</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Blog rolls</span></div><div class="line"><span class="symbol">links_icon:</span> link</div><div class="line"><span class="symbol">links_title:</span> 推荐网站</div><div class="line"><span class="meta">#links_layout: block</span></div><div class="line"><span class="symbol">links_layout:</span> inline</div><div class="line"><span class="symbol">links:</span></div><div class="line">  小土刀: http:<span class="comment">//wdxtub.com/1997/09/11/booklist-page/</span></div><div class="line">  羡辙: http:<span class="comment">//zhangwenli.com/</span></div></pre></td></tr></table></figure>
-<h2 id="更改网站icon"><a href="#更改网站icon" class="headerlink" title="更改网站icon"></a>更改网站icon</h2><p>这个折腾了我好久…</p>
-<h3 id="下载图标"><a href="#下载图标" class="headerlink" title="下载图标"></a>下载图标</h3><p>在<a href="http://www.easyicon.net/" target="_blank" rel="external">easyicon</a>中下载一个32x32的文件，并存为<br><code>favicon.ico</code></p>
-<h3 id="存入本地"><a href="#存入本地" class="headerlink" title="存入本地"></a>存入本地</h3><p>图标的存储位置一定要搞清楚，<strong>主题配置文件</strong>里的默认路径都是站点下的source里的，而且它在代码里特意注明了source里的文件夹不能取名为<code>images</code>，因为和next里的<code>images</code>冲突了，于是我在source下的文件夹取名为<code>image</code>，然后把<code>favicon.ico</code>存入这个目录下，</p>
-<h3 id="修改主题配置文件"><a href="#修改主题配置文件" class="headerlink" title="修改主题配置文件"></a>修改<strong>主题配置文件</strong></h3><p>将favicon部分改为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">favicon: </div><div class="line"><span class="meta">  #</span><span class="bash">small: /images/favicon-16x16-next.png</span></div><div class="line">  medium: /image/favicon.ico</div><div class="line"><span class="meta">  #</span><span class="bash">apple_touch_icon: /images/apple-touch-icon-next.png</span></div><div class="line"><span class="meta">  #</span><span class="bash">safari_pinned_tab: /images/logo.svg</span></div><div class="line"><span class="meta">  #</span><span class="bash">android_manifest: /images/manifest.json</span></div><div class="line"><span class="meta">  #</span><span class="bash">ms_browserconfig: /images/browserconfig.xml</span></div></pre></td></tr></table></figure>
-<p>反正我是这么改的，很多人说直接写成这样的形式</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">favicon:</span> <span class="meta-keyword">/image/</span>favicon.ico</div></pre></td></tr></table></figure>
-<p>但是我亲身尝试好像出了点问题，后台返回说路径有问题，我估计这个favicon是一个像类的东西（也有可能是改版了）,所以还是像我这样写比较稳妥</p>
-<h2 id="修改Tag样式"><a href="#修改Tag样式" class="headerlink" title="修改Tag样式"></a>修改Tag样式</h2><p>修改<code>/themes/next/layout/_macro/post.swig</code>文件，搜索 <code>rel=&quot;tag&quot;&gt;#</code>，将 <code>#</code>换成<code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code></p>
-<blockquote>
-<p>注意：应重启环境才能看到效果应用</p>
-</blockquote>
-<h2 id="每篇文章末尾统一添加本文"><a href="#每篇文章末尾统一添加本文" class="headerlink" title="每篇文章末尾统一添加本文"></a>每篇文章末尾统一添加本文</h2><p>在<code>\themes\next\layout\_macro</code>中新建<code>passage-end-tag.swig</code>文件，其中添加如下代码</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> not is_index %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;color: #ccc;font-size:14px;"</span>&gt;</span>-------------本文结束,感谢您的阅读-------------<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>接着打开<code>\themes\next\layout\_macro\post.swig</code>文件，在<code>post-footer</code>之前添加如下代码</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line"><span class="xml">  </span><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> not is_index %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">include</span></span> 'passage-end-tag.swig' %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml">  </span><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>最后在主题配置文件最后加入如下代码</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 文章末尾添加“本文结束”标记</span></div><div class="line"><span class="attr">passage-endtag:</span></div><div class="line"><span class="attr">  enabled:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
-<p>原文这里代码还打错了，我直到看了后台返回的log才知道名字拼错了。做完了以上三个步骤应该就可以实现每篇文章末尾都有指定的格式了，当然第一段html可以自拟。</p>
-<h2 id="添加RSS"><a href="#添加RSS" class="headerlink" title="添加RSS"></a>添加RSS</h2><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> npm install --save hexo-generator-feed</span></div></pre></td></tr></table></figure>
-<h3 id="打开站点配置文件"><a href="#打开站点配置文件" class="headerlink" title="打开站点配置文件"></a>打开站点配置文件</h3><p>找到<code>plugin</code>，修改如下</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: http:<span class="comment">//hexo.io/plugins/</span></div><div class="line">plugins: hexo-<span class="keyword">generate</span>-feed</div></pre></td></tr></table></figure>
-<h3 id="打开主题配置文件"><a href="#打开主题配置文件" class="headerlink" title="打开主题配置文件"></a>打开主题配置文件</h3><p>修改如下</p>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">Set</span> rss <span class="keyword">to</span> <span class="literal">false</span> <span class="keyword">to</span> disable feed link.</div><div class="line"># Leave rss as <span class="literal">empty</span> <span class="keyword">to</span> use site<span class="comment">'s feed link.</span></div><div class="line"># <span class="keyword">Set</span> rss <span class="keyword">to</span> specific value <span class="keyword">if</span> you have burned your feed already.</div><div class="line">rss: /atom.xml</div></pre></td></tr></table></figure>
-<p>修改完之后<code>hexo g</code>，然后重新配置环境，应该就有rss的效果了</p>
-<blockquote>
-<p>直接点击RSS图标是没用的，应该复制链接然后在RSS软件中订阅</p>
-</blockquote>
-<h2 id="文章写作方式"><a href="#文章写作方式" class="headerlink" title="文章写作方式"></a>文章写作方式</h2><p>这个严格意义上来说不算是配置，而是一种写作习惯，但是我觉得作者这样的方式非常优雅，于是我也决定采用，就是每篇文章<code>more</code>之前的部分，用<strong>区域块</strong>来表示</p>
-<h2 id="更改默认的markdown渲染css"><a href="#更改默认的markdown渲染css" class="headerlink" title="更改默认的markdown渲染css"></a>更改默认的markdown渲染css</h2><p>最开始有这个想法的初衷是觉得<code>next</code>的<code>blockquote</code>太丑了，颜色不够好看。改起来其实很简单，重要的是找到css文件的位置，我自己并没有找到…因为那些文件名都太具有迷惑性了，但是我百度了<strong>hexo next的blockquote</strong>成功地找到了管理markdown文件的css路径</p>
-<p><code>\themes\next\source\css\_common\scaffolding\base.styl</code></p>
-<p>找到了就好办，打开文件，搜索关键词<code>blockquote</code>，修改<code>border-left</code>属性为<code>border-left: 4px solid rgb(134,206,236);</code></p>
-<h2 id="修改默认的代码高亮"><a href="#修改默认的代码高亮" class="headerlink" title="修改默认的代码高亮"></a>修改默认的代码高亮</h2><p>原版的代码高亮配色不太美观，虽然有多种主题可以换，但是都不太如人意。这里我在一个hexo的主题<a href="https://molunerfinn.com/hexo-theme-melody-doc/#/" target="_blank" rel="external">melody</a>里扒了一个highlight配色下来，代码如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">highlight-background = <span class="comment">#F6F8FA</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-current-line = <span class="comment">#00346e</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-selection = <span class="comment">#80CBC440</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-foreground = <span class="comment">#90A4AE</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-comment = <span class="comment">#90A4AE90</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-red = <span class="comment">#E53935</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-orange = <span class="comment">#F76D47</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-yellow = <span class="comment">#FFB62C</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-green = <span class="comment">#91B859</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-aqua = <span class="comment">#39ADB5</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-blue = <span class="comment">#6182B8</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-purple = <span class="comment">#7C4DFF</span></span></div><div class="line"><span class="meta"> $</span><span class="bash">highlight-gutter = &#123;</span></div><div class="line">   color: #CFD8DC,</div><div class="line">   bg-color: $highlight-background</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>找到存储highlight的文件<code>hexo-site/themes/next/source/css/_common/components/highlight/theme.styl</code>里，将<code>normal</code>里的代码替换成上述代码即可</p>
-<h2 id="鼠标点击特效"><a href="#鼠标点击特效" class="headerlink" title="鼠标点击特效"></a>鼠标点击特效</h2><p>我主要参考的教程里的鼠标点击特效太水了，本来也淡了做这个特效的心思的，但是在偶然间预览到<a href="https://molunerfinn.com/" target="_blank" rel="external">melody</a>这个hexo主题时，迅速被里面的鼠标点击特效震撼到了，太炫酷了，妈妈我要学这个。点进了文档里没有看到这个技术的细节，只是提到了<a href="http://animejs.com/" target="_blank" rel="external">anime.js</a>,遂顺藤摸瓜找到了<code>anime</code>的官网，发现这是一个提供做js动画的库，并不是我想要的特效，就在我迷茫时，突然发现<code>anime</code>的<a href="http://animejs.com/" target="_blank" rel="external">官网</a>上用的就是这个特效，点开<code>chrome-dev</code>，大概看了一下，引用了两个js文件，<code>anime.js</code>和<code>fireworks.js</code>,后者就是我想要的效果！马上写了个html测试一下，很遗憾，不行，点开控制台，发现是没有canvas元素，在html中按官网的样子加入了一个canvas。这下特效有了，但是控制台还是会报错，原因是<code>ga</code>函数找不到，再一看ga函数源于一个叫<code>analytics</code>的js文件，可是开发者工具的sources栏里好像没看到有这个js，无奈只能点进去，发现是动态引用的，但是无所谓了，没有这个函数特效一样能够工作。于是就把官网上的<code>fireworks.js</code>下载了下来，并且把使用到ga函数的部分给注释掉。最后，在新建的html上调试成功。可是噩梦才刚刚开始，后面省略无数个字，摸索了一整天才把这个搞好，现在开始。</p>
-<h3 id="下载资源"><a href="#下载资源" class="headerlink" title="下载资源"></a>下载资源</h3><p>在<a href="http://animejs.com/" target="_blank" rel="external">anime的官网</a>页面上，打开<code>chrome开发者工具</code>，在sources里把一下两个文件找到，并且下载到本地</p>
-<ul>
-<li><code>fireworks.js</code></li>
-<li><code>anime.js</code></li>
-</ul>
-<p>存入本地的路径为<code>hexo-site/themes/next/source/js/src/</code></p>
-<h3 id="编辑-layout文件"><a href="#编辑-layout文件" class="headerlink" title="编辑_layout文件"></a>编辑_layout文件</h3><p>之前已经在自己原来写过的静态网站上测试过了，想要实现鼠标点击的烟花特效，做完以下几步即可</p>
-<h4 id="html中新建canvas-属性如下"><a href="#html中新建canvas-属性如下" class="headerlink" title="html中新建canvas,属性如下"></a>html中新建<code>canvas</code>,属性如下</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;canvas <span class="class"><span class="keyword">class</span></span>=<span class="string">"fireworks"</span> style=<span class="string">"width: 1226px; height: 680px;position: fixed;left: 0;top: 0; z-index: 1; pointer-events: none"</span> &gt;<span class="xml"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>这里面有几个属性要特别注意，一个是class名为<code>fireworks</code>，一个是position设为<code>fixed</code>，最重要的是设置<code>pointer-event</code>属性，这个属性能让你的鼠标点击穿透这个canvas直到下层，这个非常关键，不然的话你把canvas放在上面，下面的链接全都点不了了</p>
-<h4 id="在body末尾先后引入anime-js-fireworks-js"><a href="#在body末尾先后引入anime-js-fireworks-js" class="headerlink" title="在body末尾先后引入anime.js,fireworks.js"></a>在<code>body</code>末尾先后引入<code>anime.js</code>,<code>fireworks.js</code></h4><p>一定要注意顺序，anime要先引入不然会出错，而且要放在dom后，不然会出现引用错误。这两步做完就可以实现功能了</p>
-<h4 id="在-layout文件中作出上述修改"><a href="#在-layout文件中作出上述修改" class="headerlink" title="在_layout文件中作出上述修改"></a>在<code>_layout</code>文件中作出上述修改</h4><p>其实做个小测试很简单，但是如何将这个功能引入我们的网站就比较麻烦了，因为如果要在网站上实现效果，就必须修改所有的html。我想到这既然是一个框架，那么html应该有个模板，事实上这个模板就是<code>_layout.swig</code>,这个文件位于<code>hexo-site/themes/next/layout/</code>下。花了大概十分钟把这个文件看明白，然后在文件的最后引入这两个js,并且在开头（<code>body</code>元素后面）引入我们之前提到过的canvas应该就可以了.</p>
-<h4 id="使canvas的尺寸自适应"><a href="#使canvas的尺寸自适应" class="headerlink" title="使canvas的尺寸自适应"></a>使canvas的尺寸自适应</h4><p>我之前提到过的canvas的大小是写死的，这样不仅不优雅，而且不能实现响应式布局，还是在<code>_layout.swig</code>文件里，在所有的dom元素后面添加一段</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">　　<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="actionscript">　　　　<span class="comment">//resize canvas</span></span></div><div class="line"><span class="javascript">　　　　$(<span class="built_in">window</span>).resize(resizeCanvas);  </span></div><div class="line"><span class="undefined">   </span></div><div class="line"><span class="actionscript"> <span class="function"><span class="keyword">function</span> <span class="title">resizeCanvas</span><span class="params">()</span> </span>&#123;  </span></div><div class="line"><span class="javascript"> 		  <span class="keyword">var</span> canvas= $(<span class="string">'.fireworks'</span>)[<span class="number">0</span>];</span></div><div class="line"><span class="undefined">   </span></div><div class="line"><span class="javascript">        canvas.height = <span class="built_in">window</span>.innerHeight;  </span></div><div class="line"><span class="undefined">   </span></div><div class="line"><span class="javascript">        canvas.width = <span class="built_in">window</span>.innerWidth; </span></div><div class="line"><span class="undefined">        </span></div><div class="line"><span class="actionscript">        <span class="comment">//console.log(canvas.width,canvas.height);</span></span></div><div class="line"><span class="undefined"> &#125;;  </span></div><div class="line"><span class="undefined"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>这样就能实现canvas自适应布局了</p>
-<h2 id="修改footer栏"><a href="#修改footer栏" class="headerlink" title="修改footer栏"></a>修改footer栏</h2><p>原版的footer栏太丑了，决定好好修饰一下</p>
-<h3 id="删除hexo和next信息"><a href="#删除hexo和next信息" class="headerlink" title="删除hexo和next信息"></a>删除hexo和next信息</h3><p>找到<code>themes/next/layout/_partials/footer.swig</code>,打开编辑，删除class为<code>powered-by</code>和<code>theme-info</code>的相关dom（怎么总有种过河拆桥的感觉…）</p>
-<h3 id="文字居中"><a href="#文字居中" class="headerlink" title="文字居中"></a>文字居中</h3><p>在<code>footer.swig</code>里直接添加样式竟然没有效果，点开开发者工具才知道原来<code>footer-inner</code>这个类已经继承了<code>text-align:left</code>的属性（很好奇为什么我直接改写覆盖不了）,好嘛，干脆换个地方修改好了。打开<code>\themes\next\source\css\_custom\custom.styl</code>，添加如下代码</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.footer-inner</span> &#123;</div><div class="line">   <span class="attribute">text-align</span>: center</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="修改用户名图标"><a href="#修改用户名图标" class="headerlink" title="修改用户名图标"></a>修改用户名图标</h3><p>这里引用的技术是<a href="http://fontawesome.io/icons/" target="_blank" rel="external">font-awesome</a>，说实话我还是第一次接触这个，据说是为<code>bootstrap</code>设计的框架，但是我被它的简介和强大性震撼到了，不需要配置路径，下载文件什么的，只需要首先在<a href="http://fontawesome.io/icons/" target="_blank" rel="external">官网</a>上选择你喜欢的icon，在html中引用js之后，随便新建一个元素（官网建议最好是<code>i</code>，因为比较简介），然后设置<code>class</code>格式为<code>fa icon-name</code>，这里的<code>icon-name</code>是官网上选定元素之后会告诉你的名字，icon就出现了，<strong>简洁且强大</strong>。回到本文，按下面几个步骤进行：</p>
-<ul>
-<li>上<a href="http://fontawesome.io/icons/" target="_blank" rel="external">官网</a>选择你喜欢的icon，把名字记下来</li>
-<li>打开<code>主题配置文件</code>，搜索<code>footer</code>下的<code>icon</code>，将其值修改为你刚才找到的icon名</li>
-<li>大功告成</li>
-</ul>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>花了很大的功夫配置了这么些，七成是跟着教程做的，三成是自己摸索的。全部过了一遍之后，一方面是增进了自己的信心，另一方面就是了解了大概的框架，以后想要自己diy一些部分也很容易。目前来说这些功能应该是够用了，以后有需要的话再添加吧.</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 系统学习 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Next </tag>
-            
-            <tag> Hexo </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[我的编程入门]]></title>
-      <url>/2017/10/10/%E6%88%91%E7%9A%84%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</url>
-      <content type="html"></content>
-      
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[开始记录自己和生活...]]></title>
-      <url>/2017/10/09/%E5%BC%80%E5%A7%8B%E8%AE%B0%E5%BD%95%E8%87%AA%E5%B7%B1%E5%92%8C%E7%94%9F%E6%B4%BB/</url>
-      <content type="html"><![CDATA[<blockquote>
-<h1 id="开通博客的缘由"><a href="#开通博客的缘由" class="headerlink" title="开通博客的缘由"></a>开通博客的缘由</h1><p>大四了，突然发现周围的同学都或多或少带着这样或者那样的光环，反过来看看自己，似乎没有什么值得骄傲的地方。找了个时间专门想了想，自己原来大一大二的时候自己因为怯于自己能力有限，并没有参加各式各样的比赛，相反是将时间大量花费在了看书，练字，画画等系列杂篇上，更为致命的是，以前的那些爱好虽然随着时间和热情的流逝不断地舍弃了，但是心中反而留下了自己很难专注于某件事情的刻板印象。虽然这件事不知道有没有高中时期老师教诲的“遇到难题果断放弃，先做会做的题目”的影响，但事实就是如此，现在的我因为原来大一大二时尝试过太多事情但都半途而废，想要开始做什么事情一旦遇到什么困难就会产生放弃的想法（尤其是在配环境时…）</p>
-</blockquote>
-<a id="more"></a>
-<p>当然了，前面都是一些很丧的话，事情也有积极的一面:我发现自己在编程时还是很专注的，而且自己在前端方向非常感兴趣。可惜的是编程能力只是相对于班上的同学相对优秀，但倘若放在社会上的话根本不值一提。当然没有谁的能力是与生俱来的，但是我同样发现一个令我沮丧的事实，虽然编程时非常投入，也非常享受编程的状态，但是始终缺少自发学习编程的动力。就当我觉得未来漆黑一片时，突然想到了写博客输出的方法。事实上我自己平时也有输出（大三下有所懈怠），不过原来一直是记录在onenote上，只能“内部消化”。以博客的形式来进行输出我觉得有几个优点</p>
-<ol>
-<li>公开平台，尽管可能没人看，但是绝对有莫名的督促作用</li>
-<li>可以锻炼markdown写作的基本功</li>
-<li>可以以比较完善的方式系统地整理自己学习的知识和完善自己</li>
-</ol>
-<p>事实上，我同样也非常享受用一个平台全方面地展示自己，在这里我希望不仅是在编程，同样在读书，喜欢的动画，人生心得等系列方面都能慢慢积累，希望自己能坚持下去</p>
-<h1 id="曾经我的生活状态"><a href="#曾经我的生活状态" class="headerlink" title="曾经我的生活状态"></a>曾经我的生活状态</h1><p>虽然暑假拿了夏令营的资格，也和研究生的老师联系好了，但是由于自己的不努力，没有拿到保研资格，也就是说摆在我面前的只有考研这一条路，但是到目前为止，我的考研说实话准备得还不是太好，这一点在我还有闲情来写博客就能看出来。还是老规矩，晚上到操场上反思一下，发现自己根本没有所谓的理想的生活，没有目标也就没有动力，中间还很有一段时间处于时间空余但是又不知道做什么的迷茫状态。老实说，就算是现在我的心中还是有点乱，对未来的大概构想就是考研-帮老师做事-研究生阶段巩固自身技能。现在终于有了博客的帮助，希望它能帮我走得更远。</p>
-<h1 id="激励我的大大"><a href="#激励我的大大" class="headerlink" title="激励我的大大"></a>激励我的大大</h1><ol>
-<li><a href="http://zhangwenli.com/" target="_blank" rel="external">羡辙</a></li>
-<li><a href="http://wdxtub.com/1997/09/11/booklist-page/" target="_blank" rel="external">小土刀</a></li>
-</ol>
-<p>初次了解羡辙是在知乎上搜索百度前端学院的task发现有个人给了一个nice的作品，后来又是一次偶然的机会，我正在跟着老师做事，我负责百度echarts的部分，偶然发现了百度前端团队也有她，于是从echarts跟到github和微博，毅然决然地决定成为羡辙老师的粉丝。原因一方面当然是因为人长得漂亮（大雾），其实主要原因是我当时无（ba）聊（gua）翻了很多她的微博，发现原来她的生活轨迹和爱好和我很相似，都喜欢看书和编程，当然她比我厉害很多（主要是能付诸实践和看书能看进去吧）其实大大在编程圈子里也是个很普通的人，但是既然作为和我的爱好重叠度极高且目前已经有较为稳定工作（BAT诶，虽然百度已经没落了，但是也算很强势的互联网公司了），自然是要成为我心目中的标杆啦</p>
-<p>小土刀是近期才了解到的，在搜索hexo相关配置问题时偶然发现了这个人的博客，顺手点进去看了看，哟发现大家的兴趣点也都很相似，说实话我最开始点到他的读书计划中心中是有点不屑的，因为他书单里的大多数书也是我的书单的部分（包括编程部分和科普类书部分），很不幸我的书单部分还没怎么开荒，但是后来在知乎里看见了对这个人的主观和客观的评价，发现他还是愿意把自己想做的事给很好地执行的。而这正是我所缺乏的能力，而且大大在自己的博客上全方面展示自己兴趣（包括动漫和武侠小说）让我觉得这就是我想要的生活，知道自己要做什么，并且不断地为这个方向努力</p>
-<h1 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h1><p>这两天终于折腾好了博客，配环境总是最累人的事。原先是计划采用<code>jekyll</code>，光是ruby的配置就花了我一晚上，没办法电脑之前brew出了问题，配置ruby之前还被brew折腾了好久，后来还是觉得<code>hexo</code>简单，事实上应该两者差不多，我是觉得hexo的next我比较喜欢，可以拿来直接用，所以跟着教程把hexo搞好了，事实证明<strong><em>一件事做的时候越困难，做完的幸福感越高</em></strong>，配置的过程就不发博客了，因为类似的教程很多。最后感叹一句：</p>
-<blockquote>
-<p>有困难，上stackoverflow!</p>
-</blockquote>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这两天风风火火地搞博客，不知道自己这次还能不能坚持下来，因为考研的缘故，自己这下半年肯定不会很勤快， 如果这次还是不能坚持下来的话…</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 随想 </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[初识markdown]]></title>
-      <url>/2017/10/09/%E5%88%9D%E8%AF%95markdown/</url>
-      <content type="html"><![CDATA[<blockquote>
-<h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>markdown其实很早就有所接触，但是原来的话一是没有机会来接触，平时全部都以onenote的形式输出。原来使用的是<a href="https://ulyssesapp.com/" target="_blank" rel="external">Ulysess</a>，这个工具页面设计非常优秀，UI非常舒服，我也在上面写过很多私人的文章，但是当我正式开始写博客之后，我突然发现ulysess还是不太方便（也有可能是我对ulysess的了解太少了）。在短暂尝试了<a href="">macdown</a>之后，我发现原来这款软件才是我喜欢的风格</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
-<li>代码高亮</li>
-<li>样式美观</li>
-<li>可以即时渲染</li>
-</ol>
-<h2 id="推荐markdown软件"><a href="#推荐markdown软件" class="headerlink" title="推荐markdown软件"></a>推荐markdown软件</h2><p>当然这里还有一些推荐的markdown（macOSx）可供选择</p>
-<ul>
-<li><a href="http://25.io/mou/" target="_blank" rel="external">mou</a>（mac升级到sierra之后官网上下的版本都不兼容了）</li>
-<li><a href="http://macdown.uranusjr.com/" target="_blank" rel="external">macdown</a></li>
-</ul>
-<h1 id="快捷按键"><a href="#快捷按键" class="headerlink" title="快捷按键"></a>快捷按键</h1><p>想要入门一项技术，最好的方法就是找一些简单的事情来做，在动手实践中提升信息和这门技术的喜爱<br>其实，如果你采用专业的markdown软件的话你会发现其实大部分软件都把常用的功能都绑定了快捷键<br>这里以<a href="http://macdown.uranusjr.com/" target="_blank" rel="external">macdown</a>为例，记录一下一些常用的按键</p>
-<h2 id="宏观操作"><a href="#宏观操作" class="headerlink" title="宏观操作"></a>宏观操作</h2><h3 id="关闭预览"><a href="#关闭预览" class="headerlink" title="关闭预览"></a>关闭预览</h3><p><code>command+shift+H</code></p>
-<h2 id="细节操作"><a href="#细节操作" class="headerlink" title="细节操作"></a>细节操作</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p><code>command+1/2/3／...</code></p>
-<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p><code>command+K</code></p>
-<h3 id="区域代码"><a href="#区域代码" class="headerlink" title="区域代码"></a>区域代码</h3><p>可以直接tab，或者六个‘’‘’‘’<br>建议是六个`，因为前者在next上显示会有问题</p>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p><code>command+/</code></p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><code>command+shift+K</code></p>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><code>command+shift+I</code></p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><code>command+shift+B</code></p>
-<h3 id="顺序序列"><a href="#顺序序列" class="headerlink" title="顺序序列"></a>顺序序列</h3><p><code>command+shift+O</code></p>
-<h3 id="非顺序序列"><a href="#非顺序序列" class="headerlink" title="非顺序序列"></a>非顺序序列</h3><p><code>command+shift+U</code></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="使用markdown中遇到的问题汇总"><a href="#使用markdown中遇到的问题汇总" class="headerlink" title="使用markdown中遇到的问题汇总"></a>使用markdown中遇到的问题汇总</h2><ol>
-<li>’#‘章节标记后面应立即接空格，这个bug在markdown软件上没有问题，但是上传到网站上时就会出现错误</li>
-<li>markdown默认是不换行的，直接换行认为是同一个段落。想要切换段落只能直接按<code>enter</code></li>
-<li><a href="http://macdown.uranusjr.com/" target="_blank" rel="external">macdown</a>有很多快捷键本来可以使用，但用着用着就失效了，目前还没有找到原因，留着将来补充…</li>
-</ol>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><blockquote>
-<p>markdown其实语法很简单，但是只有持续不断地输出才能最好发挥它的价值</p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 系统学习 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> markdown </tag>
-            
-        </tags>
-        
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[hexo next主题配置]]></title>
+    <url>%2F2017%2F10%2F10%2Fhexo-next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[解决了博客的最基本的发文章和上传至同步之后，面临的问题自然是为自己的网站添加更多功能，当然可以选择DIY，但是想到自己能力有限，就算做出来想必也是优化和性能上有很大问题，就还是按部就班地来吧 前言说实话，网上的教程很多，但是我仔细观察，发现基本上都是抄来抄去，也就是说错误类型一致，我配置站点的过程中参考了n篇教程，列一篇最有效的以供参考Moorez。本文大部分配置都是参考之，非常感谢大大。如果大家想要手把手从头开始配置建议参考他的文章，因为我的文章没有附图，很难看到效果，但是本文的坑全是我自己踩出来的，是得到了实践证明的。 配置选项本地搜索在站点根目录下执行以下命令$ npm install hexo-generator-searchdb --save 在站点文件里任意位置加上123search: path: search.xml field: post 在主题配置文件里更改（默认为false）123# Local searchlocal_search: enable: true 顺便多说一句，网上的大部分教程都只说了前两步，而没有提到第三步，最后的结果应该是这样的 百度统计首先登录百度统计注意这个账号不是你的百度账号（搞不懂为什么明明是一家人不用一组账号…），之后跳出来的页面中，只需要复制hm.js?后面的id即可 编辑主题配置文件修改baidu_analytics的值为你之前复制的id即可 最后成果当我兴高采烈地弄完上面的步骤后发现还是不对，始终没有刷新出来，后来才恍然大悟，原来我还是在用本地的seerver看，而百度的服务是针对你的网站本身的，所以在上传之后应该是可以成功显示百度统计的功能的 评论区 在参考了网上的多篇文章之后，最终还是决定使用来必力 原因有几点 界面好看 没有奇怪的标语 UI美观 登录来必力，获取id 注册时可能需要梯子 来必力的官网有点奇怪，明明都是正常的中文，但是在登录时会莫名其妙地切换成汉语，原本是打算在chromedev里更改html的head里的lang为ko然后让Chrome自动翻译，但是这个方法行不通，它需要页面一开始加载时lang值更改才会出现需要翻译的提示。当然我们也可以选择百度翻译，这才知道原来是向我的邮箱里发送了验证码，一番折腾之后终于得到了id 编辑主题配置文件编辑livere_uid字段如下 livere_uid: #your livere_uid 文章内链接颜色修改实际上就是修改css的事，只要知道了css的位置就能很容易地修改（但是说实话这个项目不愧是大工程，我还没讲过分类这么细的css，以后接触的项目越多应该就会习以为常吧）进入文件 themes\next\source\css\_common\components\post\post.styl 在末尾加上 1234567891011// 文章内链接文本样式.post-body p a&#123; color: #0593d3; border-bottom: none; border-bottom: 1px solid #0593d3; &amp;:hover &#123; color: #fc6423; border-bottom: none; border-bottom: 1px solid #fc6423; &#125;&#125; 其中选择.post-body是为了不影响标题，选择p是为了不影响首页“阅读全文”的显示样式,颜色可以自己定义。 修改代码块自定义样式打开\themes\next\source\css\_custom\custom.styl修改为 123456789101112131415// Custom styles.code &#123; color: #ff7600; background: #fbf7f8; margin: 2px;&#125;&lt;!--// 大代码块的自定义样式.highlight, pre &#123; margin: 5px 0; padding: 5px; border-radius: 3px;&#125;.highlight, code, pre &#123; border: 1px solid #d6d6d6;&#125;--&gt; 主页文章添加阴影效果同上，在custom里添加 12345678// 主页文章添加阴影效果 .post &#123; margin-top: 60px; margin-bottom: 60px; padding: 25px; -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5); -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5); &#125; 显示每篇文章的字数和大概阅读时间在根目录下安装hexo-wordcount1$ npm install hexo-wordcount --save 在主题的配置文件中，修改如下123456# Post wordcount display settings# Dependencies: https://github.com/willin/hexo-wordcountpost_wordcount: item_text: true wordcount: true min2read: true 但是，如果光是这样设置，我们会发现没有单位显示。这时候打开Blog\themes\next\layout\_macro\post.swig找到 123&lt;span title="&#123;&#123; __('post.wordcount') &#125;&#125;"&gt; &#123;&#123; wordcount(post.content) &#125;&#125;&lt;/span&gt; 修改成 123&lt;span title="&#123;&#123; __('post.wordcount') &#125;&#125;"&gt; &#123;&#123; wordcount(post.content) &#125;&#125; 字&lt;/span&gt; 后面一个修改时间的同理，找到 123&lt;span title="&#123;&#123; __('post.min2read') &#125;&#125;"&gt; &#123;&#123; min2read(post.content) &#125;&#125; &lt;/span&gt; 改成 123&lt;span title="&#123;&#123; __('post.min2read') &#125;&#125;"&gt; &#123;&#123; min2read(post.content) &#125;&#125; 分钟 &lt;/span&gt; 事实就是修改span的内容，说起来很简单的东西，但是我发现修改了之后死活没有变化，按理来说这里的原理并不复杂应该不会有什么变数才对，后来我发现需要重新配置环境，直接刷新是不行的，关闭终端，重新hexo serve就ok了 添加顶部加载条因为我参考的文章作者的pull request被merge了，所以现在只需要在站点配置文件中修改pace为true即可.站点配置文件里还有各种loading的主题可以选择,我把里面的主题都尝试了一遍，最终还是决定采用pace-theme-minimal主题。 添加动态背景如果hexo是最新版本的话，只需要在主题配置文件里找到canvas-nest，将其属性改为true。当然，事实上文档里有很多主题，我选用的是另外一个canvas-lines 但是，我发现添加了动态背景之后主页文章透明度太低了，有点奇怪的感觉。那还是打开刚才的costom.styl,添加如下的代码 12&gt; backgroung-color: rgba(255, 255, 255, .5);&gt; 我之前还奇怪为什么hexo的库里会有three，现在终于明白了，是用来当背景使用的 推荐网站也就是在文章的右侧可以设置推荐网站，其实很简单，打开主题配置文件，找到links,将代码更改为 12345678# Blog rollslinks_icon: linklinks_title: 推荐网站#links_layout: blocklinks_layout: inlinelinks: 小土刀: http://wdxtub.com/1997/09/11/booklist-page/ 羡辙: http://zhangwenli.com/ 更改网站icon这个折腾了我好久… 下载图标在easyicon中下载一个32x32的文件，并存为favicon.ico 存入本地图标的存储位置一定要搞清楚，主题配置文件里的默认路径都是站点下的source里的，而且它在代码里特意注明了source里的文件夹不能取名为images，因为和next里的images冲突了，于是我在source下的文件夹取名为image，然后把favicon.ico存入这个目录下， 修改主题配置文件将favicon部分改为 1234567favicon: #small: /images/favicon-16x16-next.png medium: /image/favicon.ico #apple_touch_icon: /images/apple-touch-icon-next.png #safari_pinned_tab: /images/logo.svg #android_manifest: /images/manifest.json #ms_browserconfig: /images/browserconfig.xml 反正我是这么改的，很多人说直接写成这样的形式 1favicon: /image/favicon.ico 但是我亲身尝试好像出了点问题，后台返回说路径有问题，我估计这个favicon是一个像类的东西（也有可能是改版了）,所以还是像我这样写比较稳妥 修改Tag样式修改/themes/next/layout/_macro/post.swig文件，搜索 rel=&quot;tag&quot;&gt;#，将 #换成&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt; 注意：应重启环境才能看到效果应用 每篇文章末尾统一添加本文在\themes\next\layout\_macro中新建passage-end-tag.swig文件，其中添加如下代码 12345&lt;div&gt; &#123;% if not is_index %&#125; &lt;div style="text-align:center;color: #ccc;font-size:14px;"&gt;-------------本文结束,感谢您的阅读-------------&lt;/div&gt; &#123;% endif %&#125;&lt;/div&gt; 接着打开\themes\next\layout\_macro\post.swig文件，在post-footer之前添加如下代码 12345&lt;div&gt; &#123;% if not is_index %&#125; &#123;% include 'passage-end-tag.swig' %&#125; &#123;% endif %&#125;&lt;/div&gt; 最后在主题配置文件最后加入如下代码 123# 文章末尾添加“本文结束”标记passage-endtag: enabled: true 原文这里代码还打错了，我直到看了后台返回的log才知道名字拼错了。做完了以上三个步骤应该就可以实现每篇文章末尾都有指定的格式了，当然第一段html可以自拟。 添加RSS安装插件1$ npm install --save hexo-generator-feed 打开站点配置文件找到plugin，修改如下 123# Extensions## Plugins: http://hexo.io/plugins/plugins: hexo-generate-feed 打开主题配置文件修改如下 1234# Set rss to false to disable feed link.# Leave rss as empty to use site's feed link.# Set rss to specific value if you have burned your feed already.rss: /atom.xml 修改完之后hexo g，然后重新配置环境，应该就有rss的效果了 直接点击RSS图标是没用的，应该复制链接然后在RSS软件中订阅 文章写作方式这个严格意义上来说不算是配置，而是一种写作习惯，但是我觉得作者这样的方式非常优雅，于是我也决定采用，就是每篇文章more之前的部分，用区域块来表示 更改默认的markdown渲染css最开始有这个想法的初衷是觉得next的blockquote太丑了，颜色不够好看。改起来其实很简单，重要的是找到css文件的位置，我自己并没有找到…因为那些文件名都太具有迷惑性了，但是我百度了hexo next的blockquote成功地找到了管理markdown文件的css路径 \themes\next\source\css\_common\scaffolding\base.styl 找到了就好办，打开文件，搜索关键词blockquote，修改border-left属性为border-left: 4px solid rgb(134,206,236); 修改默认的代码高亮原版的代码高亮配色不太美观，虽然有多种主题可以换，但是都不太如人意。这里我在一个hexo的主题melody里扒了一个highlight配色下来，代码如下 12345678910111213141516$highlight-background = #F6F8FA $highlight-current-line = #00346e $highlight-selection = #80CBC440 $highlight-foreground = #90A4AE $highlight-comment = #90A4AE90 $highlight-red = #E53935 $highlight-orange = #F76D47 $highlight-yellow = #FFB62C $highlight-green = #91B859 $highlight-aqua = #39ADB5 $highlight-blue = #6182B8 $highlight-purple = #7C4DFF $highlight-gutter = &#123; color: #CFD8DC, bg-color: $highlight-background &#125; 找到存储highlight的文件hexo-site/themes/next/source/css/_common/components/highlight/theme.styl里，将normal里的代码替换成上述代码即可 鼠标点击特效我主要参考的教程里的鼠标点击特效太水了，本来也淡了做这个特效的心思的，但是在偶然间预览到melody这个hexo主题时，迅速被里面的鼠标点击特效震撼到了，太炫酷了，妈妈我要学这个。点进了文档里没有看到这个技术的细节，只是提到了anime.js,遂顺藤摸瓜找到了anime的官网，发现这是一个提供做js动画的库，并不是我想要的特效，就在我迷茫时，突然发现anime的官网上用的就是这个特效，点开chrome-dev，大概看了一下，引用了两个js文件，anime.js和fireworks.js,后者就是我想要的效果！马上写了个html测试一下，很遗憾，不行，点开控制台，发现是没有canvas元素，在html中按官网的样子加入了一个canvas。这下特效有了，但是控制台还是会报错，原因是ga函数找不到，再一看ga函数源于一个叫analytics的js文件，可是开发者工具的sources栏里好像没看到有这个js，无奈只能点进去，发现是动态引用的，但是无所谓了，没有这个函数特效一样能够工作。于是就把官网上的fireworks.js下载了下来，并且把使用到ga函数的部分给注释掉。最后，在新建的html上调试成功。可是噩梦才刚刚开始，后面省略无数个字，摸索了一整天才把这个搞好，现在开始。 下载资源在anime的官网页面上，打开chrome开发者工具，在sources里把一下两个文件找到，并且下载到本地 fireworks.js anime.js 存入本地的路径为hexo-site/themes/next/source/js/src/ 编辑_layout文件之前已经在自己原来写过的静态网站上测试过了，想要实现鼠标点击的烟花特效，做完以下几步即可 html中新建canvas,属性如下1&lt;canvas class="fireworks" style="width: 1226px; height: 680px;position: fixed;left: 0;top: 0; z-index: 1; pointer-events: none" &gt;&lt;/canvas&gt; 这里面有几个属性要特别注意，一个是class名为fireworks，一个是position设为fixed，最重要的是设置pointer-event属性，这个属性能让你的鼠标点击穿透这个canvas直到下层，这个非常关键，不然的话你把canvas放在上面，下面的链接全都点不了了 在body末尾先后引入anime.js,fireworks.js一定要注意顺序，anime要先引入不然会出错，而且要放在dom后，不然会出现引用错误。这两步做完就可以实现功能了 在_layout文件中作出上述修改其实做个小测试很简单，但是如何将这个功能引入我们的网站就比较麻烦了，因为如果要在网站上实现效果，就必须修改所有的html。我想到这既然是一个框架，那么html应该有个模板，事实上这个模板就是_layout.swig,这个文件位于hexo-site/themes/next/layout/下。花了大概十分钟把这个文件看明白，然后在文件的最后引入这两个js,并且在开头（body元素后面）引入我们之前提到过的canvas应该就可以了. 使canvas的尺寸自适应我之前提到过的canvas的大小是写死的，这样不仅不优雅，而且不能实现响应式布局，还是在_layout.swig文件里，在所有的dom元素后面添加一段 123456789101112131415&lt;script&gt; window.onload = function()&#123; //resize canvas $(window).resize(resizeCanvas); function resizeCanvas() &#123; var canvas= $('.fireworks')[0]; canvas.height = window.innerHeight; canvas.width = window.innerWidth; //console.log(canvas.width,canvas.height); &#125;; &lt;/script&gt; 这样就能实现canvas自适应布局了 修改footer栏原版的footer栏太丑了，决定好好修饰一下 删除hexo和next信息找到themes/next/layout/_partials/footer.swig,打开编辑，删除class为powered-by和theme-info的相关dom（怎么总有种过河拆桥的感觉…） 文字居中在footer.swig里直接添加样式竟然没有效果，点开开发者工具才知道原来footer-inner这个类已经继承了text-align:left的属性（很好奇为什么我直接改写覆盖不了）,好嘛，干脆换个地方修改好了。打开\themes\next\source\css\_custom\custom.styl，添加如下代码 123.footer-inner &#123; text-align: center&#125; 修改用户名图标这里引用的技术是font-awesome，说实话我还是第一次接触这个，据说是为bootstrap设计的框架，但是我被它的简介和强大性震撼到了，不需要配置路径，下载文件什么的，只需要首先在官网上选择你喜欢的icon，在html中引用js之后，随便新建一个元素（官网建议最好是i，因为比较简介），然后设置class格式为fa icon-name，这里的icon-name是官网上选定元素之后会告诉你的名字，icon就出现了，简洁且强大。回到本文，按下面几个步骤进行： 上官网选择你喜欢的icon，把名字记下来 打开主题配置文件，搜索footer下的icon，将其值修改为你刚才找到的icon名 大功告成 结语花了很大的功夫配置了这么些，七成是跟着教程做的，三成是自己摸索的。全部过了一遍之后，一方面是增进了自己的信心，另一方面就是了解了大概的框架，以后想要自己diy一些部分也很容易。目前来说这些功能应该是够用了，以后有需要的话再添加吧.]]></content>
+      <categories>
+        <category>系统学习</category>
+      </categories>
+      <tags>
+        <tag>Next</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[我的编程入门]]></title>
+    <url>%2F2017%2F10%2F10%2F%E6%88%91%E7%9A%84%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[开始记录自己和生活...]]></title>
+    <url>%2F2017%2F10%2F09%2F%E5%BC%80%E5%A7%8B%E8%AE%B0%E5%BD%95%E8%87%AA%E5%B7%B1%E5%92%8C%E7%94%9F%E6%B4%BB%2F</url>
+    <content type="text"><![CDATA[开通博客的缘由大四了，突然发现周围的同学都或多或少带着这样或者那样的光环，反过来看看自己，似乎没有什么值得骄傲的地方。找了个时间专门想了想，自己原来大一大二的时候自己因为怯于自己能力有限，并没有参加各式各样的比赛，相反是将时间大量花费在了看书，练字，画画等系列杂篇上，更为致命的是，以前的那些爱好虽然随着时间和热情的流逝不断地舍弃了，但是心中反而留下了自己很难专注于某件事情的刻板印象。虽然这件事不知道有没有高中时期老师教诲的“遇到难题果断放弃，先做会做的题目”的影响，但事实就是如此，现在的我因为原来大一大二时尝试过太多事情但都半途而废，想要开始做什么事情一旦遇到什么困难就会产生放弃的想法（尤其是在配环境时…） 当然了，前面都是一些很丧的话，事情也有积极的一面:我发现自己在编程时还是很专注的，而且自己在前端方向非常感兴趣。可惜的是编程能力只是相对于班上的同学相对优秀，但倘若放在社会上的话根本不值一提。当然没有谁的能力是与生俱来的，但是我同样发现一个令我沮丧的事实，虽然编程时非常投入，也非常享受编程的状态，但是始终缺少自发学习编程的动力。就当我觉得未来漆黑一片时，突然想到了写博客输出的方法。事实上我自己平时也有输出（大三下有所懈怠），不过原来一直是记录在onenote上，只能“内部消化”。以博客的形式来进行输出我觉得有几个优点 公开平台，尽管可能没人看，但是绝对有莫名的督促作用 可以锻炼markdown写作的基本功 可以以比较完善的方式系统地整理自己学习的知识和完善自己 事实上，我同样也非常享受用一个平台全方面地展示自己，在这里我希望不仅是在编程，同样在读书，喜欢的动画，人生心得等系列方面都能慢慢积累，希望自己能坚持下去 曾经我的生活状态虽然暑假拿了夏令营的资格，也和研究生的老师联系好了，但是由于自己的不努力，没有拿到保研资格，也就是说摆在我面前的只有考研这一条路，但是到目前为止，我的考研说实话准备得还不是太好，这一点在我还有闲情来写博客就能看出来。还是老规矩，晚上到操场上反思一下，发现自己根本没有所谓的理想的生活，没有目标也就没有动力，中间还很有一段时间处于时间空余但是又不知道做什么的迷茫状态。老实说，就算是现在我的心中还是有点乱，对未来的大概构想就是考研-帮老师做事-研究生阶段巩固自身技能。现在终于有了博客的帮助，希望它能帮我走得更远。 激励我的大大 羡辙 小土刀 初次了解羡辙是在知乎上搜索百度前端学院的task发现有个人给了一个nice的作品，后来又是一次偶然的机会，我正在跟着老师做事，我负责百度echarts的部分，偶然发现了百度前端团队也有她，于是从echarts跟到github和微博，毅然决然地决定成为羡辙老师的粉丝。原因一方面当然是因为人长得漂亮（大雾），其实主要原因是我当时无（ba）聊（gua）翻了很多她的微博，发现原来她的生活轨迹和爱好和我很相似，都喜欢看书和编程，当然她比我厉害很多（主要是能付诸实践和看书能看进去吧）其实大大在编程圈子里也是个很普通的人，但是既然作为和我的爱好重叠度极高且目前已经有较为稳定工作（BAT诶，虽然百度已经没落了，但是也算很强势的互联网公司了），自然是要成为我心目中的标杆啦 小土刀是近期才了解到的，在搜索hexo相关配置问题时偶然发现了这个人的博客，顺手点进去看了看，哟发现大家的兴趣点也都很相似，说实话我最开始点到他的读书计划中心中是有点不屑的，因为他书单里的大多数书也是我的书单的部分（包括编程部分和科普类书部分），很不幸我的书单部分还没怎么开荒，但是后来在知乎里看见了对这个人的主观和客观的评价，发现他还是愿意把自己想做的事给很好地执行的。而这正是我所缺乏的能力，而且大大在自己的博客上全方面展示自己兴趣（包括动漫和武侠小说）让我觉得这就是我想要的生活，知道自己要做什么，并且不断地为这个方向努力 配置博客这两天终于折腾好了博客，配环境总是最累人的事。原先是计划采用jekyll，光是ruby的配置就花了我一晚上，没办法电脑之前brew出了问题，配置ruby之前还被brew折腾了好久，后来还是觉得hexo简单，事实上应该两者差不多，我是觉得hexo的next我比较喜欢，可以拿来直接用，所以跟着教程把hexo搞好了，事实证明一件事做的时候越困难，做完的幸福感越高，配置的过程就不发博客了，因为类似的教程很多。最后感叹一句： 有困难，上stackoverflow! 结语这两天风风火火地搞博客，不知道自己这次还能不能坚持下来，因为考研的缘故，自己这下半年肯定不会很勤快， 如果这次还是不能坚持下来的话…]]></content>
+      <categories>
+        <category>随想</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[初识markdown]]></title>
+    <url>%2F2017%2F10%2F09%2F%E5%88%9D%E8%AF%95markdown%2F</url>
+    <content type="text"><![CDATA[Intro前言markdown其实很早就有所接触，但是原来的话一是没有机会来接触，平时全部都以onenote的形式输出。原来使用的是Ulysess，这个工具页面设计非常优秀，UI非常舒服，我也在上面写过很多私人的文章，但是当我正式开始写博客之后，我突然发现ulysess还是不太方便（也有可能是我对ulysess的了解太少了）。在短暂尝试了macdown之后，我发现原来这款软件才是我喜欢的风格 优点 代码高亮 样式美观 可以即时渲染 推荐markdown软件当然这里还有一些推荐的markdown（macOSx）可供选择 mou（mac升级到sierra之后官网上下的版本都不兼容了） macdown 快捷按键想要入门一项技术，最好的方法就是找一些简单的事情来做，在动手实践中提升信息和这门技术的喜爱其实，如果你采用专业的markdown软件的话你会发现其实大部分软件都把常用的功能都绑定了快捷键这里以macdown为例，记录一下一些常用的按键 宏观操作关闭预览command+shift+H 细节操作标题command+1/2/3／... 代码块command+K 区域代码可以直接tab，或者六个‘’‘’‘’建议是六个`，因为前者在next上显示会有问题 注释command+/ 链接command+shift+K 图片command+shift+I 引用command+shift+B 顺序序列command+shift+O 非顺序序列command+shift+U 总结使用markdown中遇到的问题汇总 ’#‘章节标记后面应立即接空格，这个bug在markdown软件上没有问题，但是上传到网站上时就会出现错误 markdown默认是不换行的，直接换行认为是同一个段落。想要切换段落只能直接按enter macdown有很多快捷键本来可以使用，但用着用着就失效了，目前还没有找到原因，留着将来补充… 结语 markdown其实语法很简单，但是只有持续不断地输出才能最好发挥它的价值]]></content>
+      <categories>
+        <category>系统学习</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
 </search>
