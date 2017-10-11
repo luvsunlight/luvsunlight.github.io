@@ -1835,7 +1835,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e3a213;
+  background: #94f278;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2829,15 +2829,16 @@ hr {
 }
 .post-button {
   margin-top: 20px;
-  text-align: left;
+  text-align: center;
 }
 .post-button a {
-  padding: 0;
+  padding: 2px 20px;
   font-size: 14px;
-  background: none;
-  border: none;
-  border-bottom: 2px solid #666;
-  transition-property: border;
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 3px;
+  transition: all 0.2s ease;
 }
 @media (max-width: 767px) {
   .post-button a {
@@ -2850,7 +2851,8 @@ hr {
   }
 }
 .post-button a:hover {
-  border-bottom-color: #222;
+  background-color: #000;
+  color: #fff;
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
