@@ -132,9 +132,9 @@
       <category term="系统学习" scheme="http://yoursite.com/categories/%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
-    
       <category term="Next" scheme="http://yoursite.com/tags/Next/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
