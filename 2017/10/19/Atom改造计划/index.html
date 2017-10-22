@@ -123,7 +123,8 @@
 <meta property="og:description" content="之前写前端一直使用的是webstorm,这个ide很好，功能也集成得不错，但是缺点太显著那就是慢，启动慢，打字有时候还会卡帧，这导致我不得不寻找一个轻量级的替代品，这次我考虑的由vsc和atom，最终还是决定使用atom，理由就是好看且顺手。我从今天上午开始到现在已经下载了很多好用的插件，写了这篇博客来梳理一下思绪">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1508417989030.png">
-<meta property="og:updated_time" content="2017-10-19T13:08:43.000Z">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1508423304575.png">
+<meta property="og:updated_time" content="2017-10-20T05:41:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Atom改造计划">
 <meta name="twitter:description" content="之前写前端一直使用的是webstorm,这个ide很好，功能也集成得不错，但是缺点太显著那就是慢，启动慢，打字有时候还会卡帧，这导致我不得不寻找一个轻量级的替代品，这次我考虑的由vsc和atom，最终还是决定使用atom，理由就是好看且顺手。我从今天上午开始到现在已经下载了很多好用的插件，写了这篇博客来梳理一下思绪">
@@ -381,8 +382,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-19T21:08:43+08:00">
-                2017-10-19
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-20T13:41:34+08:00">
+                2017-10-20
               </time>
             
           </span>
@@ -436,7 +437,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  350字
+                  923字
                 </span>
               
 
@@ -452,7 +453,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  3分钟
                 </span>
               
             </div>
@@ -479,7 +480,10 @@
 </blockquote>
 <a id="more"></a>
 <h1 id="关于atom"><a href="#关于atom" class="headerlink" title="关于atom"></a>关于atom</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>atom是<code>github</code>出版的编辑器，插件也非常丰富。<a href="https://atom.io/" target="_blank" rel="external">官网</a></p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>太多了，不一一列举</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="http://www.cnblogs.com/fuhuixiang/p/4840866.html" target="_blank" rel="external">1</a></li>
+<li><a href="https://github.com/shery15/awesome-atom-packages/blob/master/README-zh.md" target="_blank" rel="external">2</a></li>
+</ul>
 <h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
 <li>UI好看(感觉比spacemacs还好看)<br><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1508417989030.png" alt=""></li>
 <li>前端友好</li>
@@ -489,9 +493,33 @@
 <p>首先找到这个路径<code>\Users\用户名\.atom</code>，在这个下面新建一个<code>.apmrc</code>的文件，代码如下</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">registry</span>=https://registry.npm.taobao.org/  </div><div class="line"><span class="attr">strict-ssl</span>=<span class="literal">false</span></div></pre></td></tr></table></figure>
 <p>也就是把源换成淘宝源（brew，npm，pip也应该同理换一下，当然这就不是本文的讨论范围了）</p>
-<h1 id="插件篇"><a href="#插件篇" class="headerlink" title="插件篇"></a>插件篇</h1><h2 id="主题插件"><a href="#主题插件" class="headerlink" title="主题插件"></a>主题插件</h2><p>##markdown<br>说一下，我最开始的时候也是想把atom改造成一个</p>
-<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><p>系统</p>
-<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3>
+<h2 id="atom安装插件"><a href="#atom安装插件" class="headerlink" title="atom安装插件"></a>atom安装插件</h2><h3 id="应用内打开"><a href="#应用内打开" class="headerlink" title="应用内打开"></a>应用内打开</h3><p>我更偏爱这种方法，一是简单，而是内容也更丰富（可以看到评价和简介）mac下直接按<code>command + ,</code>，在里面找到<code>install</code>栏即可</p>
+<h3 id="终端安装"><a href="#终端安装" class="headerlink" title="终端安装"></a>终端安装</h3><p><code>apm install + 插件名</code>，不太推荐这种方法，不要为了装逼冒这个风险。python，node都可以通过终端安装包，但atom没必要，应用内更丰富且易定制。</p>
+<h2 id="atom快捷键"><a href="#atom快捷键" class="headerlink" title="atom快捷键"></a>atom快捷键</h2><ul>
+<li><code>command+\</code> toggle文件夹</li>
+<li><code>command+p</code> 查找文件</li>
+<li><code>command+enter</code>跳转到下一行</li>
+<li><code>command+k  + 方向键</code>分屏</li>
+</ul>
+<h1 id="插件篇"><a href="#插件篇" class="headerlink" title="插件篇"></a>插件篇</h1><h2 id="主题插件"><a href="#主题插件" class="headerlink" title="主题插件"></a>主题插件</h2><h3 id="atom-material-ui"><a href="#atom-material-ui" class="headerlink" title="atom-material-ui"></a>atom-material-ui</h3><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><ul>
+<li>git-plus<br>这个方便git使用，我之后写git的文章时会结合这个来说的（主要是方便我这种不记命令的懒人XD）<br>##markdown<br>说一下，我最开始的时候也是想把atom改造成一个markdown编辑器的，后来尝试了很多插件，最后发现还是<code>macdown</code>好用，配色鲜明（这个很重要）+空间大（屏幕小的痛）</li>
+</ul>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="project-manager"><a href="#project-manager" class="headerlink" title="project-manager"></a>project-manager</h3><p>暂时没有搞明白</p>
+<h3 id="file-icons"><a href="#file-icons" class="headerlink" title="file-icons"></a>file-icons</h3><p>为文件添加各种icon，方便识别</p>
+<h3 id="expose"><a href="#expose" class="headerlink" title="expose"></a>expose</h3><p>主要就是呈现跟手机端一样，当tab栏过多时，按下<code>comamnd+shift+e</code>查看所有的tab</p>
+<h2 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h2><h3 id="emmet"><a href="#emmet" class="headerlink" title="emmet"></a>emmet</h3><p>不解释</p>
+<h3 id="auto-completepaths"><a href="#auto-completepaths" class="headerlink" title="auto-completepaths"></a>auto-completepaths</h3><p>文件路径补全</p>
+<h3 id="autocomplete-modules"><a href="#autocomplete-modules" class="headerlink" title="autocomplete-modules"></a>autocomplete-modules</h3><p>自动补全模组名</p>
+<h3 id="atom-ternjs"><a href="#atom-ternjs" class="headerlink" title="atom-ternjs"></a>atom-ternjs</h3><p>ES5, ES6, ES7, Node.js, jQuery, Angular 等等 js 代码自动补全</p>
+<h3 id="css-snippets"><a href="#css-snippets" class="headerlink" title="css-snippets"></a>css-snippets</h3><h2 id="代码检查"><a href="#代码检查" class="headerlink" title="代码检查"></a>代码检查</h2><h3 id="linter"><a href="#linter" class="headerlink" title="linter"></a>linter</h3><p>这是一个系列，主要作用是代码优化和检测</p>
+<h3 id="linter-jshint"><a href="#linter-jshint" class="headerlink" title="linter-jshint"></a>linter-jshint</h3><p>基于 jshint 的 JavaScript 语法检查插件</p>
+<h3 id="linter-eslint"><a href="#linter-eslint" class="headerlink" title="linter-eslint"></a>linter-eslint</h3><p>基于 ESLint 的 JavaScript 语法检查插件</p>
+<h3 id="linter-htmlhint"><a href="#linter-htmlhint" class="headerlink" title="linter-htmlhint"></a>linter-htmlhint</h3><h3 id="linter-jsonhint"><a href="#linter-jsonhint" class="headerlink" title="linter-jsonhint"></a>linter-jsonhint</h3><h3 id="linter-csslint"><a href="#linter-csslint" class="headerlink" title="linter-csslint"></a>linter-csslint</h3><h2 id="前端细节"><a href="#前端细节" class="headerlink" title="前端细节"></a>前端细节</h2><h3 id="autoprefixer"><a href="#autoprefixer" class="headerlink" title="autoprefixer"></a>autoprefixer</h3><p>这个是用来解决兼容性前缀的，你只需要写完之后，使用控制命令调用<code>autofixer</code>即可，非常方便</p>
+<h3 id="open-in-browser"><a href="#open-in-browser" class="headerlink" title="open-in-browser"></a>open-in-browser</h3><p>按下组合键<code>control+alt+o</code>，即可使用默认浏览器打开当前html（默认是chrome），当然也可以通过底栏的按钮来打开html</p>
+<h3 id="hyperclick"><a href="#hyperclick" class="headerlink" title="hyperclick"></a>hyperclick</h3><h3 id="js-hyperclick"><a href="#js-hyperclick" class="headerlink" title="js-hyperclick"></a>js-hyperclick</h3><h2 id="拓展功能"><a href="#拓展功能" class="headerlink" title="拓展功能"></a>拓展功能</h2><h3 id="color-picker"><a href="#color-picker" class="headerlink" title="color-picker"></a>color-picker</h3><p><code>conmand+shift+c</code>直接显示出选色器，非常方便！！！！</p>
+<h3 id="docblockr"><a href="#docblockr" class="headerlink" title="docblockr"></a>docblockr</h3><p>这个功能<strong>非常强大</strong>，可定制型也比较高…我琢磨了很久也只挖掘了几个我目前暂时能用到的。主打功能：高级注释。<code>/*</code>或<code>/**</code>之后按下<code>tab</code>，就能自动转化成批量注释。另外，在函数前使用这个功能，就能自动衍生出有关函数的相关注释</p>
+<h3 id="minimap"><a href="#minimap" class="headerlink" title="minimap"></a>minimap</h3><p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1508423304575.png" alt=""><br>缩略图</p>
+
       
     </div>
     
@@ -724,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于atom"><span class="nav-number">1.</span> <span class="nav-text">关于atom</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">1.2.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">1.4.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件篇"><span class="nav-number">2.</span> <span class="nav-text">插件篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主题插件"><span class="nav-number">2.1.</span> <span class="nav-text">主题插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件管理"><span class="nav-number">2.2.</span> <span class="nav-text">文件管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端"><span class="nav-number">2.3.</span> <span class="nav-text">前端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS"><span class="nav-number">2.3.1.</span> <span class="nav-text">JS</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于atom"><span class="nav-number">1.</span> <span class="nav-text">关于atom</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">1.2.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">1.4.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atom安装插件"><span class="nav-number">1.5.</span> <span class="nav-text">atom安装插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用内打开"><span class="nav-number">1.5.1.</span> <span class="nav-text">应用内打开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终端安装"><span class="nav-number">1.5.2.</span> <span class="nav-text">终端安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atom快捷键"><span class="nav-number">1.6.</span> <span class="nav-text">atom快捷键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件篇"><span class="nav-number">2.</span> <span class="nav-text">插件篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主题插件"><span class="nav-number">2.1.</span> <span class="nav-text">主题插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#atom-material-ui"><span class="nav-number">2.1.1.</span> <span class="nav-text">atom-material-ui</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本控制"><span class="nav-number">2.2.</span> <span class="nav-text">版本控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件管理"><span class="nav-number">2.3.</span> <span class="nav-text">文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#project-manager"><span class="nav-number">2.3.1.</span> <span class="nav-text">project-manager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file-icons"><span class="nav-number">2.3.2.</span> <span class="nav-text">file-icons</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expose"><span class="nav-number">2.3.3.</span> <span class="nav-text">expose</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动补全"><span class="nav-number">2.4.</span> <span class="nav-text">自动补全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#emmet"><span class="nav-number">2.4.1.</span> <span class="nav-text">emmet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#auto-completepaths"><span class="nav-number">2.4.2.</span> <span class="nav-text">auto-completepaths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#autocomplete-modules"><span class="nav-number">2.4.3.</span> <span class="nav-text">autocomplete-modules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#atom-ternjs"><span class="nav-number">2.4.4.</span> <span class="nav-text">atom-ternjs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css-snippets"><span class="nav-number">2.4.5.</span> <span class="nav-text">css-snippets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码检查"><span class="nav-number">2.5.</span> <span class="nav-text">代码检查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linter"><span class="nav-number">2.5.1.</span> <span class="nav-text">linter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linter-jshint"><span class="nav-number">2.5.2.</span> <span class="nav-text">linter-jshint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linter-eslint"><span class="nav-number">2.5.3.</span> <span class="nav-text">linter-eslint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linter-htmlhint"><span class="nav-number">2.5.4.</span> <span class="nav-text">linter-htmlhint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linter-jsonhint"><span class="nav-number">2.5.5.</span> <span class="nav-text">linter-jsonhint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linter-csslint"><span class="nav-number">2.5.6.</span> <span class="nav-text">linter-csslint</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端细节"><span class="nav-number">2.6.</span> <span class="nav-text">前端细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#autoprefixer"><span class="nav-number">2.6.1.</span> <span class="nav-text">autoprefixer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#open-in-browser"><span class="nav-number">2.6.2.</span> <span class="nav-text">open-in-browser</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hyperclick"><span class="nav-number">2.6.3.</span> <span class="nav-text">hyperclick</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js-hyperclick"><span class="nav-number">2.6.4.</span> <span class="nav-text">js-hyperclick</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展功能"><span class="nav-number">2.7.</span> <span class="nav-text">拓展功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#color-picker"><span class="nav-number">2.7.1.</span> <span class="nav-text">color-picker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docblockr"><span class="nav-number">2.7.2.</span> <span class="nav-text">docblockr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#minimap"><span class="nav-number">2.7.3.</span> <span class="nav-text">minimap</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -760,7 +788,7 @@
     
       <span class="post-meta-item-text">博客全站共 </span>
     
-    <span title="Site words total count">15.2k字</span>
+    <span title="Site words total count">15.9k字</span>
   
 </div>
 

@@ -121,7 +121,7 @@
 <meta property="og:site_name" content="Prozac’s blog">
 <meta property="og:description" content="写markdown的过程是非常爽的，但是有一点始终是我心中的一根刺，那就是图床。博客理论上来说是可以把图片存在本地然后调用相对路径的，但是这么做一方面加重了上传的负担，一方面加重了网站的负担。比较推荐的方式是图床。但是图床虽然副作用小，但当一篇博客里需要引用的图片变多时，图床繁琐的步骤往往会成为你发疯的诱因.我在尝试了一个晚上之后终于解决了这个问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T12:55:36.000Z">
+<meta property="og:updated_time" content="2017-10-19T13:17:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一键图床指南">
 <meta name="twitter:description" content="写markdown的过程是非常爽的，但是有一点始终是我心中的一根刺，那就是图床。博客理论上来说是可以把图片存在本地然后调用相对路径的，但是这么做一方面加重了上传的负担，一方面加重了网站的负担。比较推荐的方式是图床。但是图床虽然副作用小，但当一篇博客里需要引用的图片变多时，图床繁琐的步骤往往会成为你发疯的诱因.我在尝试了一个晚上之后终于解决了这个问题">
@@ -378,7 +378,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-19T20:55:36+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-19T21:17:11+08:00">
                 2017-10-19
               </time>
             
@@ -433,7 +433,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,444字
+                  1,589字
                 </span>
               
 
@@ -489,7 +489,7 @@
 <h1 id="可用方法"><a href="#可用方法" class="headerlink" title="可用方法"></a>可用方法</h1><h2 id="系统自带截图的设置"><a href="#系统自带截图的设置" class="headerlink" title="系统自带截图的设置"></a>系统自带截图的设置</h2><p>首先在讲各个方法之前，先把系统给的截图给改一下。默认的设置里<code>command+shitf+4</code>是截图,<code>command+shift+4+control</code>是截图并且存入剪切板，后者对我们来说更为实用，但是更难按，在系统的键盘设置里把前者的默认按键和后者换一下即可</p>
 <h2 id="workflow"><a href="#workflow" class="headerlink" title="workflow"></a>workflow</h2><p><a href="https://github.com/tiann/markdown-img-upload" target="_blank" rel="external">参考链接</a></p>
 <p>这个是<a href="https://www.alfredapp.com/" target="_blank" rel="external">alfred</a>的特殊技能（alfred的文章我之后会专门写），并且需要购买<code>powerback</code>包。具备了上述条件之后，只需要按照参考链接里的步骤，安装里面的wordflow，配置好七牛的信息，应该就可以运行了。我自己是一切都搞好了，但是实践起来发现不是这回事，总是报网络的错，我估摸着可能是七牛的api改了，但是也没那个闲工夫去琢磨workflow里的东西，遂作罢。</p>
-<p>|补充| 后来找到原因了，原来是存储空间是不在华东的缘故，重新建立了一个华东的存储区，并且重新修改了一下配置文件，可以运行了</p>
+<p>|补充| 后来找到原因了，原来是存储空间是不在华东的缘故，重新建立了一个华东的存储区，并且重新修改了一下配置文件，可以运行了。而且我在另外一个同学的电脑上也查看了效果，并没有它说的分辨率丢失的问题，那么workflow就是目前我非常完美的一个解决方案了，快捷（只需要截图然后粘贴），安全（可以在七牛上管理）。</p>
 <h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><ul>
 <li><code>command+shift+4</code>截图</li>
 <li>在编辑器里<code>command+control+v</code>粘贴</li>
@@ -509,7 +509,7 @@
 </ul>
 <h2 id="photocloud"><a href="#photocloud" class="headerlink" title="photocloud"></a>photocloud</h2><p><a href="https://www.v2ex.com/t/318201" target="_blank" rel="external">参考链接</a></p>
 <p>这个软件需要在appstore官网上下载，看了晚上的宣传，感觉还是不错的，但是当我真正使用时才发现完全不是这回事。首先，截图方式太傻，完全没有本地截图然后自动上传到剪切板那么便捷，其次，七牛云存储！！！我发现按要求配置好了之后，还是会报错<code>incorrect region</code>，网上搜了一下，好像是存储空间应该选华东（默认是华东），要么我换一个存储在华东的空间，要么修改远吗（可是这是一个软件并不能修改…）可是当我修改成华东之后发现还是报了一样的错，服了，遂删之。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>最后还是两种方法都实现了，workflow理论上较为完美，但是img格式实在有点接受不能，ipics真的挺不错的，但是微博链接还是有点不放心</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>最后还是两种方法都实现了，pics真的挺不错的，但是微博链接还是有点不放心。workflows的方法真心强，而且更改了链接之后发现还是非常完美的。workflow虽然好但是那是相对于购买了alfred的workflow的用户来说的，对于没有购买alfred的powerbakc的人，我的建议还是<code>ipic</code>，<code>photocloud</code>不仅截图不好用，而且七牛设置总是出问题，差评（还浪费我6块钱…）</p>
 
       
     </div>
@@ -767,7 +767,7 @@
     
       <span class="post-meta-item-text">博客全站共 </span>
     
-    <span title="Site words total count">15.2k字</span>
+    <span title="Site words total count">15.9k字</span>
   
 </div>
 
