@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=ba878bb94ed7625ac538aa176cc28593&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Geolocation,AMap.Walking"></script>
     <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
     <title>phone-site</title>
@@ -13,16 +12,15 @@
 
         /*最外部的wrap*/
 
-        #phoneWrap {
-        height: 540px!important;
-        width: 337px;
-        padding: 102px 25px 159px 23px;
-        margin: 40px auto 0 auto;
-        background: url(http://www.jq22.com/css/img/bgiphone.png) no-repeat;}
+        body, html {
+        	width:100%;
+        	height:100%;
+        	margin: 0;
+        }
 
         #container {
-            height: 540px;
-            width: 337px;
+            height: 100%;
+            width: 100%;
         }
 
         /*顶部导航栏部分*/
@@ -48,24 +46,6 @@
             text-indent: .6em;
         }
 
-
-        /*右上角的链接*/
-        .pc {
-            position: fixed;
-            top: 100px;
-            right: 100px;
-            width: 40px;
-            height: 40px;
-            background-color: #ccc;
-            border: 10px solid #ccc;
-            border-radius: 50%;
-        }
-        .pc img {
-            position: relative;
-            top: 4px;
-            width: 100%;
-            height: 100%;
-        }
 
         /*消息盒子部分 */
         .message-box {
@@ -368,12 +348,6 @@
                 </div>
             </div>
         </div>
-    <!--右上角的链接-->
-    <div class="pc">
-        <a href="main.html">
-            <img src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460806432.png">
-        </a>
-    </div>
 
     <script>
         /* 全局变量很多，以后应修改 */
