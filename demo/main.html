@@ -9,7 +9,7 @@
     <meta name="x5-fullscreen" content="true">
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=ba878bb94ed7625ac538aa176cc28593&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Geolocation"></script>
     <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
-    <title>Test</title>
+    <title>PC-site</title>
     <style>
         body,html,#container{
             height: 100%;
@@ -18,24 +18,39 @@
         }
 
         /*顶部导航栏部分*/
-        .nav {
+        #tipinput {
             position: absolute;
             top: 5%;
             left: 5%;
             height: 7%;
-            width: 90%;
-            background: #ffffff;
-            box-shadow: 0 35px 77px -17px rgba(0,0,0,0.44);
-        }
-        #tipinput {
-            position: relative;
-            width: 100%;
-            height: 100%;
+            width: 30%;
             border: none;
-            border-radius: 5px;
+            opacity: .9;
             outline:none;
             font-size: 20px;
             text-indent: .6em;
+            box-shadow: 0 35px 77px -17px rgba(0,0,0,0.44);
+        }
+
+        #tipinput :hover {
+            opacity: 1;
+        }
+
+        /*右上角的链接*/
+        .mobile {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border: 5px solid #fff;
+            border-radius: 50%;
+        }
+        .mobile img {
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
         /*登录页面部分*/
@@ -60,20 +75,30 @@
             font-size: 18px;
             text-indent: .5em;
         }
+
         .loginBtn, .regisBtn{
             display: inline-block;
             float: left;
             width: 35%;
             padding: 3% 6%;
             margin: 1.5%;
-            background: rgba(124,207,209,.64);
             color: #fff;
             text-align: center;
             box-shadow: 0 35px 77px -17px rgba(0,0,0,0.44);
         }
-        .loginBtn:hover ,.regisBtn:hover {
-            background: rgba(124,207,209,1);
+        .loginBtn {
+            background-color: rgba(124,207,209,.64);
         }
+        .regisBtn {
+            background-color: rgba(113, 226, 178, 0.64);
+        }
+        .loginBtn:hover {
+            background-color: rgba(124,207,209,1);
+        }
+        .regisBtn:hover {
+            background: rgba(113, 226, 178, 1);
+        }
+
         .deleteBtn {
             position: absolute;
             right: 2%;
@@ -122,7 +147,7 @@
             left: 6%;
             top: 60%;
         }
-        
+
         /*右下角工具栏部分*/
         #toolWrap {
             position: absolute;
@@ -143,6 +168,18 @@
             width: 100%;
             height: auto;
             border-radius: 50%;
+        }
+        #deleteTag img, #msg-tool img{
+            position: relative;
+            left: 3px;
+            top: 3px;
+            width: 40px;
+        }
+        #msg-tool :hover, #deleteTag :hover {
+            position: relative;
+            left: 1px;
+            top: 1px;
+            width: 44px;
         }
         .tool :hover {
             position: relative;
@@ -214,6 +251,7 @@
             text-align: center;
             font-family: Helvetica;
         }
+
         /*好友栏*/
         #fri-wrap div {
             width: 95%;
@@ -243,15 +281,20 @@
 <div id="container"></div>
 
 <!--页面上方的导航搜索栏-->
-<div class="nav">
-    <input type="search" placeholder="查找感兴趣的地点" id="tipinput">
+<input type="search" placeholder="查找感兴趣的地点" id="tipinput">
+
+<!--右上角的链接-->
+<div class="mobile">
+    <a href="phone-site.html">
+        <img src="http://img.hb.aicdn.com/5c50d269e468081cc8917f1244ab1243f1ef57ca1b4c-HIurqn_fw192">
+    </a>
 </div>
 
 <!--登陆页面-->
 <div class="login-main">
     <img class="deleteBtn" src="http://img.hb.aicdn.com/5c712b9a3990eb95ce72427eaaf08cc75abed8eb13b8-uxgaMG_fw192">
-    <input type = search class="userInput" placeholder="Account" autofocus type="text">
-    <input type="password" class="pwdInput" placeholder="Password" type="text">
+    <input type = "search" class="userInput" placeholder="Account" autofocus>
+    <input type="password" class="pwdInput" placeholder="Password">
     <botton class="regisBtn">注册</botton>
     <botton class="loginBtn">登录</botton>
 </div>
@@ -263,14 +306,13 @@
     <botton class="msgBtn">确定</botton>
 </div>
 
-
 <!--左边的tag管理栏-->
 <div id="tagWrap">
     <div id="addTag" class="tool" style="display: none">
         <img src="http://img.hb.aicdn.com/38b3b3a5116f289a7a12c171488192859cf60d511feb-iWuRmX_fw192">
     </div>
     <div id="deleteTag" class="tool" style="display: none">
-        <img src="http://img.hb.aicdn.com/25a10068ceea47af21f61cc0e96060d219a7a6a42ea7-zXczk7_fw192">
+        <img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fkr0zb9kcwj305k05kwea.jpg">
     </div>
     <div id="uploadTag" class="tool" style="display:none">
         <img src="http://img.hb.aicdn.com/9c5fa85acbfe7d869c7f80b62ba65ae9d28ace4d2730-MvRseZ_fw192">
@@ -289,19 +331,15 @@
     </div>
     <!--自定义工具-->
     <div id="func-tool" class="tool">
-        <img src="http://img.hb.aicdn.com/e2366b6157c7b9a2d87d060b39ebb51e2a631ba42c15-bfkPm7_fw192">
+        <img src="http://img.hb.aicdn.com/144903f87f3a106787c152f331c1cd4f4b2dbfd320eb-iy7djH_fw192">
     </div>
     <!--路况-->
     <div id="road-tool" class="tool" style="display: none">
         <img src="http://img.hb.aicdn.com/4fdf4d189188e78875ef203e6c453fbe580e21562258-MFgLoh_fw192">
     </div>
-    <!--3D Map-->
-    <div id="3D-tool" class="tool" style="display:none;">
-        <img src="http://img.hb.aicdn.com/2d9afa743c6c0350ab8a08ec7c3c1c6d0c1793552ab2-UpPRHG_fw192">
-    </div>
-    <!--注记-->
+    <!--数据管理-->
     <div id="tag-tool" class="tool" style="display: none">
-        <img src="http://img.hb.aicdn.com/0d2565674e867b8cecf3db144f0a17f4fd20bfb41b94-bfife3_/fw/480">
+        <img src="http://img.hb.aicdn.com/5f179fe3b7732b3d2e30383735cd4e2d71bf4d402225-INg6TQ_/fw/480">
     </div>
     <!--记录轨迹-->
     <div id="track-tool" class="tool" style="display: none">
@@ -309,7 +347,11 @@
     </div>
     <!--消息处理-->
     <div id="msg-tool" class="tool" style="display: none">
-        <img src="http://img.hb.aicdn.com/07788123c67f562f9ee718500921e1db6237fd712497-4fPcgw_/fw/480">
+        <img src="http://img.hb.aicdn.com/150e4331a19f1a26ac24aa8e55af0daa4d6855c422d9-9AKUCS_fw192">
+    </div>
+    <!--寻找离群者-->
+    <div id="find-tool" class="tool" style="display: none">
+        <img src="http://img.hb.aicdn.com/2d9afa743c6c0350ab8a08ec7c3c1c6d0c1793552ab2-UpPRHG_/fw/480">
     </div>
     <!--tooltip-->
     <div id="tooltip">
@@ -338,10 +380,9 @@
     var markers = [];
     var userTracks = {};
     var meMark = [];
-    var infos = [];
     var app = {
-        "user":"prozac11",
-        "online":true,
+        "user":"",
+        "online":false,
         "img-url":""
     };
 
@@ -351,6 +392,7 @@
     var toolVis = false;
     var _3DVis = false;
     var tagVis = false;
+    var findVis = false;
     var userVis = {};
     var setMarker = false;
 
@@ -360,17 +402,15 @@
             center: cenPos,
             zoom: 16
         });
-
         /*加载obj*/
         getPos();
         regisAuto();
         regisLocMe();
-        regisInfoWindows();
         regisRoad();
-        regis3D();
         regisTag();
         regisTrack();
-        regisFriend();
+        regisFind();
+
 
         /*加载事件*/
         regisClick();
@@ -402,6 +442,12 @@
             // 重新定位保证精度
             var pos = getPos();
 
+            if (meMark.length !== 0){
+                map.remove(meMark);
+                meMark = [];
+                return;
+            }
+
             // set infoWindow
             var infoWindow = new AMap.InfoWindow({
                 offset: new AMap.Pixel(0, -30),
@@ -417,11 +463,6 @@
             content.style['background'] = '#f00';
             content.style['box-shadow'] = '2px 2px 3px rgba(0,0,0,0.44)';
 
-            if (meMark.length !== 0){
-                map.remove(meMark);
-                meMark = [];
-            }
-
             // 在新中心点添加 marker
             var marker = new AMap.Marker({
                 map: map,
@@ -430,36 +471,17 @@
             });
             meMark.push(marker);
             //markers.push(marker);
-            infoWindow.open(map,pos);
 
             map.setFitView();
+
+            if(app.online) {
+                uploadLoc(pos);
+                showMessage('签到成功！');
+            }else {
+                infoWindow.open(map,pos);
+            }
         });
 
-    }
-    
-    function regisInfoWindows() {
-        /* info module */
-
-        var posList = [];
-        var introList = [];
-        var infoWindow = new AMap.InfoWindow({
-            offset: new AMap.Pixel(0, -30)
-        });
-        for(var i = 0, marker; i < posList.length; i++){
-            marker = new AMap.Marker({
-                position:posList[i],
-                map:map
-            });
-            marker.content='我是第'+i+'个信息窗体的内容';
-            marker.pos = posList[i];
-            //给Marker绑定单击事件
-            marker.on('click', markerClick);
-        }
-        map.setFitView();
-        function markerClick(e){
-            infoWindow.setContent(e.target.content);
-            infoWindow.open(map, e.target.pos);
-        }
     }
 
     function regisRoad() {
@@ -477,31 +499,6 @@
             }
             else {
                 trafficLayer.hide();
-            }
-        })
-    }
-
-    function regis3D() {
-        /* 3D module */
-
-        if (document.createElement('canvas') && document.createElement('canvas').getContext && document.createElement('canvas').getContext('2d')) {
-            // 实例化3D楼块图层
-            var buildings = new AMap.Buildings();
-            // 在map中添加3D楼块图层
-            buildings.setMap(map);
-        } else {
-            showMessage('对不起，3D图层显示需要HTML5支持');
-        }
-        buildings.hide();
-
-        // click toggle
-        $('#3D-tool').click(function () {
-            _3DVis = !_3DVis;
-            if(_3DVis){
-                buildings.show();
-            }
-            else {
-                buildings.hide();
             }
         })
     }
@@ -541,11 +538,12 @@
 
         var clickEventListener = map.on('click', function(e) {
 
-            // 首先检查是否在线
-            if(!app.online){
-                showMessage('您还未登陆，不能上传标记');
-                return;
-            }else if(setMarker){
+            if(setMarker){
+                // 首先检查是否在线
+                if(!app.online){
+                    showMessage('您还未登录，不能上传标记');
+                    return;
+                }
 
                 // 首先设置标记
                 var pos = [e.lnglat.getLng(),e.lnglat.getLat()];
@@ -554,7 +552,6 @@
                     position: pos
                 });
                 markers.push(marker);
-
             }
         });
 
@@ -565,21 +562,76 @@
         /* Track module*/
 
        $('#track-tool').click(function () {
-           if(typeof(userVis[app.user]) == "unfefined" ){
+           if(typeof(userVis[app.user]) == "undefined" ){
                userVis[app.user] = false;
                userTracks[app.user] = [];
            }
            userVis[app.user] = !userVis[app.user];
            if(!app.online)
            {
-               showMessage('您还未登陆，无轨迹数据');
+               showMessage('您还未登录，无轨迹数据');
                return;
            }
 
-           var posList = getTrack(app.user);
-           showTrack(posList,app.user);
+           showTrack(app.user);
        })
 
+    }
+
+    function regisFind() {
+        // 这个函数用来在外出时寻找离群人群
+        $('#find-tool').click(function (){
+            if(!app.online){
+                showMessage('您还未登录,不能使用该功能');
+                return;
+            }
+
+            var myPos = getPos();
+            var friends = getFriends();
+
+            findVis = !findVis;
+
+            // show myPos
+            userVis[app.user] = !userVis[app.user];
+            showTrack(app.user);
+
+            if(findVis){
+                halo = new AMap.Circle({
+                    map: map,
+                    center: myPos,
+                    radius: 50,
+                    strokeColor: '#008cff',
+                    strokeOpacity: .5,
+                    fillColor: '#7de8f2',
+                    fillOpacity: .3
+                });
+            }else{
+                map.remove(halo);
+            }
+
+            // show others pos
+            friends.forEach(function(friend){
+                var pos = getTrack(friend)[0].pop();
+                if(typeof(pos) !== "undefined"){
+                    friendPos = pos.split(',');
+                    userVis[friend] = !userVis[friend];
+                    if (isNear(friendPos,myPos)){
+                        showTrack(friend);
+                    }else {
+                        var content = document.createElement('div');
+                        content.style['width'] = '15px';
+                        content.style['height'] = '15px';
+                        content.style['border'] = '3px solid #fff';
+                        content.style['border-radius'] = '50%';
+                        content.style['background'] = '#f00';
+                        content.style['box-shadow'] = '2px 2px 3px rgba(0,0,0,0.44)';
+                        showTrack(friend,content);
+                    }
+                }
+            });
+
+
+        })
     }
 
     function regisFriend() {
@@ -589,6 +641,11 @@
         // 加载姓名
         $('.self-name')[0].innerHTML = app.user;
 
+        // 验证登录信息
+        if (!app.online){
+            return;
+        }
+
         // 首先remove原有文字
         $('#fri-wrap')[0].innerHTML = "";
 
@@ -597,32 +654,6 @@
 
         // 加载好友信息
         addFris(Friends);
-
-        /*向服务器请求好友列表*/
-        function getFriends() {
-
-            // get friends list
-            var friends = [];
-            var tableid = "59be5817afdf521e869ecb12";
-            var url = "http://yuntuapi.amap.com/datasearch/local?key="+cloudKey+"&city=全国"+"&tableid="+tableid+"&limit=100"+"&keywords= "+"&filter=userName:"+app.user;
-            $.ajax({
-                type:'GET',
-                url:url,
-                async: false,
-                success: function (data) {
-                    var len = data.count > 100 ? 100 : data.count;
-                    for(var i=0;i < len;i++){
-                        if(data.datas[i].userName === app.user)
-                        {
-                            friends.push(data.datas[i].friend);
-                        }
-                    }
-                }
-            });
-
-            return friends;
-
-        }
 
         /*加载好友栏*/
         function addFris(Friends) {
@@ -646,6 +677,7 @@
             inputBtn.src = "http://img.hb.aicdn.com/e32202353d8c32f726b729d7519df64cbb6505722806-FomZJV_fw192";
             inputBtn.id = "inputBtn";
             searchWrap.appendChild(inputBtn);
+
             // 设置input
             var tarFri = document.createElement('input');
             tarFri.id = "searchFri";
@@ -662,7 +694,17 @@
         function addFri(friendName) {
             var fri = document.createElement('div');
             fri.className = 'fri';
-            var txt = document.createTextNode(friendName);
+            var txt = document.createTextNode(friendName+"(没签到)");
+            var [friendTrack,timeList] = getTrack(friendName);
+            var myPos = getPos();
+            if(friendTrack.length !== 0){
+                friend_last_location = friendTrack[0].split(',');
+                if(isNear(friend_last_location,myPos)){
+                    txt = document.createTextNode(friendName+"(距离< 50米)");
+                }else {
+                    txt = document.createTextNode(friendName+"(距离:"+calDis(friend_last_location,myPos)+"米)");
+                }
+            }
             fri.appendChild(txt);
             fri.onmouseover = function () {
                 fri.style.background = "#ff9f60";
@@ -675,11 +717,13 @@
             fri.onclick = function () {
                 if(typeof(userVis[friendName]) == "undefined" ){
                     userVis[friendName] = false;
-                    userTracks[friendName] = [];
                 }
                 userVis[friendName] = !userVis[friendName];
-                showTrack(getTrack(friendName),friendName);
-                $('#fri-main').hide();
+                var [posList,timeList] = getTrack(friendName);
+                var success = showTrack(friendName);
+                if(success) {
+                    $('#fri-main').hide();
+                }
             };
             $('#fri-wrap')[0].appendChild(fri);
         }
@@ -689,6 +733,21 @@
 
             $('#inputBtn').click(function () {
                 var friName = $("#searchFri")[0].value;
+
+                if (!app.online){
+                    showMessage('您尚未登录，无法添加好友');
+                    return;
+                }
+
+                if(friName === user){
+                    showMessage('您不能添加自己为好友');
+                    return;
+                }
+
+                if(friendAlready(user,friName)){
+                    showMessage('你们已经加过好友了！');
+                    return;
+                }
 
                 // 添加好友
                 var failed = becomefriend(user,friName);
@@ -702,6 +761,28 @@
                 }
 
             })
+        }
+
+        /*验证两个人是否已经是好友了*/
+        function friendAlready(user,friend){
+            var tableid = "59be5817afdf521e869ecb12";
+            var already = false;
+            var url = "http://yuntuapi.amap.com/datasearch/local?key="+cloudKey+"&city=全国"+"&tableid="+tableid+"&limit=100"+"&keywords= "+"&filter=userName:"+user;
+            $.ajax({
+                type:'GET',
+                url:url,
+                async: false,
+                success: function (data) {
+                    var len = data.count > 100 ? 100 : data.count;
+                    for(var i=0;i < len;i++){
+                        if(data.datas[i].userName === user && data.datas[i].friend === friend)
+                        {
+                            already = true;
+                        }
+                    }
+                }
+            });
+            return already;
         }
 
         /*两个人之间变成好友关系*/
@@ -808,17 +889,22 @@
         $('#func-tool').click(function () {
             toolVis = !toolVis;
             if(toolVis){
+                $('#func-tool img').css({"transform":"rotate(180deg)"},'slow');
+            }else {
+                $('#func-tool img').css({"transform":"rotate(360deg)"});
+            }
+            if(toolVis){
                 $('#road-tool').show(300);
-                $('#3D-tool').show(300);
                 $('#track-tool').show(300);
                 $('#tag-tool').show(300);
                 $('#msg-tool').show(300);
+                $('#find-tool').show(300);
             }
             else {
+                $('#find-tool').hide(300);
                 $('#msg-tool').hide(300);
                 $('#tag-tool').hide(300);
                 $('#track-tool').hide(300);
-                $('#3D-tool').hide(300);
                 $('#road-tool').hide(300);
             }
         });
@@ -895,8 +981,7 @@
         });
 
         // try login
-        $('.loginBtn').click(function ()
-        {
+        $('.loginBtn').click(function () {
             var username = $('.userInput')[0].value;
             var pwd = $('.pwdInput')[0].value;
 
@@ -906,10 +991,11 @@
                 return;
             }
 
-            // 验证是否已经登陆
+            // 验证是否已经登录
             if(app.online && username === app.user)
             {
                 showMessage('您已经处于登录状态');
+                $('.login-main').fadeOut(300);
                 return;
             }
 
@@ -930,14 +1016,18 @@
                 // 更改账户信息
                 app.user = username;
                 app.online = true;
-                userVis[username] = true;
 
-                // 加载好友信息
+                // setTimeout(function(){
+                //     // 加载好友信息(这里做成了异步)
+                //     regisFriend();
+                // },1000);
+
                 regisFriend();
+
                 //$('.self-img')[0].src = app['img-url'];
 
 
-                // 登陆成功之后就开始不断向服务器上传数据
+                // 登录成功之后就开始不断向服务器上传数据（暂时不启用）
                 //onTrack();
             }
 
@@ -973,9 +1063,10 @@
         addHover('#func-tool',"更多工具","-380%","133px");
         addHover('#road-tool',"实时路况","-380%","193px");
         addHover('#3D-tool',"3D模式","-380%","253px");
-        addHover('#tag-tool',"标签工具","-380%","316px");
-        addHover('#track-tool',"显示轨迹","-380%","379px");
-        addHover('#msg-tool',"通信工具","-380%","440px");
+        addHover('#tag-tool',"数据管理","-380%","253px");
+        addHover('#track-tool',"显示轨迹","-380%","316px");
+        addHover('#msg-tool',"我的好友","-380%","379px");
+        addHover("#find-tool","寻找离群者","-380%","442px");
         addHover('#addTag',"添加标记","-1850%","320px");
         addHover('#deleteTag',"删除所有标记","-1850%","380px");
         addHover('#uploadTag',"上传标记点","-1850%","440px");
@@ -1045,10 +1136,27 @@
 
     }
 
+    /*生成当前时间*/
+    function getDate() {
+        var date = new Date();
+        var seperator = "-";
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = date.getFullYear() + seperator + month + seperator + strDate;
+        return currentdate;
+    }
+
     /*获取轨迹信息*/
     function getTrack(user) {
 
         var posList = [];
+        var timeList= [];
         var page = 1;
         var pages = 1;
 
@@ -1074,7 +1182,13 @@
                     var len = data.count > 100 ? 100 : data.count;
                     for(var i=0;i<len;i++){
                         if(data.datas[i].userName === user){
-                            posList.push(data.datas[i]['_location']);
+                            var now = getDate();
+                            var dayTime = data.datas[i]['_createtime'].substring(0,10);
+                            var localTime = data.datas[i]['_createtime'].substring(10);
+                            if(now === dayTime){
+                                posList.push(data.datas[i]['_location']);
+                                timeList.push(localTime);
+                            }
                         }
                     }
                     page += 1;
@@ -1082,66 +1196,115 @@
             });
         }
 
-        // check
-        if(posList.length === 0){
-            showMessage('该用户无任何轨迹信息');
-            return;
-        }
-
-
         // 设置中心
         //map.setZoomAndCenter(scale, posList.pop().split(','));
 
+        // 只取最近的一次信息(之所以保留数组的格式，是因为以后可能还需要改)
+        if(posList.length !== 0){
+            posList = posList.slice(-1);
+        }
+        if(timeList.length !== 0){
+            timeList = timeList.slice(-1);
+        }
 
-        // 返回posList
+        // 返回posList,timeList
+        return [posList,timeList];
+    }
 
-        return posList;
+    /*向服务器请求好友列表*/
+    function getFriends() {
 
-        /*function getScale(posList) {
-            var zoom = [50,100,200,500,1000,2000,5000,10000,20000,50000,100000,200000,500000,1000000,2000000];
-            var scale = 16;
-            var lats = [];
-            var lons = [];
-            // 将list转化为数组
-            for(var i=0;i<posList.length;i++){
-                lats[i] = posList[i].split(",")[0];
-                lons[i] = posList[i].split(",")[1];
+        // get friends list
+        var friends = [];
+        var tableid = "59be5817afdf521e869ecb12";
+        var url = "http://yuntuapi.amap.com/datasearch/local?key="+cloudKey+"&city=全国"+"&tableid="+tableid+"&limit=100"+"&keywords= "+"&filter=userName:"+app.user;
+        $.ajax({
+            type:'GET',
+            url:url,
+            async: false,
+            success: function (data) {
+                var len = data.count > 100 ? 100 : data.count;
+                for(var i=0;i < len;i++){
+                    if(data.datas[i].userName === app.user)
+                    {
+                        friends.push(data.datas[i].friend);
+                    }
+                }
             }
-            var maxLat = Math.max.apply(null,lats);
-            var minLat = Math.min.apply(null,lats);
-            var maxLon = Math.max.apply(null,lons);
-            var minLon = Math.min.apply(null,lons);
+        });
 
-            var latLen = Math.abs(maxLat-minLat);
-            var lonLen = Math.abs(maxLon-minLon);
+        return friends;
 
-            var v = 0.48;
-
-            scale = Math.floor(v / Math.max.apply(null,[latLen,lonLen]));
-            return scale;
-        }*/
     }
 
     /*展示轨迹数据*/
-    function showTrack(posList,user) {
+    function showTrack(user,content) {
 
-            if (posList.length === 0)
-                return;
+            // 获取位置和时间信息
+            var [posList,timeList] = getTrack(user);
 
+            // 判断
+            if (posList.length === 0) {
+                showMessage('该用户今天无任何轨迹信息');
+                return false;
+            }
+
+            // 如果可视，则显示
             if(userVis[user]){
                 userTracks[user] = [];
+                var myPos = getPos();
+
                 // 标记轨迹
+                var latestPos = posList[0];
                 for(var i=0;i<posList.length;i++){
-                    var marker = new AMap.Marker({
-                        map:map,
-                        position: posList[i].split(','),
-                        bubble: true
-                    });
+                    var pos = posList[i].split(',');
+                    var time = timeList[i];
+                    if(typeof(coentent) !== "undefined"){
+                        var marker = new AMap.Marker({
+                            map:map,
+                            position: pos,
+                            topWhenClick: true
+                        });
+                    }else {
+                        var marker = new AMap.Marker({
+                            map:map,
+                            position: pos,
+                            content: content,
+                            topWhenClick:true
+                        });
+                    }
+
+
                     // 增加信息窗口提示
+                    // 闭包...
+                    marker.on('click',(function(user,pos,time){
+                        return function(){
+                            var infoWindow = new AMap.InfoWindow({
+                                content:"用户:"+user+"<br>距离我:"+calDis(pos,myPos)+"米"+"<br>签到时间:"+time,
+                                offset: new AMap.Pixel(0, -30)
+                            });
+                            infoWindow.open(map,pos);
+                        }
+                    })(user,pos,time));
+
                     marker.setLabel({
-                        content:"用户"+user,
-                        offset: new AMap.Pixel(-28,-25)
-                    });
+                        content: user,
+                        offset: new AMap.Pixel(25,0)
+                    })
+
+                    // var infoWindow = new AMap.InfoWindow({
+                    //     content:"用户:"+user+"<br>距离我:"+calDis(pos,myPos)+"米"+"<br>签到时间:"+time,
+                    //     offset: new AMap.Pixel(0, -30)
+                    // });
+                    // infoWindow.open(map,pos);
+
+
+                    // marker.setLabel({
+                    //     bubble: true,
+                    //     content:"用户:"+user+"<br>距离我:"+calDis(pos,myPos)+"米"+"<br>签到时间:"+time,
+                    //     offset: new AMap.Pixel(-28,-35)
+                    // });
+
                     userTracks[user].push(marker);
                 }
 
@@ -1150,12 +1313,17 @@
                 map.setFitView();
             }
             else {
-                map.remove(userTracks[user]);
+                if(typeof(userTracks[user]) !== "undefined"){
+                    map.remove(userTracks[user]);
+                }
             }
+
+            return true;
     }
 
     /*用户登陆成功之后，每半分钟发送一次位置信息*/
     function onTrack() {
+        // 暂时没有启用，有点占资源
         setInterval(function () {
             uploadLoc(getPos());
         },30000)
@@ -1217,6 +1385,24 @@
             }
         });
         return existed;
+    }
+
+    /*查看这个用户是否在我的一定范围内*/
+    function isNear(friPos,myPos) {
+        var posBound = 50; // 假定50m之内算近
+        var dis = calDis(friPos,myPos);
+        if (dis < posBound){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    /*根据经纬度计算两点之间的距离*/
+    function calDis(pos1,pos2) {
+        var coord1 = new AMap.LngLat(pos1[0],pos1[1]);
+        var dis = coord1.distance(pos2);
+        return Math.round((dis*100)/100); // 取整
     }
 
 </script>
