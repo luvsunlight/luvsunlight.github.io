@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=ba878bb94ed7625ac538aa176cc28593&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Geolocation,AMap.Walking"></script>
     <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
     <title>phone-site</title>
@@ -20,7 +21,8 @@
         background: url(http://www.jq22.com/css/img/bgiphone.png) no-repeat;}
 
         #container {
-            height: 108%;
+            height: 540px;
+            width: 337px;
         }
 
         /*顶部导航栏部分*/
@@ -217,19 +219,6 @@
             width: 44px;
         }
 
-        #tooltip {
-            position: absolute;
-            left: -50%;
-            width:200%;
-            height: 18px;
-            padding: 15px 30px 18px 30px;
-            border-radius: 12px;
-            background: #000;
-            text-align: center;
-            color: #fff;
-            opacity: 0;
-        }
-
         /*好友管理界面*/
         #fri-main {
             display: none;
@@ -311,7 +300,6 @@
 </head>
 
 <body>
-    <div id="phoneWrap">
         <div id="container">
 
             <!--页面上方的导航搜索栏-->
@@ -321,7 +309,7 @@
 
             <!--登陆页面-->
             <div class="login-main">
-                <img class="deleteBtn" src="http://img.hb.aicdn.com/5c712b9a3990eb95ce72427eaaf08cc75abed8eb13b8-uxgaMG_fw192">
+                <img class="deleteBtn" src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460757405.png">
                 <input type = "search" class="userInput" placeholder="Account" autofocus>
                 <input type="password" class="pwdInput" placeholder="Password">
                 <botton class="regisBtn">注册</botton>
@@ -344,50 +332,46 @@
             <div id="toolWrap">
                 <!--登陆-->
                 <div id="login-tool" class="tool">
-                    <img src="http://img.hb.aicdn.com/5aa53eba3602a2dc46b63b8767b889c40120aa5226fe-dynCWn_/fw/480">
+                    <img src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460203320.png">
                 </div>
                 <!--定位-->
                 <div id="locate-tool" class="tool">
-                    <img src="http://img.hb.aicdn.com/81473c948128ab40fe5ebb55db066382c3ca73692955-RZTbun_/fw/480">
+                    <img src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460262680.png">
                 </div>
                 <!--自定义工具-->
                 <div id="func-tool" class="tool">
-                    <img src="http://img.hb.aicdn.com/144903f87f3a106787c152f331c1cd4f4b2dbfd320eb-iy7djH_fw192">
+                    <img src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460339374.png">
                 </div>
                 <!--路况-->
                 <div id="road-tool" class="tool" style="display: none">
-                    <img src="http://img.hb.aicdn.com/4fdf4d189188e78875ef203e6c453fbe580e21562258-MFgLoh_fw192">
+                    <img src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460384601.png">
                 </div>
                 <!--记录轨迹-->
                 <div id="track-tool" class="tool" style="display: none">
-                    <img src="http://img.hb.aicdn.com/027e675474348f38a9cc896a37b7bd011f994c1923df-8SpK6s_fw192">
+                    <img src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460364895.png">
                 </div>
-                <!--消息处理-->
+                <!--好友工具-->
                 <div id="msg-tool" class="tool" style="display: none">
-                    <img src="http://img.hb.aicdn.com/150e4331a19f1a26ac24aa8e55af0daa4d6855c422d9-9AKUCS_fw192">
-                </div>
-                <!--tooltip-->
-                <div id="tooltip">
+                    <img src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460324031.png">
                 </div>
             </div>
 
             <!--好友窗口-->
             <div id="fri-main">
-                <img class="deleteBtn2" src="http://img.hb.aicdn.com/5c712b9a3990eb95ce72427eaaf08cc75abed8eb13b8-uxgaMG_fw192">
+                <img class="deleteBtn2" src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460757405.png">
                 <div class="self-intro">
                     <div class="self-name"></div>
-                    <img class="self-img" src="http://img.hb.aicdn.com/c2010215cbbb2a138d263a636bc192d86ee722f81faa-kDTGdF_/fw/480">
+                    <img class="self-img" src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460713387.png">
                 </div>
                 <div id="fri-wrap">
                     您尚未登陆，无好友列表
                 </div>
             </div>
         </div>
-    </div>
     <!--右上角的链接-->
     <div class="pc">
         <a href="main.html">
-            <img src="http://img.hb.aicdn.com/ff8f5bebab0a00acda6dc4300c4423a5e5b351eab94-umWDrY_fw192">
+            <img src="http://oy2kvpd7z.bkt.clouddn.com/md/1509460806432.png">
         </a>
     </div>
 
@@ -401,7 +385,6 @@
         var markers = [];
         var userTracks = {};
         var meMark = [];
-        var infos = [];
         var app = {
             "user":"",
             "online":false,
@@ -430,17 +413,14 @@
             regisAuto();
             regisLocMe();
             regisRoad();
-            regis3D();
             regisTrack();
 
             /*加载事件*/
             regisClick();
         };
 
-
+        /*输入提示 */
         function regisAuto() {
-            /* 输入提示 */
-
             var auto = new AMap.Autocomplete({
                 input: "tipinput"
             });
@@ -455,9 +435,8 @@
             }
         }
 
+        /*定位工具*/
         function regisLocMe() {
-            /* locate module*/
-
             AMap.event.addDomListener(document.getElementById('locate-tool'), 'click', function() {
                 // 重新定位保证精度
                 var pos = getPos();
@@ -504,9 +483,8 @@
 
         }
 
+        /*实时路况*/
         function regisRoad() {
-            /* road module */
-
             var trafficLayer = new AMap.TileLayer.Traffic({
                 zIndex: 10
             });
@@ -523,34 +501,8 @@
             })
         }
 
-        function regis3D() {
-            /* 3D module */
-
-            if (document.createElement('canvas') && document.createElement('canvas').getContext && document.createElement('canvas').getContext('2d')) {
-                // 实例化3D楼块图层
-                var buildings = new AMap.Buildings();
-                // 在map中添加3D楼块图层
-                buildings.setMap(map);
-            } else {
-                showMessage('对不起，3D图层显示需要HTML5支持');
-            }
-            buildings.hide();
-
-            // click toggle
-            $('#3D-tool').click(function () {
-                _3DVis = !_3DVis;
-                if(_3DVis){
-                    buildings.show();
-                }
-                else {
-                    buildings.hide();
-                }
-            })
-        }
-
+        /*显示轨迹*/
         function regisTrack() {
-            /* Track module*/
-
             $('#track-tool').click(function () {
                 if(typeof(userVis[app.user]) == "undefined" ){
                     userVis[app.user] = false;
@@ -569,6 +521,7 @@
 
         }
 
+        /*好友工具*/
         function regisFriend() {
 
             /* 好友板块 */
@@ -804,6 +757,7 @@
 
         }
 
+        /*注册点击事件*/
         function regisClick() {
 
             // delete
@@ -984,7 +938,6 @@
         /* Utility Tools */
 
         /*获取位置信息*/
-
         function getPos() {
             var pos = new AMap.Geolocation({
                 timeout: 10000,
@@ -1127,11 +1080,11 @@
                     var marker = new AMap.Marker({
                         map:map,
                         position: pos,
-                        bubble: true
+                        topWhenClick:true
                     });
                     // 增加信息窗口提示
                     marker.setLabel({
-                        offset: new AMap.Pixel(-50, -25),
+                        offset: new AMap.Pixel(25,0),
                         content: user
                     });
                     AMap.event.addListener(marker, 'click', (function(this_pos) {
@@ -1228,8 +1181,6 @@
             });
             return existed;
         }
-
-
 
     </script>
 </body>
