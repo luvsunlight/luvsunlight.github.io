@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=ba878bb94ed7625ac538aa176cc28593&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Geolocation,AMap.Walking"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=ba878bb94ed7625ac538aa176cc28593&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Walking"></script>
     <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
     <title>phone-site</title>
     <style>
@@ -912,23 +912,29 @@
 
         /*获取位置信息*/
         function getPos() {
-            var pos = new AMap.Geolocation({
-                timeout: 10000,
-                GeoLocationFirst:true,
-                showButton: false,
-                showMarker: false
+            map.plugin('AMap.Geolocation', function() {
+                var geolocation = new AMap.Geolocation({
+                    timeout: 10000,
+                    GeoLocationFirst:true,
+                    noIpLocate: 1,
+                    showButton: false,
+                    showMarker: false
+                });
+                map.addControl(geolocation);
+                geolocation.getCurrentPosition();
+                AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+                AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
             });
-            //map.addControl(pos);
-            pos.getCurrentPosition();
-            AMap.event.addListener(pos, 'complete', onComplete);//返回定位信息
-            AMap.event.addListener(pos, 'error', onError);      //返回定位出错信息
             function onComplete(geoResult) {
                 console.log("当前经纬度:"+geoResult.position,"定位方式:"+geoResult.location_type);
-                cenPos = geoResult.position
+                showMessage(geoResult.location_type);
+                cenPos = geoResult.position;
             }
             function onError(geoError) {
                 console.log(geoError.info,geoError.message);
+                showMessage(geoError.message);
             }
+
             return cenPos;
         }
 
