@@ -948,9 +948,9 @@
 
             function showPosition(position) {
                 var lat = position.lat;
-                var lon = position.lon;
-                showMessage('定位成功！经纬度:：'+lat+","+lon);
-                cenPos = [lat,lon];
+                var lon = position.lng;
+                showMessage('定位成功！经纬度:'+lat+","+lon);
+                cenPos = [lon,lat];
             }
             function showErr(){
                 showMessage('定位失败!');
