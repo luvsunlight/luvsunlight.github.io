@@ -916,11 +916,10 @@
                 var geolocation = new AMap.Geolocation({
                     timeout: 10000,
                     GeoLocationFirst:true,
-                    noIpLocate: 1,
                     showButton: false,
                     showMarker: false
                 });
-                map.addControl(geolocation);
+                // map.addControl(geolocation);
                 geolocation.getCurrentPosition();
                 AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
                 AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
