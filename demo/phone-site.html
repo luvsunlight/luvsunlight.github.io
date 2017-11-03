@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=ba878bb94ed7625ac538aa176cc28593&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Walking"></script>
+    <script type="text/javascript" src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
     <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
     <title>phone-site</title>
     <style>
@@ -410,6 +411,14 @@
         /*定位工具*/
         function regisLocMe() {
             AMap.event.addDomListener(document.getElementById('locate-tool'), 'click', function() {
+
+                // 如果定位结果已存在，则移除之
+                if (meMark.length !== 0){
+                    map.remove(meMark);
+                    meMark = [];
+                    return;
+                }
+
                 // 重新定位保证精度
                 var pos = getPos();
 
@@ -427,12 +436,6 @@
                 content.style['border-radius'] = '50%';
                 content.style['background'] = '#f00';
                 content.style['box-shadow'] = '2px 2px 3px rgba(0,0,0,0.44)';
-
-                if (meMark.length !== 0){
-                    map.remove(meMark);
-                    meMark = [];
-                    return;
-                }
 
                 // 在新中心点添加 marker
                 var marker = new AMap.Marker({
@@ -912,26 +915,44 @@
 
         /*获取位置信息*/
         function getPos() {
-            map.plugin('AMap.Geolocation', function() {
-                var geolocation = new AMap.Geolocation({
-                    timeout: 10000,
-                    GeoLocationFirst:true,
-                    showButton: false,
-                    showMarker: false
-                });
-                // map.addControl(geolocation);
-                geolocation.getCurrentPosition();
-                AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
-                AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
-            });
-            function onComplete(geoResult) {
-                console.log("当前经纬度:"+geoResult.position,"定位方式:"+geoResult.location_type);
-                showMessage(geoResult.location_type);
-                cenPos = geoResult.position;
+            // map.plugin('AMap.Geolocation', function() {
+            //     var geolocation = new AMap.Geolocation({
+            //         timeout: 10000,
+            //         GeoLocationFirst:true,
+            //         showButton: false,
+            //         showMarker: false
+            //     });
+            //     // map.addControl(geolocation);
+            //     geolocation.getCurrentPosition();
+            //     AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+            //     AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+            // });
+            // function onComplete(geoResult) {
+            //     console.log("当前经纬度:"+geoResult.position,"定位方式:"+geoResult.location_type);
+            //     showMessage(geoResult.location_type);
+            //     cenPos = geoResult.position;
+            // }
+            // function onError(geoError) {
+            //     console.log(geoError.info,geoError.message);
+            //     showMessage(geoError.message);
+            // }
+            //
+            // return cenPos;
+
+            // 使用腾讯地图的定位服务
+            var geolocation = new qq.maps.Geolocation("A5LBZ-RK53X-72S4G-74HK2-J3LZ6-5PB24","LBS");
+            var options = {
+                timeout: 8000
             }
-            function onError(geoError) {
-                console.log(geoError.info,geoError.message);
-                showMessage(geoError.message);
+            geolocation.getLocation(showPosition, showErr, options);
+
+            function showPosition(position) {
+                var lat = position.lat;
+                var lon = position.lon;
+                cenPos = [lat,lon];
+            }
+            function showErr(){
+                showMessage('定位失败!');
             }
 
             return cenPos;
