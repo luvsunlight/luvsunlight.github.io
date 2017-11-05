@@ -388,6 +388,9 @@
             regisRoad();
             regisTrack();
 
+            /*不断上传位置信息，以保证精度*/
+            onTrack();
+
             /*加载事件*/
             regisClick();
         };
@@ -1017,7 +1020,7 @@
                     url:url,
                     async: false,
                     success: function (data) {
-                        var len = data.count > 100 ? 100 : data.count;
+                        var len = page < parseInt(pages) ? 100 : data.count % 100;
                         for(var i=0;i<len;i++){
                             if(data.datas[i].userName === user ){
                                 var now = getDate();
@@ -1117,11 +1120,12 @@
             return true;
         }
 
-        /*用户登陆成功之后，每半分钟发送一次位置信息*/
+        /*加载好页面之后，每10s定一次位置*/
         function onTrack() {
             setInterval(function () {
-                uploadLoc(getPos());
-            },30000)
+                // uploadLoc(getPos());
+                getPos();
+            },10000)
         }
 
         /*上传位置信息*/
