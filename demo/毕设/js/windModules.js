@@ -292,4 +292,23 @@ MotionDisplay.prototype.draw = function() {
       }
 
     g.fillRect(0, 0, w, h);
-    for (var i = 0; i 
+    for (var i = 0; i <this.particles.length; i++) {
+        var p = this.particles[i];
+        //var proj = this.projection.project(p.x, p.y, this.field, this.canvas);
+        var proj = this.projection.project(p.x, p.y);
+        g.lineWidth = this.lineWidth;
+        if (p.oldX != -1) {
+            if(this.assets.colorMode !== "none"){
+                g.strokeStyle = this.getClr(p.v.length());
+            }else {
+                g.strokeStyle='#ccc';
+            }
+            g.beginPath();
+            g.moveTo(proj.x, proj.y);
+            g.lineTo(p.oldX, p.oldY);
+            g.stroke();
+        }
+        p.oldX = proj.x;
+        p.oldY = proj.y;
+  }
+};

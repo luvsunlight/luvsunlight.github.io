@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[毕设DEMO]]></title>
+    <url>%2F2018%2F03%2F07%2F%E6%AF%95%E8%AE%BEDEMO%2F</url>
+    <content type="text"><![CDATA[DEMO]]></content>
+      <categories>
+        <category>系统学习</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[【css布局之position】]]></title>
     <url>%2F2018%2F03%2F03%2F%E3%80%90css%E5%B8%83%E5%B1%80%E4%B9%8Bposition%E3%80%91%2F</url>
     <content type="text"><![CDATA[这段时间在刷百度前端学院，从最基础的task开始刷。好久没有碰css了，一年前做起来轻车熟路的东西，现在竟然要花很久来调试，于是想着干脆写几篇文章来彻底整理一下有关css布局的东西，这一篇从position开始。 css中的positonstaticrelativeabsolutesticky]]></content>
