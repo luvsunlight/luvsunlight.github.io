@@ -1,5 +1,7 @@
 /**
- * Created by lizhiyuan on 2018/2/26.
+ * @author: prozac <516060659@qq.com>
+ * @createTime: 2018-3-1
+ * @copyRight: UNDEFINED
  */
 
 var myRGB = function(hex){

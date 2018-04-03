@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta lang="en">
+    <meta charset="UTF-8">
+    <title>测试webGL视觉效果</title>
+    <style>
+    body, html{
+        margin: 0;
+        overflow: hidden;
+    }
+    #canvas {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        /* border : 1px solid #f00 */
+    }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="300px" height="300px"></canvas>
+<script src="./libs/dat.gui.js"></script>
+<script>
+window.onload = function () {
+
+//顶点着色器程序
+var VSHADER_SOURCE = `
+    uniform float u_ptSize;
+    uniform float u_x;
+    uniform float u_y;
+    uniform float u_z;
+    void main(){
+        gl_Position = vec4(u_x, u_y, u_z, 1.0);
+        gl_PointSize = u_ptSize;
+    }`;
+
+//片元着色器
+var FSHADER_SOURCE = `
+    void main() {
+        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    }`;
+
+//获取canvas元素
+var canvas = window.canvas = document.getElementById('canvas');
+var pxRatio = Math.max(Math.floor(window.devicePixelRatio) || 1, 2);
+const ratio = pxRatio;
+origin_Width = canvas.width;
+origin_Height = canvas.height;
+fixedWidth = canvas.clientWidth * ratio;
+fixedHeight = canvas.clientHeight * ratio;
+
+//获取绘制二维上下文
+var gl = window.gl = canvas.getContext('webgl');
+if (!gl) {
+    console.log("Failed");
+    return;
+}
+
+
+//编译着色器
+var vertShader = gl.createShader(gl.VERTEX_SHADER);
+gl.shaderSource(vertShader, VSHADER_SOURCE);
+gl.compileShader(vertShader);
+
+var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
+gl.shaderSource(fragShader, FSHADER_SOURCE);
+gl.compileShader(fragShader);
+//合并程序
+var shaderProgram = gl.createProgram();
+gl.attachShader(shaderProgram, vertShader);
+gl.attachShader(shaderProgram, fragShader);
+gl.linkProgram(shaderProgram);
+gl.useProgram(shaderProgram);
+gl.program = shaderProgram;
+
+initGUI();
+drawPt();
+function drawPt(){
+    gl.drawArrays(gl.POINTS, 0, 1);
+}
+
+function initGUI(){
+    var controls = {
+        "x" : 0.0,
+        "y" : 0.0,
+        "z" : 0.0,
+        "ptSize" : 10.0,
+        "fixRetina" : true,
+    };
+    var redraw = function(){
+            var u_ptSize = gl.getUniformLocation(gl.program,'u_ptSize');
+            gl.uniform1f(u_ptSize,controls.ptSize);
+            var u_x = gl.getUniformLocation(gl.program,'u_x');
+            gl.uniform1f(u_x,controls.x);
+            var u_y= gl.getUniformLocation(gl.program,'u_y');
+            gl.uniform1f(u_y,controls.y);
+            var u_z= gl.getUniformLocation(gl.program,'u_z');
+            gl.uniform1f(u_z,controls.z);
+
+            if(controls.fixRetina){
+                canvas.width = fixedWidth;
+                canvas.height = fixedHeight;
+            }else{
+                canvas.width = origin_Width;
+                canvas.height = origin_Height;
+            }
+
+            gl.viewport(0,0,canvas.width,canvas.height);
+            drawPt();
+    };
+
+    var gui = new dat.GUI();
+    var range = 1.0;
+    gui.add(controls,'ptSize',0.0, 100.0).onChange(redraw);
+    gui.add(controls,'x',-range, range).step(0.0001).onChange(redraw);
+    gui.add(controls,'y',-range, range).step(0.0001).onChange(redraw);
+    gui.add(controls,'fixRetina').onChange(redraw);
+
+
+    redraw();
+}
+}
+</script>
+</body>
+</html>

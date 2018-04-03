@@ -3,10 +3,10 @@
  */
 
 var ViewControl = function() {
-    this.distance = 120;
+    this.distance = 1000;
     this.x = 0;
     this.y = 0;
-    this.moveSpeed = 1.0;
+    this.moveSpeed = 10;
 };
 
 ViewControl.prototype.addValue = function(value, d) {

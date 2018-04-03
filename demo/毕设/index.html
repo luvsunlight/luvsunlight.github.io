@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>DEMO</title>
-    <script type="text/javascript" src="./libs/three.js"></script>
     <script type="text/javascript" src="./libs/stats.js"></script>
     <script type="text/javascript" src="./libs/dat.gui.js"></script>
     <script type="text/javascript" src="./libs/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/simplex-noise/2.4.0/simplex-noise.min.js"></script>
     <style>
         body {
             /* set margin to 0 and overflow to hidden, to go fullscreen */
@@ -15,153 +13,98 @@
             overflow: hidden;
             background-color: #000;
         }
+        #canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
-<body onload="init">
-<div id="Stats-output"></div>
-<div id="WebGL-output"></div>
+<body>
+    <div id="Stats-output"></div>
+    <canvas id="canvas"></canvas>
 </body>
-<script src="http://hint.fm/wind/wind-data.js"></script>
-<script src="./js/projection.js"></script>
-<script src="./js/viewControls.js"></script>
-<script src="./js/windModules_GL.js"></script>
+<script src="./js/GL_Util.js"></script>
+<script src="./js/windModulesGL.js"></script>
 <script>
-    window.onload = init;
-    function init() {
-        var stats = initStats(),
-            viewControl = new ViewControl(),
-            viewSpeed = 3;
+window.onload = init;
+function init() {
+    initStats();
+    initWorld();
+    initGUI();
+    loadData();
 
-        viewControl.addKeyEvent(81,function(){viewControl.addValue('distance',-3);});        // Q--> zoom in
-        viewControl.addKeyEvent(69,function(){viewControl.addValue('distance',3);});         // E--> zoom out
-        viewControl.addKeyEvent(87,function(){viewControl.addValue('y',viewSpeed);});        // W--> up
-        viewControl.addKeyEvent(83,function(){viewControl.addValue('y',-viewSpeed);});       // S--> down
-        viewControl.addKeyEvent(65,function(){viewControl.addValue('x',-viewSpeed);});       // A--> left
-        viewControl.addKeyEvent(68,function(){viewControl.addValue('x',viewSpeed);});        // D--> right
+    function initStats() {
+        var stats = window.stats = new Stats();
+        stats.setMode(0); // 0: fps, 1: ms
 
-        var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
-        const renderer = window.renderer = new THREE.WebGLRenderer();
-        renderer.setClearColor(new THREE.Color("rgb(0,0,0)"));
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        // Align top-left
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.left = '0px';
+        stats.domElement.style.top = '0px';
+        stats.domElement.style['z-index'] = '100';
 
-        // position and point the camera to the center of the scene
-        camera.position.x = 0;
-        camera.position.y = 0;
-        camera.position.z = 200;
-        camera.lookAt(new THREE.Vector3(0, 0, 0));
+        document.getElementById("Stats-output").appendChild(stats.domElement);
 
-        // init light
-        var ambiLight = new THREE.AmbientLight(0xffffff);
-        scene.add(ambiLight);
-
-        // add the output of the renderer to the html element
-        document.getElementById("WebGL-output").appendChild(renderer.domElement);
-
-        initWorld(scene);
-
-        animate();
-
-        // Util Funcs
-        function initStats() {
-            var stats = new Stats();
-            stats.setMode(0); // 0: fps, 1: ms
-
-            // Align top-left
-            stats.domElement.style.position = 'absolute';
-            stats.domElement.style.left = '0px';
-            stats.domElement.style.top = '0px';
-
-            document.getElementById("Stats-output").appendChild(stats.domElement);
-
-            return stats;
-        }
-
-        function initGUI(scene, field,mapProjection) {
-            var controls = new function () {
-                this.url = function(){window.location='index2.html'};
-                this.numParticles = 2000;
-                this.speed = 0.005;
-                this.age = 40;
-                this.windCount = 20;
-                this.size = 0.5;
-            };
-
-            function redraw(){
-                DISPLAY = new MotionDisplay(scene, field, mapProjection, controls);
-            }
-
-            var gui = new dat.GUI();
-            gui.add(controls,'numParticles',1000,10000).name("粒子数目").onChange(redraw);
-            gui.add(controls,'age',1,100).name("粒子寿命").onChange(redraw);
-            gui.add(controls,'speed',0.001,0.1).name("粒子速度").onChange(redraw);
-            gui.add(controls,'size',0,1).name("轨迹宽度").onChange(redraw);
-
-            var oFolder = gui.addFolder('其他');
-            oFolder.add(controls,'url').name('查看canvas版本');
-
-            return controls;
-        }
-
-        function initWorld(scene) {
-            var geom = new THREE.PlaneBufferGeometry(200, 100, 1, 1);
-            var texture = THREE.ImageUtils.loadTexture("./textures/Earth.png");
-            var mat = new THREE.MeshPhongMaterial();
-
-            mat.map = texture;
-
-            var world = new THREE.Mesh(geom, mat);
-            world.name = "world";
-            scene.add(world);
-
-            //var data = getRndData(),
-            var field = new VectorField(windData).read(),
-                mapProjection = simpleProj();
-
-            var assets = initGUI(scene, field, mapProjection);
-            DISPLAY = new MotionDisplay(scene, field, mapProjection, assets);
-        }
-
-        function getRndData() {
-            var data = {
-                x0 : -180,
-                y0 : -90,
-                x1 : 180,
-                y1 : 90,
-                gridWidth : 250,
-                gridHeight : 100,
-                field : []
-            };
-            var simplex = new SimplexNoise();
-            for(var i = 0; i < data.gridWidth; i++){
-                for(var j = 0; j < data.gridHeight; j++){
-                    if(Math.random() < 0.1){
-                        data.field.push(simplex.noise2D(i,j));
-                        data.field.push(simplex.noise2D(i,j));
-                    }else{
-                        data.field.push(0);
-                        data.field.push(0);
-                    }
-                }
-            }
-            return data;
-        }
-
-        function animate() {
-            requestAnimationFrame( animate );
-            render();
-            renderer.render(scene, camera);
-        }
-
-        function render() {
-            stats.update();
-            camera.position.x = viewControl.x;
-            camera.position.y = viewControl.y;
-            camera.position.z = viewControl.distance;
-            DISPLAY.animate();
-        }
-
+        return stats;
     }
 
+    function initWorld(scene) {
+        var canvas = $('#canvas')[0];
+
+        const pxRatio = Math.max(Math.floor(window.devicePixelRatio) || 1, 2);
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+
+        const gl = window.gl = canvas.getContext('webgl', {antialiasing: false});
+        const wind = window.wind = new WindGL(gl);
+        wind.numParticles = 65536;
+
+        fixRetina(canvas);
+
+        function render() {
+            if (wind.windData) {
+                wind.draw();
+                stats.update();
+            }
+            requestAnimationFrame(render);
+        }
+        render();
+    }
+
+    function initGUI(scene) {
+        var assets = new function () {
+            this.url = function(){window.location='index2.html'};
+        };
+
+        var gui = new dat.GUI();
+        gui.add(wind,'numParticles', 10000, 500000);
+        gui.add(wind,'pointSize', 1.0, 5.0).step(0.1);
+        gui.add(wind,'fadeOpacity', 0.8, 1.0).step(0.001);
+        gui.add(wind,'speedFactor', 0.0, 5.0).name('speed');
+        gui.add(wind,'dropRate', 0.0001, 1.0).name('fadeChance');
+        var oFolder = gui.addFolder('其他');
+        oFolder.add(assets,'url').name('查看canvas版本');
+    }
+
+    function loadData() {
+        $.get('./data/windData.json',function(windData){
+            var windImage = new Image();
+            windData.image = windImage;
+            windImage.src = './data/windData.png';
+            windImage.onload = function () {
+                wind.setWind(windData);
+            };
+        });
+    }
+
+    function fixRetina(canvas) {
+        var pxRatio = Math.max(Math.floor(window.devicePixelRatio) || 1, 2);
+        const ratio = pxRatio;
+        canvas.width = canvas.clientWidth * ratio;
+        canvas.height = canvas.clientHeight * ratio;
+        wind.resize();
+    }
+}
 </script>
 </html>

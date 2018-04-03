@@ -1,37 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.bootcss.com/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script src="https://cdn.bootcss.com/three.js/90/three.min.js"></script>
     <title>Document</title>
-
+    <style>
+    *{
+        margin: 0;
+        overflow: hidden;
+    }
+    </style>
 </head>
 <body>
-<canvas id="c" width="600" height="400"></canvas>
+<canvas id="canvas" width="600px" height="400px"></canvas>
 <script>
-    var simplex = new SimplexNoise(),
-    canvas = document.getElementById('c'),
-    ctx = canvas.getContext('2d'),
-    imgdata = ctx.getImageData(0, 0, canvas.width, canvas.height),
-    data = imgdata.data,
-    t = 0;
+    function createTexture(gl, filter, data, width, height) {
+        var texture = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, filter);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, filter);
+        if (data instanceof Uint8Array) {
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, data);
+        } else {
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, data);
+        }
+        gl.bindTexture(gl.TEXTURE_2D, null);
+        return texture;
+    }
+    window.onload = function() {
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1500);
+        const renderer = window.renderer = new THREE.WebGLRenderer({canvas: document.getElementById('canvas')});
+        renderer.setClearColor(new THREE.Color("rgb(0,0,0)"));
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-    window.setInterval(function(){
-    for (var x = 0; x < 256; x++) {
-    for (var y = 0; y < 256; y++) {
-        var r = simplex.noise3D(x / 16, y / 16, t/16) * 0.5 + 0.5;
-        var g = simplex.noise3D(x / 8, y / 8, t/16) * 0.5 + 0.5;
-        data[(x + y * 256) * 4 + 0] = r * 255;
-        data[(x + y * 256) * 4 + 1] = (r + g) * 200;
-        data[(x + y * 256) * 4 + 2] = 0;
-        data[(x + y * 256) * 4 + 3] = 255;
+        // position and point the camera to the center of the scene
+        camera.position.x = 0;
+        camera.position.y = 0;
+        camera.position.z = 200;
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+        // init light
+        var ambiLight = new THREE.AmbientLight(0xffffff);
+        scene.add(ambiLight);
+
+        // add the output of the renderer to the html element
+        // document.getElementById("WebGL-output").appendChild(renderer.domElement);
+
+        var loader = new THREE.TextureLoader();
+        var img1 = loader.load('./data/windData.png');
+        console.log(img1);
+        // 创建基本材质的物体
+        var mat = new THREE.ShaderMaterial({
+            uniforms: {
+                u_texture: {
+                    type: "t",
+                    value: img1
+                }
+            },
+            vertexShader: `
+                varying vec2 v_pos;
+                void main() {
+                    v_pos = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position*0.5, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform sampler2D u_texture;
+                varying vec2 v_pos;
+                void main() {
+                    gl_FragColor = texture2D(u_texture, v_pos);
+                    // gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+                }
+            `
+        });
+        // mat.uniforms.texture1.value.warpS = uniforms.texture1.value.warpT = THREE.RepeatWrapping;
+
+
+
+
+        var particleState = new Uint8Array(65536 * 4);
+        var particleRes = 256;
+        var gl = renderer.getContext();
+        for (var i = 0; i < particleState.length; i++) {
+            particleState[i] = Math.floor(Math.random() * 256); // randomize the initial particle positions
+        }
+        particleStateTexture0 = createTexture(gl, gl.NEAREST, particleState, particleRes, particleRes);
+
+
+        var mat1 = new THREE.ShaderMaterial({
+            uniforms: {
+                u_texture: {
+                }
+            },
+            vertexShader: `
+                varying vec2 v_pos;
+                void main() {
+                    v_pos = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position*0.5, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform sampler2D u_texture;
+                varying vec2 v_pos;
+                void main() {
+                    gl_FragColor = texture2D(u_texture, v_pos);
+                    // gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+                }
+            `
+        });
+        mat1.uniforms.u_texture.value = particleStateTexture0;
+        var geom = new THREE.PlaneGeometry(360,180);
+        var mesh = new THREE.Mesh(geom, mat);
+        scene.add(mesh);
+
+        animate();
+
+        function animate() {
+            requestAnimationFrame( animate );
+            // render();
+            renderer.render(scene, camera);
+        }
     }
-    }
-                   t++;
-    ctx.putImageData(imgdata, 0, 0);
-    }, 1000/60);
+
+
+
 </script>
 </body>
 </html>
