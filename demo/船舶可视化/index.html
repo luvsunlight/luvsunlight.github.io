@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./libs/GL_Util.js"></script>
+    <script src="./libs/Matrix.js"></script>
+    <script src="./libs/dat.gui.js"></script>
+    <title>效果测试</title>
+    <style>
+        body, html{
+            margin: 0;
+            overflow: hidden;
+        }
+        #canvas {
+            position: absolute;
+            left: 300px;
+            width: 600px;
+            height: 600px;
+
+            box-shadow: 2px 5px 10px #ddd;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script src="./js/shaders.js"></script>
+<script src="./js/class.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>
