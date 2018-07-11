@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1519782143202.png">
 <meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1519782309300.png">
 <meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1519782545710.png">
-<meta property="og:updated_time" content="2018-03-03T03:57:45.951Z">
+<meta property="og:updated_time" content="2018-07-03T12:45:57.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dat.gui库详解">
 <meta name="twitter:description" content="最近在做可视化方面的毕设，经常要用到dat.gui这个库，经常需要查比较麻烦，干脆自己写一篇攻略来认真梳理一下这个库.">
@@ -396,8 +396,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-03T11:57:45+08:00">
-                2018-03-03
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-03T20:45:57+08:00">
+                2018-07-03
               </time>
             
           </span>
@@ -526,7 +526,8 @@
 <p>这样的话，每次选中的值每次发生改动过之后就会触发redraw函数，如果你想要值修改完才触发函数的话可以选用onChangeFinish函数</p>
 <h2 id="修改标签项文字"><a href="#修改标签项文字" class="headerlink" title="修改标签项文字"></a>修改标签项文字</h2><p>出现在gui中的name如果没有特殊指定的话一般是对象属性的名称，但是我们有时候为了增加辨识度可能想取更简单的名字，但是又不方便直接修改属性的名称，这个时候可以采用一个name函数</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ASSETS = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">            <span class="keyword">this</span>.clr = <span class="string">'#66ccff'</span>;</div><div class="line">        &#125;;</div><div class="line">        </div><div class="line"><span class="keyword">var</span> gui = <span class="keyword">new</span> dat.GUI();</div><div class="line">gui.addColor(ASSETS, <span class="string">'clr'</span>).name(<span class="string">'颜色'</span>);</div></pre></td></tr></table></figure>
-<h2 id="控制项分组"><a href="#控制项分组" class="headerlink" title="控制项分组"></a>控制项分组</h2><p>即根据功能本身对其进行分类，方便管理<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ASSETS = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="keyword">this</span>.clr = <span class="string">'#66ccff'</span>;</div><div class="line">            <span class="keyword">this</span>.redraw = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            		<span class="built_in">console</span>.log(<span class="string">"refresh!"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        </div><div class="line"><span class="keyword">var</span> gui = <span class="keyword">new</span> dat.GUI();</div><div class="line"><span class="keyword">var</span> folder1 = gui.addFolder();</div><div class="line">folder1.addColor(ASSETS, <span class="string">'clr'</span>).onChange(ASSETS.redraw);</div></pre></td></tr></table></figure></p>
+<h2 id="控制项分组"><a href="#控制项分组" class="headerlink" title="控制项分组"></a>控制项分组</h2><p>即根据功能本身对其进行分类，方便管理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ASSETS = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="keyword">this</span>.clr = <span class="string">'#66ccff'</span>;</div><div class="line">            <span class="keyword">this</span>.redraw = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            		<span class="built_in">console</span>.log(<span class="string">"refresh!"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        </div><div class="line"><span class="keyword">var</span> gui = <span class="keyword">new</span> dat.GUI();</div><div class="line"><span class="keyword">var</span> folder1 = gui.addFolder();</div><div class="line">folder1.addColor(ASSETS, <span class="string">'clr'</span>).onChange(ASSETS.redraw);</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -658,7 +659,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -680,7 +681,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -788,7 +789,7 @@
     
       <span class="post-meta-item-text">博客全站共 </span>
     
-    <span title="Site words total count">64.8k字</span>
+    <span title="Site words total count">72.1k字</span>
   
 </div>
 
