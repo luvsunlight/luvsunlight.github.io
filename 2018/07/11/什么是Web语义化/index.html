@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -114,17 +114,21 @@
 
 
 
-<meta name="description" content="childult">
+<meta name="description" content="web语义元素的定义和我自己的理解">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="什么是Web语义化">
 <meta property="og:url" content="http://yoursite.com/2018/07/11/什么是Web语义化/index.html">
 <meta property="og:site_name" content="Prozac’s blog">
-<meta property="og:description" content="childult">
+<meta property="og:description" content="web语义元素的定义和我自己的理解">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-11T12:10:52.228Z">
+<meta property="og:image" content="https://pic2.zhimg.com/01b4d93c152d2a9c2db734065be0f3f5_b.jpg">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1531313829236.png">
+<meta property="og:updated_time" content="2018-07-12T07:18:35.351Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="什么是Web语义化">
-<meta name="twitter:description" content="childult">
+<meta name="twitter:description" content="web语义元素的定义和我自己的理解">
+<meta name="twitter:image" content="https://pic2.zhimg.com/01b4d93c152d2a9c2db734065be0f3f5_b.jpg">
 
 
 
@@ -388,12 +392,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-11T20:10:52+08:00">
-                2018-07-11
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T15:18:35+08:00">
+                2018-07-12
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -421,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0字
+                  1,454字
                 </span>
               
 
@@ -437,7 +463,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  5分钟
                 </span>
               
             </div>
@@ -459,7 +485,32 @@
 
       
 	<hr>
-        
+        <blockquote>
+<p>web语义元素的定义和我自己的理解</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://www.zhihu.com/question/20455165" target="_blank" rel="external">知乎（如何理解Web语义化）</a></p>
+<p><a href="http://justineo.github.io/slideshows/semantic-html/#/" target="_blank" rel="external">一个使用reveal.js写的挺炫酷的语义dom讲解</a></p>
+<h1 id="权威解释"><a href="#权威解释" class="headerlink" title="权威解释"></a>权威解释</h1><blockquote>
+<p>什么是语义化？其实简单说来就是让机器可以读懂内容。</p>
+<p>先随便扯扯。对于当前的 Web 而言，HTML 是联系大多数 Web 资源的纽带，也是内容的载体。在 Web 被刚刚设计出来的时候，Tim Berners-Lee 可能不会想到它现在会达到的规模以及深入到我们生活的那么多方面。也许起初的想法很简单：用来发布 Web 内容和资源的索引，方便人们查看。</p>
+<p>但是随着 Web 规模的不断扩大，信息量之大已经不在人肉处理的范围之内了。这个时候人们开始用机器来处理 Web 上发布的各种内容，搜索引擎就诞生了。再后来，人们又设计了各种智能程序来对索引好的内容作各种处理和挖掘。所以让机器能够更好地读懂 Web 上发布的各种内容就变得越来越重要。</p>
+<p>其实 HTML 在刚开始设计出来的时候就是带有一定的「语义」的，包括段落、表格、图片、标题等等，但这些更多地只是方便浏览器等 UA 对它们作合适的处理。但逐渐地，机器也要借助 HTML 提供的语义以及自然语言处理的手段来「读懂」它们从网上获取的 HTML 文档，但它们无法读懂例如「红色的文字」或者是深度嵌套的表格布局中内容的含义，因为太多已有的内容都是专门为了可视化的浏览器设计的。面对这种情况，出现了两种观点：</p>
+<p>1.我们可以让机器的理解能力越来越接近人类，人能看懂、听懂的东西，机器也能理解</p>
+<p>2.我们应该在发布内容的时候，就用机器可读的、被广泛认可的语义信息来描述内容，来降低机器处理 Web 内容的难度（HTML 本身就已经是朝这个方向迈出的一小步了）。</p>
+<p><img data-rawheight="382" data-rawwidth="670" src="https://pic2.zhimg.com/01b4d93c152d2a9c2db734065be0f3f5_b.jpg" class="origin_image zh-lightbox-thumb" width="670" data-original="https://pic2.zhimg.com/01b4d93c152d2a9c2db734065be0f3f5_r.jpg"></p>
+<p>我画的这个图，意思是说，内容的语义表达能力和 AI 的智能程度决定了机器分析处理 Web 内容能力的高低。上面观点 1 的方向是朝着人类水平的人工智能努力，而观点 2 的方向正是万维网创始人 Tim Berners-Lee 爵士提出的美好愿景：语义网。语义网我就不多说了，简单来说就是让一切内容和包括对关系的描述都成为 Web 上的资源，都可以由唯一的 URI 定义，语义明确、机器可读。显然，两条路都的终极目标都很遥远，第一条路技术上难以实现，而第二条路实施起来障碍太多。</p>
+<p>我认为我们当前能够看得见摸得着的 Web 语义化，其实就是在往第二条路的方向上，迈出的一小步，即对已经有的被广泛认可的 HTML 标准做改进。我们刚开始意识到，我们必须回归内容本身，将内容本身的语义合理地表述出来，再为不同的用户代理设计不同的样式描述，也就是我们说的内容与样式分离。这样我们在提供内容的时候，首先要做的就是将内容本身进行合理的描述，暂时不用考虑它的最终呈现会是什么样子。</p>
+<p>HTML 规范其实一直在往语义化的方向上努力，许多元素、属性在设计的时候，就已经考虑了如何让各种用户代理甚至网络爬虫更好地理解 HTML 文档。HTML5 更是在之前规范的基础上，将所有表现层（presentational）的语义描述都进行了修改或者删除，增加了不少可以表达更丰富语义的元素。为什么这样的语义元素是有意义的？因为它们被广泛认可。所谓语义本身就是对符号的一种共识，被认可的程度越高、范围越广，人们就越可以依赖它实现各种各样的功能。</p>
+<p>HTML5 并非 Web 语义唯一倚仗的规范，除了 W3C 和 WHATWG 外，还有其它的组织在为扩展、标准化 Web 语义做着贡献。只要有浏览器厂商、搜索引擎原意支持，它们的规范一样可以成为通用的基础设施。例如 microformats 社区以及 <a href="http://Schema.org" target="_blank" rel="external">http://Schema.org</a> 上都有对 HTML 以及 Microdata（<a href="http://www.w3.org/TR/html5/microdata.html）" target="_blank" rel="external">http://www.w3.org/TR/html5/microdata.html）</a> 规范的扩展词汇表，Google、Bing、Yahoo! 等搜索引擎以及各个主流浏览器都不同程度地接纳了其中定义的语义扩展，并应用在了生产中。</p>
+</blockquote>
+<h1 id="我的理解"><a href="#我的理解" class="headerlink" title="我的理解"></a>我的理解</h1><p>首先要明确一点，这一次任务虽然非常简单，但是却是很重要的一节，我自己做项目的时候能够感觉得出来，div的语义化写得不明显就只能用class来凑，感觉很不规范。</p>
+<p>我之前一直在想在网上找规范什么的，突然在IFE的笔记区里看到一个另我豁然开朗的答案————直接去大厂的html里看啊，看人家是怎么设定html的，直接对着写两个，自己马上就能明白</p>
+<blockquote>
+<p>发现自己还是too young，看了下淘宝和微博，发现它们都是用的div，根本没怎么在语义上下功夫</p>
+</blockquote>
+<p>记好这张图就好了<br><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1531313829236.png" alt=""></p>
+
       
     </div>
     
@@ -482,6 +533,12 @@
   
 </div>
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+          
+        </div>
       
 
       
@@ -557,8 +614,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,7 +654,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -599,7 +665,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -662,6 +728,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#权威解释"><span class="nav-number">2.</span> <span class="nav-text">权威解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我的理解"><span class="nav-number">3.</span> <span class="nav-text">我的理解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -691,7 +773,7 @@
     
       <span class="post-meta-item-text">博客全站共 </span>
     
-    <span title="Site words total count">72.1k字</span>
+    <span title="Site words total count">75.4k字</span>
   
 </div>
 
