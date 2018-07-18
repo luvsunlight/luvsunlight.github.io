@@ -390,8 +390,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T15:18:35+08:00">
-                2018-07-12
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-18T15:15:13+08:00">
+                2018-07-18
               </time>
             
           </span>
@@ -778,8 +778,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-12T09:41:27+08:00">
-                2018-07-12
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-18T15:14:34+08:00">
+                2018-07-18
               </time>
             
           </span>
@@ -866,41 +866,17 @@
 
       
         
-          
-            <a id="more"></a>
-<blockquote>
+	  <hr>
+          <blockquote>
 <p>第一章的内容相对来说比较基础 </p>
 </blockquote>
-<!--more-->
-<h1 id="1-应用序和正则序"><a href="#1-应用序和正则序" class="headerlink" title="1.应用序和正则序"></a>1.应用序和正则序</h1><ul>
-<li>正则序 </li>
-</ul>
-<blockquote>
-<p>首先不计算运算对象的值，首先展开原有的式子，直到实际需要的时候再计算。缺陷是可能有重复计算</p>
-</blockquote>
-<ul>
-<li>应用序 </li>
-</ul>
-<blockquote>
-<p>与正则序完全相反，首先求值，然后应用。</p>
-</blockquote>
-<p>大部分情况下，两种方法得到的结果都是一样的。但是大部分的解释器现在都是<code>应用序</code>。正则序一方面会比较复杂，但另一方面它也可以特别有价值</p>
-<p>一个辨别正则序和应用序的例子</p>
-<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1530191611264.png" alt=""></p>
-<p>如果是正则序，则不会陷入求p的循环中，而如果是应用序则会陷入死循环</p>
-<h1 id="2-迭代和递归"><a href="#2-迭代和递归" class="headerlink" title="2.迭代和递归"></a>2.迭代和递归</h1><p>这也是我在重读SICP之前印象最深的一点，但是直到手写了几个函数之后才发现这两者之间真正的差别.</p>
-<p>首先要声明，大部分情况下，迭代的效率都比递归更高。但是递归更加符合人们的直觉，即其易于理解。当我们把代码拆开之后，会发现迭代不仅占用的内存小，而且避免了很多重复计算。在处理大量数据时，建议还是使用迭代。</p>
-<blockquote>
-<p>对于任何递归过程的解释，所需要消耗的内存总是和过程调用的数目成正比。而迭代过程则不受影响。</p>
-</blockquote>
-<p>在代码结构上讲，迭代的特点我总结共<strong>3</strong>个本质特点</p>
-<ul>
-<li>最终需要输出的值一定是作为参数放在函数里</li>
-<li>在递归中需要调用到自身函数的时候，迭代里不再通过调用自己，而是有几个调用自己的次数就在迭代的函数里增加几个新的参数。</li>
-<li>迭代的版本中的判断条件一般是<code>到了某个值之后，抛出结果的参量</code></li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/28/SICP第一章笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
