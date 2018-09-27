@@ -122,10 +122,12 @@
 <meta property="og:site_name" content="Prozac’s blog">
 <meta property="og:description" content="最近又碰到了js的闭包问题，感觉自己的基础还不扎实…在网上找到了一个文章已经把解决方法总结得很好了，直接搬运一下，之后再加点自己的东西">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-05T09:17:17.699Z">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1536194960944.png">
+<meta property="og:updated_time" content="2018-09-06T00:49:25.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(转)js闭包问题解决">
 <meta name="twitter:description" content="最近又碰到了js的闭包问题，感觉自己的基础还不扎实…在网上找到了一个文章已经把解决方法总结得很好了，直接搬运一下，之后再加点自己的东西">
+<meta name="twitter:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1536194960944.png">
 
 
 
@@ -389,8 +391,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-05T17:17:17+08:00">
-                2018-07-05
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-06T08:49:25+08:00">
+                2018-09-06
               </time>
             
           </span>
@@ -444,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,278字
+                  1,283字
                 </span>
               
 
@@ -506,6 +508,7 @@
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> tip = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;         <span class="comment">//这样把匿名函数自我执行的时候赋值给一个变量，那么圆括号是可以去掉的</span></div><div class="line">    alert(<span class="string">'lee'</span>);</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
 <p>利用匿名函数的这一特点，我们可以将解决方案1中的代码改进一下：</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> arr = [];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</div><div class="line">        arr[i] = <span class="function"><span class="keyword">function</span><span class="params">(num)</span></span>&#123;                </div><div class="line">            <span class="keyword">return</span> num;                            </div><div class="line">        &#125;(i);                                </div><div class="line">    &#125;                                            </div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div><div class="line"><span class="comment">//alert(box());                                </span></div><div class="line"><span class="comment">//alert(box()[1]);</span></div><div class="line"><span class="comment">//alert(box().length);                            </span></div><div class="line">alert(box()[<span class="number">4</span>]);</div></pre></td></tr></table></figure>
+<h1 id="解决方案4"><a href="#解决方案4" class="headerlink" title="解决方案4"></a>解决方案4</h1><p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1536194960944.png" alt=""></p>
 <p>匿名函数在执行的时候他本身就传递给了一个变量arr[i]，所以匿名函数的圆括号是可以去掉的。</p>
 <p>以上就是几种解决for循环中闭包的办法，当然还有更多办法，大家可自行google或者bing其他资料来加深印象(百度是基本上搜不到什么有用的文章的)。</p>
 
@@ -645,7 +648,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -656,7 +659,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -667,7 +670,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -739,7 +742,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS中for循环里面的闭包问题的原因及解决办法"><span class="nav-number">1.</span> <span class="nav-text">JS中for循环里面的闭包问题的原因及解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案1"><span class="nav-number">2.</span> <span class="nav-text">解决方案1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案2"><span class="nav-number">3.</span> <span class="nav-text">解决方案2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案3"><span class="nav-number">4.</span> <span class="nav-text">解决方案3</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS中for循环里面的闭包问题的原因及解决办法"><span class="nav-number">1.</span> <span class="nav-text">JS中for循环里面的闭包问题的原因及解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案1"><span class="nav-number">2.</span> <span class="nav-text">解决方案1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案2"><span class="nav-number">3.</span> <span class="nav-text">解决方案2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案3"><span class="nav-number">4.</span> <span class="nav-text">解决方案3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案4"><span class="nav-number">5.</span> <span class="nav-text">解决方案4</span></a></li></ol></div>
             
 
           </div>
@@ -775,7 +778,7 @@
     
       <span class="post-meta-item-text">博客全站共 </span>
     
-    <span title="Site words total count">75.4k字</span>
+    <span title="Site words total count">92.5k字</span>
   
 </div>
 
