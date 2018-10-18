@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon.ico?v=5.1.3">
+
+
+
+
+
+
+
+  <meta name="keywords" content="计算机网络,http," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Prozac’s blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="6月份开始的一个比赛需要网络方面的知识，但是限于专业和自己的懒惰，自己一直对计算机网络的知识处于一个一知半解的程度，正好掏出买了半年但一直没看的书，从头到尾梳理一遍。顺便下次组会展示的时候科普一下网络的知识。">
+<meta name="keywords" content="计算机网络,http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《图解HTTP》读后总结">
+<meta property="og:url" content="http://yoursite.com/2018/05/13/《图解HTTP》读后总结/index.html">
+<meta property="og:site_name" content="Prozac’s blog">
+<meta property="og:description" content="6月份开始的一个比赛需要网络方面的知识，但是限于专业和自己的懒惰，自己一直对计算机网络的知识处于一个一知半解的程度，正好掏出买了半年但一直没看的书，从头到尾梳理一遍。顺便下次组会展示的时候科普一下网络的知识。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526261983229.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526194008306.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526198406978.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526198697091.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526199225187.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526199438621.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526200119436.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526262272192.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526262386148.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526262602095.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526263911192.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526264151128.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526264594986.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526264653159.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526278757111.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526279046268.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526279260810.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526280001491.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526349521925.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526354175531.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526354188927.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526608271186.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526608448753.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526610952788.png">
+<meta property="og:updated_time" content="2018-06-12T10:00:25.991Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《图解HTTP》读后总结">
+<meta name="twitter:description" content="6月份开始的一个比赛需要网络方面的知识，但是限于专业和自己的懒惰，自己一直对计算机网络的知识处于一个一知半解的程度，正好掏出买了半年但一直没看的书，从头到尾梳理一遍。顺便下次组会展示的时候科普一下网络的知识。">
+<meta name="twitter:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1526261983229.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/13/《图解HTTP》读后总结/"/>
+
+
+
+
+
+  <title>《图解HTTP》读后总结 | Prozac’s blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?baa516ebafd206feff7899dff7e4a966";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+<canvas class="fireworks" style="width: 1226px; height: 680px;position: fixed;left: 0;top: 0; z-index: 1; pointer-events: none" ></canvas>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Prozac’s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录学习的技能和遇到的问题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-生活">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gratipay"></i> <br />
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/《图解HTTP》读后总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prozac">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prozac’s blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《图解HTTP》读后总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-13T09:49:20+08:00">
+                2018-05-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-12T18:00:25+08:00">
+                2018-06-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统学习/" itemprop="url" rel="index">
+                    <span itemprop="name">系统学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">浏览量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,460字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+	
+      
+      
+
+      
+	<hr>
+        <blockquote>
+<p>6月份开始的一个比赛需要网络方面的知识，但是限于专业和自己的懒惰，自己一直对计算机网络的知识处于一个一知半解的程度，正好掏出买了半年但一直没看的书，从头到尾梳理一遍。顺便下次组会展示的时候科普一下网络的知识。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="1-了解Web和网络技术基础"><a href="#1-了解Web和网络技术基础" class="headerlink" title="1.了解Web和网络技术基础"></a>1.了解Web和网络技术基础</h1><p>为了了解HTTP，我们有必要事先理解一下TCP/IP协议族。</p>
+<h2 id="1-1-网络基础TCP-IP"><a href="#1-1-网络基础TCP-IP" class="headerlink" title="1.1 网络基础TCP/IP"></a>1.1 网络基础TCP/IP</h2><p>通常使用的网络（包括互联网）是在TCP/IP协议族的基础上运作的，而HTTP是它内部的一个集。</p>
+<p>计算机和网络设备之间要互相通信，双方就必须基于相同的方法，比如如何探测通信目标，由哪一边先发起通信，使用哪种语言进行通信，都需要事先制定。不同的硬件，操作系统之间的通信，所有的这一切都需要一种规则，我们就讲这些规则称之为<strong>协议</strong></p>
+<blockquote>
+<p>将所有与互联网相关联的协议集合起来，总称为TCP/IP</p>
+</blockquote>
+<h3 id="1-1-1-TCP-IP的分层管理"><a href="#1-1-1-TCP-IP的分层管理" class="headerlink" title="1.1.1 TCP/IP的分层管理"></a>1.1.1 TCP/IP的分层管理</h3><p><strong>分层的好处</strong>：相当于是模块化管理，方便改进和修改</p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><blockquote>
+<p>应用层决定了向用户提供应用服务时通信的活动</p>
+</blockquote>
+<p>顾名思义，实际上就是应用的层面，属于抽象等级最高的一阶。比如<a href="https://baike.baidu.com/item/FPT/4424643?fr=aladdin" target="_blank" rel="external">FTP</a>，<a href="https://baike.baidu.com/item/dns/427444" target="_blank" rel="external">DNS</a>，<a href="https://baike.baidu.com/item/SMTP/175887" target="_blank" rel="external">SMTP</a>，HTTP等常见的服务。</p>
+<h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><blockquote>
+<p>传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输</p>
+</blockquote>
+<p>说起来很抽象，实际上就是TCP和UDP，就是制定了在传输数据时，每个计算机应该使用什么样的协议</p>
+<h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><blockquote>
+<p>网络层处理在网络上流动的数据包。该层规定了通过怎样的路径到达对方计算机，并把数据包传送给对方。</p>
+</blockquote>
+<h4 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h4><blockquote>
+<p>用来处理网络的硬件部分</p>
+</blockquote>
+<p>这个就相对easy了，可以简单理解为计算机网络在物理的层面。</p>
+<p>此外，我个人还对<strong>网络层</strong>和<strong>传输层</strong>之间的区别不是很清楚，但是看了下面一个例子之后，瞬间明白了</p>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526261983229.png" alt=""></p>
+<blockquote>
+<p>说白了，网络层是负责不同计算机之间的信息传递，而传输层则是细到了进程级别</p>
+</blockquote>
+<h3 id="1-1-2-TCP-IP通信传输流"><a href="#1-1-2-TCP-IP通信传输流" class="headerlink" title="1.1.2 TCP/IP通信传输流"></a>1.1.2 TCP/IP通信传输流</h3><p>利用TCP/IP协议族进行网络通信时，会通过分层顺序与对方进行通信<br><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526194008306.png" alt=""><br>发送端在层与层之间传输数据时，都会加上一个本层所属的首部信息。反之，接收端在层与层之间传输数据时，就会消去</p>
+<h2 id="1-2-与HTTP关系密切的协议"><a href="#1-2-与HTTP关系密切的协议" class="headerlink" title="1.2 与HTTP关系密切的协议"></a>1.2 与HTTP关系密切的协议</h2><h3 id="1-2-1-IP协议"><a href="#1-2-1-IP协议" class="headerlink" title="1.2.1 IP协议"></a>1.2.1 IP协议</h3><blockquote>
+<p>注意！这里的IP指协议，我们平时说的<a href="https://baike.baidu.com/item/IP%E5%9C%B0%E5%9D%80/150859" target="_blank" rel="external">IP</a>是IP地址。</p>
+</blockquote>
+<p>此处IP全称为网络协议，几乎所有使用网络的系统都会用到IP协议。其作用就是把各种数据发给对方。此时，如果想要保证确保数据包能到对方那里，需要满足各种条件，其中最重要的两个是<strong>IP地址</strong>和<strong>MAC</strong>地址。</p>
+<h4 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h4><blockquote>
+<p>IP地址是指互联网协议地址（英语：Internet Protocol Address，又译为网际协议地址），是IP Address的缩写。IP地址是IP协议提供的一种统一的地址格式，它为互联网上的每一个网络和每一台主机分配一个逻辑地址，以此来屏蔽物理地址的差异。目前还有些ip代理软件，但大部分都收费。</p>
+</blockquote>
+<h4 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h4><blockquote>
+<p>MAC（Media Access Control或者Medium Access Control）地址，意译为媒体访问控制，或称为物理地址、硬件地址，用来定义网络设备的位置。在OSI模型中，第三层网络层负责 IP地址，第二层数据链路层则负责 MAC地址。因此一个主机会有一个MAC地址，而每个网络位置会有一个专属于它的IP地址。 [1]<br>MAC地址是网卡决定的，是固定的。</p>
+</blockquote>
+<p>举一个例子，我们可以把计算机之间的信息传输理解为快递的流程，买方想通过物流将商品交到顾客的手上，这个时候，Ip地址可以理解为顾客的地址，Mac地址可以理解为顾客的身份证号（或者可以理解为任何可以唯一表示顾客的特征，比如外貌+姓名）</p>
+<p>为什么在传输过程中我们需要ip和mac两种地址？</p>
+<p>￼<img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526198406978.png" alt=""></p>
+<h3 id="1-2-2-TCP协议"><a href="#1-2-2-TCP协议" class="headerlink" title="1.2.2 TCP协议"></a>1.2.2 TCP协议</h3><p>tcp处于传输层中，提供可靠的字节流服务。其中<strong>可靠</strong>是指，能够将数据准确可靠地传给对方，所以相应地，与tcp对应的是udp，它的特点就是不管对方是否能接收到数据，都一股脑地都把数据传过去再说。<strong>字节流服务</strong>是指，为了方便传输而将大块数据分割成以报文段为单位的数据包进行管理。</p>
+<h4 id="tcp的三次握手"><a href="#tcp的三次握手" class="headerlink" title="tcp的三次握手"></a>tcp的三次握手</h4><p>tcp协议为什么能够准确无误地将数据传送到目标处？就在于它采用了<strong>三次握手</strong>的策略</p>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526198697091.png" alt=""></p>
+<p>开始之前，首先声明，TCP的两种标志SYN（同步）和ACK（理解）</p>
+<ol>
+<li>发送端发送一个标记syn（记为j）的数据包给对方</li>
+<li>接收端接到以后，再反向发一个syn（j+1）和ack（记为k）标志的数据包给对方</li>
+<li>发送端收到以后，再向接收端发一个ACK（k+1）的数据包给接收端。至此完成3次握手</li>
+</ol>
+<blockquote>
+<p>若是在握手过程中莫名中断，TCP协议会再次以相同的顺序发送相同的数据包</p>
+</blockquote>
+<h3 id="1-2-3-DNS服务"><a href="#1-2-3-DNS服务" class="headerlink" title="1.2.3 DNS服务"></a>1.2.3 DNS服务</h3><p>这个相对来说是个老朋友了，它和HTTP一样都是出于四层结构中的应用层，主要功能是<strong>提供域名到IP地址之间的转化服务</strong>。</p>
+<p>一般来说，我们在web中想要获取某项资源，都是以域名的形式来访问，这主要是因为相对于IP地址，用字母配合数字的表达形式来指定计算机名更加符合人类的记忆习惯</p>
+<p>比如我们想要访问百度，我们在浏览器中输入<a href="http://www.baidu.com，这个请求实际上首先是前往了DNS服务器，解析成了对应的IP地址，然后再进入正常的网络通信流程" target="_blank" rel="external">http://www.baidu.com，这个请求实际上首先是前往了DNS服务器，解析成了对应的IP地址，然后再进入正常的网络通信流程</a></p>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526199225187.png" alt=""></p>
+<h4 id="DNS污染和DNS劫持"><a href="#DNS污染和DNS劫持" class="headerlink" title="DNS污染和DNS劫持"></a>DNS污染和DNS劫持</h4><p><strong>DNS污染</strong>指的是用户访问一个地址，国内的服务器(非DNS)监控到用户访问的已经被标记地址时，服务器伪装成DNS服务器向用户发回错误的地址的行为。范例，访问Youtube、Facebook之类网站等出现的状况。</p>
+<p><strong>DNS劫持</strong>就是指用户访问一个被标记的地址时，DNS服务器故意将此地址指向一个错误的IP地址的行为。范例，网通、电信、铁通的某些用户有时候会发现自己打算访问一个地址，却被转向了各种推送广告等网站，这就是DNS劫持。</p>
+<h2 id="1-3各种协议与HTTP协议的关系"><a href="#1-3各种协议与HTTP协议的关系" class="headerlink" title="1.3各种协议与HTTP协议的关系"></a>1.3各种协议与HTTP协议的关系</h2><blockquote>
+<p>本章最重要的一张图</p>
+</blockquote>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526199438621.png" alt=""></p>
+<h2 id="1-4-URL和URI"><a href="#1-4-URL和URI" class="headerlink" title="1.4 URL和URI"></a>1.4 URL和URI</h2><h3 id="1-4-1-两者的区别"><a href="#1-4-1-两者的区别" class="headerlink" title="1.4.1 两者的区别"></a>1.4.1 两者的区别</h3><p>uri（统一资源标识符），url（统一资源定位符）。url更为我们所熟知，其正是使用web浏览器来访问页面时需要输入的网页地址。</p>
+<p>后者是前者的子集，前者的特点是可以唯一表示一种资源，但其表现形式不局限于后面哪一种，有的时候用前者表示的资源可能在某一命名空间中，但其不代表网络地址</p>
+<blockquote>
+<p>urn:issn:1535-3611</p>
+</blockquote>
+<h3 id="1-4-2-url的结构"><a href="#1-4-2-url的结构" class="headerlink" title="1.4.2 url的结构"></a>1.4.2 url的结构</h3><p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526200119436.png" alt=""></p>
+<h1 id="2-简单的HTTP协议"><a href="#2-简单的HTTP协议" class="headerlink" title="2. 简单的HTTP协议"></a>2. 简单的HTTP协议</h1><h2 id="2-1-HTTP协议用于客户端与服务器之间的通信"><a href="#2-1-HTTP协议用于客户端与服务器之间的通信" class="headerlink" title="2.1 HTTP协议用于客户端与服务器之间的通信"></a>2.1 HTTP协议用于客户端与服务器之间的通信</h2><blockquote>
+<p>请求访问文本或者图像等资源的一端称之为客户端</p>
+<p>提供资源相应的一端称之为服务器端</p>
+</blockquote>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526262272192.png" alt=""></p>
+<h2 id="2-2-HTTP是不保存状态的协议"><a href="#2-2-HTTP是不保存状态的协议" class="headerlink" title="2.2 HTTP是不保存状态的协议"></a>2.2 HTTP是不保存状态的协议</h2><p>HTTP是一种<strong>无状态协议</strong>，也就是说HTTP这个级别，协议对于发送过的请求或响应都不做持久化处理</p>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526262386148.png" alt=""></p>
+<p>这样做有好处即能够快速处理大量事物，确保协议的可伸缩性。但是坏处就是无法保存登录状态（这个用cookie实现了）</p>
+<h2 id="2-3-HTTP方法"><a href="#2-3-HTTP方法" class="headerlink" title="2.3 HTTP方法"></a>2.3 HTTP方法</h2><ol>
+<li>GET</li>
+<li>POST<br>（知道上述两者即可，剩下的几乎用不到，需要用到的时候再查）</li>
+</ol>
+<h2 id="2-4-持久连接"><a href="#2-4-持久连接" class="headerlink" title="2.4 持久连接"></a>2.4 持久连接</h2><h3 id="2-4-1-持久连接的提出"><a href="#2-4-1-持久连接的提出" class="headerlink" title="2.4.1 持久连接的提出"></a>2.4.1 持久连接的提出</h3><p>HTTP协议的初始版本中，每进行一次通信就需要断开一次TCP连接</p>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526262602095.png" alt=""></p>
+<p>这样做的后果就是，小容量的文本传输倒也没什么，但是随着HTTP的普及，文档中包含大量图片的情况多了起来，这个时候每次请求都会造成无谓的TCP断开和重连，<strong>增加通信量的开销</strong></p>
+<p>为了解决上述问题，持久连接的方法被踢了出来，它的特点是</p>
+<blockquote>
+<p>只要任意一段没有明确提出断开连接，则保持TCP连接状态</p>
+</blockquote>
+<p>这么做的好处是减少了TCP链接的重复建立和断开的开销，减轻了服务器端的负载。</p>
+<h3 id="2-4-2-管线化"><a href="#2-4-2-管线化" class="headerlink" title="2.4.2 管线化"></a>2.4.2 管线化</h3><p>持久连接使得多数请求能够以管线化的方式发送成为可能，跟多线程类似，我们不需要一个接一个地等待响应就可以直接发送下一个请求，又一次提高了http通信的效率</p>
+<h2 id="2-5-使用cookie的状态管理"><a href="#2-5-使用cookie的状态管理" class="headerlink" title="2.5 使用cookie的状态管理"></a>2.5 使用cookie的状态管理</h2><p>http本身是<strong>无记忆</strong>的，这个时候在处理一些需要登录验证的页面就无法应对，此时我们引入了cookie技术。cookie技术通过在请求和响应报文中写入cookie信息来控制客户端的状态。</p>
+<p>服务器端会发送一个set-cookie的首部字段信息，通知客户端保存cookie，等下次客户端再向服务器端发送请求时，其会自动在请求报文中加入cookie值。</p>
+<p>这时服务器发现cookie之后，会去检查到底是哪一个客户端发来的请求，然后对比服务器上的记录，最后得到该客户端的登录状态信息。</p>
+<h1 id="3-HTTP报文内的HTTP信息"><a href="#3-HTTP报文内的HTTP信息" class="headerlink" title="3. HTTP报文内的HTTP信息"></a>3. HTTP报文内的HTTP信息</h1><h2 id="3-1-HTTP报文的结构"><a href="#3-1-HTTP报文的结构" class="headerlink" title="3.1 HTTP报文的结构"></a>3.1 HTTP报文的结构</h2><p>emm实际这个部分如果写过爬虫的话应该会很熟悉了</p>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526263911192.png" alt=""></p>
+<h2 id="3-2-编码提升传输速率"><a href="#3-2-编码提升传输速率" class="headerlink" title="3.2 编码提升传输速率"></a>3.2 编码提升传输速率</h2><p>HTTP在传输数据时可以直接发送原数据，但是也可以在传输过程中通过编码来提升传输速率，但是同时编码的操作在本地完成，需要消耗一定程度的CPU</p>
+<h3 id="3-2-1-报文和实体的区别"><a href="#3-2-1-报文和实体的区别" class="headerlink" title="3.2.1 报文和实体的区别"></a>3.2.1 报文和实体的区别</h3><p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526264151128.png" alt=""></p>
+<p>我个人的感觉是，实体就是原始数据，包括实体首部和实体主体，报文是实体编码之后，在信息传输途中的形式</p>
+<h3 id="3-2-2-分割发送的分块传输编码"><a href="#3-2-2-分割发送的分块传输编码" class="headerlink" title="3.2.2 分割发送的分块传输编码"></a>3.2.2 分割发送的分块传输编码</h3><p>在传输大容量数据时，通过把数据分割成多块，能够让浏览器逐步显示页面。HTTP中存在一种称为传输编码的机制，专门应用于分块传输。</p>
+<h2 id="3-3-获取部分内容的范围请求"><a href="#3-3-获取部分内容的范围请求" class="headerlink" title="3.3 获取部分内容的范围请求"></a>3.3 获取部分内容的范围请求</h2><p><span id="rangeRequest"></span><br>我们在平时肯定遇到过这样的情况：使用浏览器下载某项文件，中途中断了，此时再次下载从头开始显然非常可惜，一般情况下如果时间没有过的太久，浏览器会自动帮我们提供从中断处开始下载的功能。</p>
+<p>要实现该功能需要指定下载的范围，我们称之为<strong>范围请求</strong>，我们只需要在head里加入如下<br><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526264594986.png" alt=""></p>
+<p>范围的制定方式如下<br><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526264653159.png" alt=""></p>
+<h2 id="3-4内容协商"><a href="#3-4内容协商" class="headerlink" title="3.4内容协商"></a>3.4内容协商</h2><p>当浏览器的默认语言为中文或者英文时，访问相同url的web网页则会显示对应的英文版或者中文版，这样的机制我们称之为<strong>内容协商</strong></p>
+<blockquote>
+<p>内容协商机制是指客户端和服务器端就响应的资源内容进行交涉，然后提供给客户端最为适合的资源，其会以语言，字符集，编码方式等为基准来判断响应的资源。同样的我们可以通过修改一些报文的首部来作为请求协商的手段</p>
+</blockquote>
+<p>内容协商分为3类</p>
+<ol>
+<li>服务器驱动协商（即由服务器来决定，但并不一定是最佳选择）</li>
+<li>客户端驱动协商（即由客户端来决定，比如切换成pc版或者移动端）</li>
+<li>透明协商（双方共同协商）</li>
+</ol>
+<h1 id="4-返回结果的HTTP状态码"><a href="#4-返回结果的HTTP状态码" class="headerlink" title="4. 返回结果的HTTP状态码"></a>4. 返回结果的HTTP状态码</h1><blockquote>
+<p>http服务器端返回的状态码的作用就是，通过它的描述，拥护可以知道服务器端对自己的请求处理的状态</p>
+</blockquote>
+<h2 id="2xx"><a href="#2xx" class="headerlink" title="2xx"></a>2xx</h2><p>这个系列的状态码都表示请求被正常处理了</p>
+<h3 id="200-OK"><a href="#200-OK" class="headerlink" title="200 OK"></a>200 OK</h3><p>表示客户端发来的请求被正常处理了，这种情况一般是最“好”的结果</p>
+<h3 id="204-No-Content"><a href="#204-No-Content" class="headerlink" title="204 No Content"></a>204 No Content</h3><p>表示服务器已成功处理请求，但是没有任何实体返回，页面不更新。一般用于客户端单方向向服务器发送信息</p>
+<h3 id="206-Partical-Content"><a href="#206-Partical-Content" class="headerlink" title="206 Partical Content"></a>206 Partical Content</h3><p>表示客户端进行了<a href="#rangeRequest">范围请求</a>,而服务器成功执行了这个请求</p>
+<h2 id="3xx重定向"><a href="#3xx重定向" class="headerlink" title="3xx重定向"></a>3xx重定向</h2><p>这个系列表示浏览器需要执行某些特殊的处理以正常处理请求</p>
+<h3 id="301-Moved-Permantly"><a href="#301-Moved-Permantly" class="headerlink" title="301 Moved Permantly"></a>301 Moved Permantly</h3><p>永久性重定向，表示请求的资源已被分配了新的url，以后使用该资源时应该使用现在给的url（以报文首部的location字段里给出来了）</p>
+<h3 id="302-Not-Found"><a href="#302-Not-Found" class="headerlink" title="302 Not Found"></a>302 Not Found</h3><p>临时性重定向，希望用户本次能够使用新的url访问</p>
+<h3 id="303-See-Other"><a href="#303-See-Other" class="headerlink" title="303 See Other"></a>303 See Other</h3><p>基本功能和302一致。但是明确向用户表示需要用GET方法获得资源</p>
+<blockquote>
+<p>当301,302,303系列状态码发回时，几乎所有的浏览器都会把post改成GET，并且删除报文内的主体，之后请求会自动再次发送。当然这么做是有违标准的，但大家都会这么做</p>
+</blockquote>
+<h3 id="304-Not-Modified"><a href="#304-Not-Modified" class="headerlink" title="304 Not Modified"></a>304 Not Modified</h3><p>表示客户端发送了附带条件的请求，服务器端找到了资源但是并未符合相应的条件</p>
+<h3 id="307-Temporary-Redirect"><a href="#307-Temporary-Redirect" class="headerlink" title="307 Temporary Redirect"></a>307 Temporary Redirect</h3><p>临时重定向，与302功能相似</p>
+<h2 id="4xx-客户端错误"><a href="#4xx-客户端错误" class="headerlink" title="4xx 客户端错误"></a>4xx 客户端错误</h2><p>该系列错误表示客户端是错误发生所在</p>
+<h3 id="400-Bad-Request"><a href="#400-Bad-Request" class="headerlink" title="400 Bad Request"></a>400 Bad Request</h3><p>表示请求报文中存在语法错误。当错误发生时，需要修改内容并再次发送请求。</p>
+<h3 id="401-Unauthorized"><a href="#401-Unauthorized" class="headerlink" title="401 Unauthorized"></a>401 Unauthorized</h3><p>表示需要经过验证，若之前已经验证过了，则表示验证失败</p>
+<h3 id="403-Forbidden"><a href="#403-Forbidden" class="headerlink" title="403 Forbidden"></a>403 Forbidden</h3><p>表示请求资源的访问被拒接了，服务器可以不给出理由，如果有理由，则可以在实体的主体部分中看到</p>
+<h3 id="404-Not-Found"><a href="#404-Not-Found" class="headerlink" title="404 Not Found"></a>404 Not Found</h3><p>服务器上没有请求的资源</p>
+<h2 id="5xx服务器错误"><a href="#5xx服务器错误" class="headerlink" title="5xx服务器错误"></a>5xx服务器错误</h2><p>表示错误出在服务器上</p>
+<h3 id="500-Internet-Server-Error"><a href="#500-Internet-Server-Error" class="headerlink" title="500 Internet Server Error"></a>500 Internet Server Error</h3><p>表示服务器在执行请求时发生了错误，也有可能时bug或者临时的故障</p>
+<h3 id="503-Service-Unavilable"><a href="#503-Service-Unavilable" class="headerlink" title="503 Service Unavilable"></a>503 Service Unavilable</h3><p>表示服务器暂时超负载或者停机维护，无法处理请求</p>
+<h1 id="5-与HTTP协作的Web服务器"><a href="#5-与HTTP协作的Web服务器" class="headerlink" title="5.与HTTP协作的Web服务器"></a>5.与HTTP协作的Web服务器</h1><h2 id="5-1-用单台虚拟主机实现多个域名"><a href="#5-1-用单台虚拟主机实现多个域名" class="headerlink" title="5.1 用单台虚拟主机实现多个域名"></a>5.1 用单台虚拟主机实现多个域名</h2><p>HTPP/1.1允许一台HTTP服务器搭建多个Web站点。比如提供Web托管服务的供应商，可以用一台服务器为多位用户服务</p>
+<p>由于DNS的设置，当浏览器中输入不同于域名的时候，最终访问到服务器的可以是相同的ip</p>
+<h2 id="5-2-通信数据转发程序：代理，网关，隧道"><a href="#5-2-通信数据转发程序：代理，网关，隧道" class="headerlink" title="5.2 通信数据转发程序：代理，网关，隧道"></a>5.2 通信数据转发程序：代理，网关，隧道</h2><h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p>本质上是一种类似于中转站的方式，接受有客户端发送的请求并转发给服务器端，反之亦然。同时，每次经过一级代理的时候，就会追加Via首部</p>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526278757111.png" alt=""></p>
+<blockquote>
+<p>使用代理服务器的理由有：利用缓存技术减少网络带宽的流量，组织内部针对特定网站的访问控制，以获取访问日志为主要目的</p>
+</blockquote>
+<h4 id="缓存代理"><a href="#缓存代理" class="headerlink" title="缓存代理"></a>缓存代理</h4><p>代理转发响应时，缓存代理会预先将资源的副本缓存保存在代理服务器上。当代理再次接收到相对资源的请求时，就可以不从源服务器那里获取资源，而是将之前缓存的资源作为响应返回</p>
+<h4 id="透明代理"><a href="#透明代理" class="headerlink" title="透明代理"></a>透明代理</h4><p>看代理服务器在转发请求或者响应时会不会对报文做加工，如果没有加工则是透明代理，反之为非透明代理</p>
+<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526279046268.png" alt=""></p>
+<p>网关的作用机制和代理相似，但是目的不一样</p>
+<blockquote>
+<p>网关的功能是使通信线路上的服务提供非HTTP协议服务。利用网关能提高通信的安全性，因为可以在客户端与网关之间的线路上加密以确保连接的安全。比如网关可以连接数据库等</p>
+</blockquote>
+<h3 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h3><p>隧道不会解析HTTP请求，客户端可以不用在意它的存在，其作用是建立起一条安全的通信线路<br><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526279260810.png" alt=""></p>
+<h2 id="5-3-保存资源的缓存"><a href="#5-3-保存资源的缓存" class="headerlink" title="5.3 保存资源的缓存"></a>5.3 保存资源的缓存</h2><blockquote>
+<p>缓存是指代理服务器或者客户端本地磁盘内保存的资源副本。利用缓存能够减少对源服务器的访问，因此就节省了通信流量和通信时间。</p>
+</blockquote>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526280001491.png" alt=""></p>
+<h1 id="6-HTTP首部"><a href="#6-HTTP首部" class="headerlink" title="6 HTTP首部"></a>6 HTTP首部</h1><blockquote>
+<p>HTTP首部字段传递重要信息</p>
+</blockquote>
+<h2 id="6-1-通用首部字段"><a href="#6-1-通用首部字段" class="headerlink" title="6.1 通用首部字段"></a>6.1 通用首部字段</h2><blockquote>
+<p>通用首部字段是指请求报文和响应报文都会采用的首部</p>
+</blockquote>
+<h3 id="cache-control"><a href="#cache-control" class="headerlink" title="cache-control"></a>cache-control</h3><blockquote>
+<p>控制缓存的工作机理，比如是否采用缓存，是否只针对特定用户才使用缓存等，缓存期限等</p>
+</blockquote>
+<h3 id="connection"><a href="#connection" class="headerlink" title="connection"></a>connection</h3><blockquote>
+<p>作用1：控制不再转发给代理的首部字段（即里面是不再转发的首部字段名）</p>
+<p>作用2：管理持久连接（指定connection为close，则断开持久连接）</p>
+</blockquote>
+<h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><blockquote>
+<p>表明HTTP报文创建的日期和时间</p>
+</blockquote>
+<h3 id="Trailer"><a href="#Trailer" class="headerlink" title="Trailer"></a>Trailer</h3><blockquote>
+<p>作用是告知报文主体记录了哪些字段</p>
+</blockquote>
+<h3 id="via"><a href="#via" class="headerlink" title="via"></a>via</h3><blockquote>
+<p>追踪客户端和服务器之间的请求和响应报文的传输路径。报文经过代理或网关时，会现在首部字段via中附加该服务器的信息，然后再进行转发</p>
+</blockquote>
+<h2 id="6-2-请求首部字段"><a href="#6-2-请求首部字段" class="headerlink" title="6.2 请求首部字段"></a>6.2 请求首部字段</h2><h3 id="accept"><a href="#accept" class="headerlink" title="accept"></a>accept</h3><blockquote>
+<p>告知服务器，用户代理能够处理的媒体类型以及媒体类型的相对优先级</p>
+</blockquote>
+<h3 id="accept-charset"><a href="#accept-charset" class="headerlink" title="accept-charset"></a>accept-charset</h3><h3 id="accept-encoding"><a href="#accept-encoding" class="headerlink" title="accept-encoding"></a>accept-encoding</h3><h3 id="accept-language"><a href="#accept-language" class="headerlink" title="accept-language"></a>accept-language</h3><h3 id="authorization"><a href="#authorization" class="headerlink" title="authorization"></a>authorization</h3><blockquote>
+<p>告知服务器，用户代理的证书（认证信息）</p>
+</blockquote>
+<h3 id="except"><a href="#except" class="headerlink" title="except"></a>except</h3><blockquote>
+<p>告诉服务器，期待出现的某种特定行为（状态码）</p>
+</blockquote>
+<h3 id="host"><a href="#host" class="headerlink" title="host"></a>host</h3><blockquote>
+<p>因为虚拟主机运行在同一个IP上，因此使用host来区分</p>
+</blockquote>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526349521925.png" alt=""></p>
+<h3 id="if-match"><a href="#if-match" class="headerlink" title="if-match"></a>if-match</h3><blockquote>
+<p>称之为条件请求，它会告知服务器匹配资源所用的实体标记（ETag）</p>
+</blockquote>
+<h3 id="if-modified-since"><a href="#if-modified-since" class="headerlink" title="if-modified-since"></a>if-modified-since</h3><blockquote>
+<p>条件请求，它希望从服务器那里获取指定日期之后更新的文件</p>
+</blockquote>
+<h3 id="if-none-match"><a href="#if-none-match" class="headerlink" title="if-none-match"></a>if-none-match</h3><blockquote>
+<p>与if-match正好相反</p>
+</blockquote>
+<h3 id="if-range"><a href="#if-range" class="headerlink" title="if-range"></a>if-range</h3><h3 id="if-unmodified-since"><a href="#if-unmodified-since" class="headerlink" title="if-unmodified-since"></a>if-unmodified-since</h3><h3 id="max-forwards"><a href="#max-forwards" class="headerlink" title="max-forwards"></a>max-forwards</h3><blockquote>
+<p>指定最多再妆发多少次，当次数为0，则不再转发而是直接给出响应</p>
+</blockquote>
+<h3 id="referer"><a href="#referer" class="headerlink" title="referer"></a>referer</h3><blockquote>
+<p>告知服务器请求的原始资源的url</p>
+</blockquote>
+<h3 id="user-agent"><a href="#user-agent" class="headerlink" title="user-agent"></a>user-agent</h3><blockquote>
+<p>表示浏览器的种类</p>
+</blockquote>
+<h2 id="6-3-响应首部字段"><a href="#6-3-响应首部字段" class="headerlink" title="6.3 响应首部字段"></a>6.3 响应首部字段</h2><h3 id="accept-ranges"><a href="#accept-ranges" class="headerlink" title="accept-ranges"></a>accept-ranges</h3><h3 id="etags"><a href="#etags" class="headerlink" title="etags"></a>etags</h3><h3 id="location"><a href="#location" class="headerlink" title="location"></a>location</h3><blockquote>
+<p>提供重定向的地址（浏览器一般都会尝试对这个地址的访问）</p>
+</blockquote>
+<h3 id="retry-after"><a href="#retry-after" class="headerlink" title="retry-after"></a>retry-after</h3><h2 id="6-4-实体首部字段"><a href="#6-4-实体首部字段" class="headerlink" title="6.4 实体首部字段"></a>6.4 实体首部字段</h2><h3 id="allow"><a href="#allow" class="headerlink" title="allow"></a>allow</h3><blockquote>
+<p>即允许使用的http方法</p>
+</blockquote>
+<h3 id="content-encoding"><a href="#content-encoding" class="headerlink" title="content-encoding"></a>content-encoding</h3><h3 id="conten-type"><a href="#conten-type" class="headerlink" title="conten-type"></a>conten-type</h3><h1 id="7-确保web安全的HTTPS"><a href="#7-确保web安全的HTTPS" class="headerlink" title="7. 确保web安全的HTTPS"></a>7. 确保web安全的HTTPS</h1><h2 id="7-1-http的缺点"><a href="#7-1-http的缺点" class="headerlink" title="7.1 http的缺点"></a>7.1 http的缺点</h2><h3 id="7-1-1主要缺点"><a href="#7-1-1主要缺点" class="headerlink" title="7.1.1主要缺点"></a>7.1.1主要缺点</h3><ul>
+<li>通信使用明文，内容可能被窃听</li>
+<li>不验证通信双方的身份，因此有可能遭遇伪装</li>
+<li>无法验证明文的完整性，所以有可能已遭篡改</li>
+</ul>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526354175531.png" alt=""></p>
+<h3 id="7-1-2-加密手段"><a href="#7-1-2-加密手段" class="headerlink" title="7.1.2 加密手段"></a>7.1.2 加密手段</h3><h4 id="通信的加密"><a href="#通信的加密" class="headerlink" title="通信的加密"></a>通信的加密</h4><p>http中没有对通信进行加密的机制，但是我们可以通过和SSL（安全套接层）组合使用，加密http的通信内容</p>
+<p>与ssl组合的http称为<strong>https</strong></p>
+<p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526354188927.png" alt=""></p>
+<h4 id="内容的加密"><a href="#内容的加密" class="headerlink" title="内容的加密"></a>内容的加密</h4><p>即客户端对http报文进行加密处理再发送请求，但是这样保密性不如前者，仍然有泄密的风险</p>
+<h3 id="7-1-3-不验证通信方的身份就可能遭遇伪装"><a href="#7-1-3-不验证通信方的身份就可能遭遇伪装" class="headerlink" title="7.1.3 不验证通信方的身份就可能遭遇伪装"></a>7.1.3 不验证通信方的身份就可能遭遇伪装</h3><ul>
+<li>无法验证服务器的真伪</li>
+<li>无法验证客户端的真伪</li>
+<li>无法确定对方是否具有访问权限</li>
+<li>无法判定请求来自何方</li>
+<li>即使无意义的请求也会赵丹泉水，无法阻止海量请求下的Dos（拒绝服务攻击）</li>
+</ul>
+<h4 id="验证对手的证书"><a href="#验证对手的证书" class="headerlink" title="验证对手的证书"></a>验证对手的证书</h4><blockquote>
+<p>ssl不仅提供加密处理，而且还提供了一种被称为证书的手段，可用于确定通信方。<br><strong>证书</strong>由值得信任的第三方机构颁发，用于证明服务器和客户端是实际存在的，另外伪造证书的技术难度是很大的</p>
+</blockquote>
+<h3 id="7-1-4-无法证明报文完整性，可能已遭篡改"><a href="#7-1-4-无法证明报文完整性，可能已遭篡改" class="headerlink" title="7.1.4 无法证明报文完整性，可能已遭篡改"></a>7.1.4 无法证明报文完整性，可能已遭篡改</h3><h4 id="接收到的内容可能有误"><a href="#接收到的内容可能有误" class="headerlink" title="接收到的内容可能有误"></a>接收到的内容可能有误</h4><p>由于http协议无法验证报文的完整性，因此没法确认内容有误或者遭篡改（比如MITM中间人攻击）</p>
+<h4 id="如何防止篡改"><a href="#如何防止篡改" class="headerlink" title="如何防止篡改"></a>如何防止篡改</h4><blockquote>
+<p>最常用的方法是MD5和SHA-1等散列值校验的方法，以及用数字签名</p>
+</blockquote>
+<p>可惜的是，用这些方法也依然无法保证安全性，因为其本身遭篡改的话，用户还是没法查觉，我们还是必须要用到https</p>
+<h2 id="7-2-http-加密-认证-完整性保护-https"><a href="#7-2-http-加密-认证-完整性保护-https" class="headerlink" title="7.2 http+加密+认证+完整性保护 = https"></a>7.2 http+加密+认证+完整性保护 = https</h2><blockquote>
+<p>https并非是应用层的一种新协议，只是http通信接口部分用ssl和tls协议代替。通常情况下，http直接与tcp通信，当使用ssl时，则变成先和ssl通信，再有ssl和tcp通信</p>
+</blockquote>
+<h2 id="7-3-https的一些弊病"><a href="#7-3-https的一些弊病" class="headerlink" title="7.3 https的一些弊病"></a>7.3 https的一些弊病</h2><p>https也存在一些问题，也就是它的处理速度会变慢。</p>
+<p>慢分为两个层面，一个是通信慢，另一种是占用cpu，导致处理速度慢</p>
+<p>和使用http相比，网络负载可能会变慢<strong>2到100倍</strong>。</p>
+<p>针对速度变慢这个特点，并没有根本性的解决方法，我们会采用ssl加速器（专门针对服务器）这种硬件来改善</p>
+<p>所以一般来说，网站里只需要对包含个人信息等敏感数据时采用https加密通信</p>
+<p>特别是那些访问量较多的web网站在进行加密处理时，它们所承担的负载不容小觑，并非所有的内容都加密，仅在需要隐藏信息的内容时才进行加密，以节约资源</p>
+<p>除此之外，想要节约购买证书的开销也是原因之一</p>
+<h1 id="8-确认访问用户身份的验证"><a href="#8-确认访问用户身份的验证" class="headerlink" title="8.确认访问用户身份的验证"></a>8.确认访问用户身份的验证</h1><h2 id="8-1-BASIC认证"><a href="#8-1-BASIC认证" class="headerlink" title="8.1 BASIC认证"></a>8.1 BASIC认证</h2><p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526608271186.png" alt=""></p>
+<blockquote>
+<p>BASIC认证虽然是采用了Base64编码方式，但这不是加密处理，<strong>不需要任何附加信息就可以解码，换而言之，就等于是明文发送密码和账户</strong>，如果被人窃听，被盗的几率很高</p>
+</blockquote>
+<h2 id="8-2-DIGEST认证"><a href="#8-2-DIGEST认证" class="headerlink" title="8.2 DIGEST认证"></a>8.2 DIGEST认证</h2><p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526608448753.png" alt=""></p>
+<blockquote>
+<p>由于发送给对方的只是由质询码产生的计算结果，所以比起BASIC，其泄露的可能性降低了很多</p>
+</blockquote>
+<h2 id="8-3-SSL客户端认证"><a href="#8-3-SSL客户端认证" class="headerlink" title="8.3 SSL客户端认证"></a>8.3 SSL客户端认证</h2><p>一般的机制下，只要账户和密码正确，就可以认证是本人的行为，但如果用户的ID和密码被盗，就有很大的可能被冒充，利用ssl客户端则可以避免该情况的发生</p>
+<p>一般来说，ssl客户端认证是<strong>证书+密码</strong>双重机制来保证安全</p>
+<h2 id="8-4-基于表单的认证"><a href="#8-4-基于表单的认证" class="headerlink" title="8.4 基于表单的认证"></a>8.4 基于表单的认证</h2><blockquote>
+<p>由于使用上的便利性以及安全性问题，BASIC和DIGEST认证几乎不怎么使用。另外SSL客户端认证虽然有较高的安全等级，但因为维持费用的问题，还尚未普及。目前web尚多半为各自实现的基于表单的认证方式</p>
+</blockquote>
+<h1 id="9-基于HTTP的功能追加协议"><a href="#9-基于HTTP的功能追加协议" class="headerlink" title="9. 基于HTTP的功能追加协议"></a>9. 基于HTTP的功能追加协议</h1><h2 id="9-1-消除HTTP瓶颈的SPDY"><a href="#9-1-消除HTTP瓶颈的SPDY" class="headerlink" title="9.1 消除HTTP瓶颈的SPDY"></a>9.1 消除HTTP瓶颈的SPDY</h2><h3 id="9-1-1-HTTP的瓶颈"><a href="#9-1-1-HTTP的瓶颈" class="headerlink" title="9.1.1 HTTP的瓶颈"></a>9.1.1 HTTP的瓶颈</h3><ul>
+<li>一条连接上只可发送一个请求</li>
+<li>请求只能从客户端开始，客户端不可以接受除响应之外的指令</li>
+<li>请求/响应首部未经过压缩就发送，首部信息越多延迟越大</li>
+<li>发送冗长的首部，每次互相发送相同的首部造成的浪费越大</li>
+<li>可任意选择数据压缩格式，非强制压缩放送</li>
+</ul>
+<h3 id="9-1-2-SPDY的设计与功能"><a href="#9-1-2-SPDY的设计与功能" class="headerlink" title="9.1.2 SPDY的设计与功能"></a>9.1.2 SPDY的设计与功能</h3><p>它并没有完全改写HTTP协议，只是通过新加会话层的形式运作<br><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1526610952788.png" alt=""></p>
+<ul>
+<li>多路复用流。通过单一的tcp连接，可以无限制地处理多个HTTP请求</li>
+<li>赋予请求优先级</li>
+<li>压缩http首部</li>
+<li>推送功能。支持服务器主动向客户端推送数据的功能</li>
+<li>服务器提示功能</li>
+</ul>
+<h2 id="9-2-使用浏览器进行全双工通信的WebSocket"><a href="#9-2-使用浏览器进行全双工通信的WebSocket" class="headerlink" title="9.2 使用浏览器进行全双工通信的WebSocket"></a>9.2 使用浏览器进行全双工通信的WebSocket</h2><h3 id="9-2-1-功能"><a href="#9-2-1-功能" class="headerlink" title="9.2.1 功能"></a>9.2.1 功能</h3><ul>
+<li>推送功能</li>
+<li>减少通信量</li>
+<li>由于是建立在http基础上的协议，因此连接的发起方仍然是客户端，而一旦建立起WebSocket通信连接，双方都可以直接向对方发送报文</li>
+</ul>
+<h1 id="10-Web的攻击技术"><a href="#10-Web的攻击技术" class="headerlink" title="10. Web的攻击技术"></a>10. Web的攻击技术</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+<div>
+  
+    <div>
+    
+        <hr>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"><i class="fa fa-tag"></i> 计算机网络</a>
+          
+            <a href="/tags/http/" rel="tag"><i class="fa fa-tag"></i> http</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/07/毕设DEMO/" rel="next" title="毕设DEMO">
+                <i class="fa fa-chevron-left"></i> 毕设DEMO
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/23/python处理编码问题/" rel="prev" title="python处理编码问题">
+                python处理编码问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI4Mi83ODMx"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/image/avatar.png"
+                alt="Prozac" />
+            
+              <p class="site-author-name" itemprop="name">Prozac</p>
+              <p class="site-description motion-element" itemprop="description">childult</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/li-zhi-yuan-51-15/activities" target="_blank" title="知乎">
+                    知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/u/5889835963?refer_flag=1001030101_" target="_blank" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                不妨看看
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wdxtub.com/1997/09/11/booklist-page/" title="小土刀" target="_blank">小土刀</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhangwenli.com/" title="羡辙" target="_blank">羡辙</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-了解Web和网络技术基础"><span class="nav-number">1.</span> <span class="nav-text">1.了解Web和网络技术基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-网络基础TCP-IP"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 网络基础TCP/IP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-TCP-IP的分层管理"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 TCP/IP的分层管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用层"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传输层"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络层"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链路层"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">链路层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-TCP-IP通信传输流"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 TCP/IP通信传输流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-与HTTP关系密切的协议"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 与HTTP关系密切的协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-IP协议"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP地址"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC地址"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">MAC地址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-TCP协议"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 TCP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp的三次握手"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">tcp的三次握手</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-DNS服务"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3 DNS服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS污染和DNS劫持"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">DNS污染和DNS劫持</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3各种协议与HTTP协议的关系"><span class="nav-number">1.3.</span> <span class="nav-text">1.3各种协议与HTTP协议的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-URL和URI"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 URL和URI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-两者的区别"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1 两者的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-url的结构"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2 url的结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-简单的HTTP协议"><span class="nav-number">2.</span> <span class="nav-text">2. 简单的HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-HTTP协议用于客户端与服务器之间的通信"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 HTTP协议用于客户端与服务器之间的通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-HTTP是不保存状态的协议"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 HTTP是不保存状态的协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-HTTP方法"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 HTTP方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-持久连接"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 持久连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-持久连接的提出"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 持久连接的提出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-管线化"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 管线化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-使用cookie的状态管理"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 使用cookie的状态管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-HTTP报文内的HTTP信息"><span class="nav-number">3.</span> <span class="nav-text">3. HTTP报文内的HTTP信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-HTTP报文的结构"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 HTTP报文的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-编码提升传输速率"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 编码提升传输速率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-报文和实体的区别"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 报文和实体的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-分割发送的分块传输编码"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 分割发送的分块传输编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-获取部分内容的范围请求"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 获取部分内容的范围请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4内容协商"><span class="nav-number">3.4.</span> <span class="nav-text">3.4内容协商</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-返回结果的HTTP状态码"><span class="nav-number">4.</span> <span class="nav-text">4. 返回结果的HTTP状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2xx"><span class="nav-number">4.1.</span> <span class="nav-text">2xx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#200-OK"><span class="nav-number">4.1.1.</span> <span class="nav-text">200 OK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#204-No-Content"><span class="nav-number">4.1.2.</span> <span class="nav-text">204 No Content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#206-Partical-Content"><span class="nav-number">4.1.3.</span> <span class="nav-text">206 Partical Content</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3xx重定向"><span class="nav-number">4.2.</span> <span class="nav-text">3xx重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#301-Moved-Permantly"><span class="nav-number">4.2.1.</span> <span class="nav-text">301 Moved Permantly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#302-Not-Found"><span class="nav-number">4.2.2.</span> <span class="nav-text">302 Not Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#303-See-Other"><span class="nav-number">4.2.3.</span> <span class="nav-text">303 See Other</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#304-Not-Modified"><span class="nav-number">4.2.4.</span> <span class="nav-text">304 Not Modified</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#307-Temporary-Redirect"><span class="nav-number">4.2.5.</span> <span class="nav-text">307 Temporary Redirect</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4xx-客户端错误"><span class="nav-number">4.3.</span> <span class="nav-text">4xx 客户端错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#400-Bad-Request"><span class="nav-number">4.3.1.</span> <span class="nav-text">400 Bad Request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#401-Unauthorized"><span class="nav-number">4.3.2.</span> <span class="nav-text">401 Unauthorized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#403-Forbidden"><span class="nav-number">4.3.3.</span> <span class="nav-text">403 Forbidden</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#404-Not-Found"><span class="nav-number">4.3.4.</span> <span class="nav-text">404 Not Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5xx服务器错误"><span class="nav-number">4.4.</span> <span class="nav-text">5xx服务器错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#500-Internet-Server-Error"><span class="nav-number">4.4.1.</span> <span class="nav-text">500 Internet Server Error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#503-Service-Unavilable"><span class="nav-number">4.4.2.</span> <span class="nav-text">503 Service Unavilable</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-与HTTP协作的Web服务器"><span class="nav-number">5.</span> <span class="nav-text">5.与HTTP协作的Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-用单台虚拟主机实现多个域名"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 用单台虚拟主机实现多个域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-通信数据转发程序：代理，网关，隧道"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 通信数据转发程序：代理，网关，隧道</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代理"><span class="nav-number">5.2.1.</span> <span class="nav-text">代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存代理"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">缓存代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透明代理"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">透明代理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网关"><span class="nav-number">5.2.2.</span> <span class="nav-text">网关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隧道"><span class="nav-number">5.2.3.</span> <span class="nav-text">隧道</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-保存资源的缓存"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 保存资源的缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-HTTP首部"><span class="nav-number">6.</span> <span class="nav-text">6 HTTP首部</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-通用首部字段"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 通用首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cache-control"><span class="nav-number">6.1.1.</span> <span class="nav-text">cache-control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#connection"><span class="nav-number">6.1.2.</span> <span class="nav-text">connection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Date"><span class="nav-number">6.1.3.</span> <span class="nav-text">Date</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trailer"><span class="nav-number">6.1.4.</span> <span class="nav-text">Trailer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#via"><span class="nav-number">6.1.5.</span> <span class="nav-text">via</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-请求首部字段"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 请求首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#accept"><span class="nav-number">6.2.1.</span> <span class="nav-text">accept</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#accept-charset"><span class="nav-number">6.2.2.</span> <span class="nav-text">accept-charset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#accept-encoding"><span class="nav-number">6.2.3.</span> <span class="nav-text">accept-encoding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#accept-language"><span class="nav-number">6.2.4.</span> <span class="nav-text">accept-language</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#authorization"><span class="nav-number">6.2.5.</span> <span class="nav-text">authorization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#except"><span class="nav-number">6.2.6.</span> <span class="nav-text">except</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#host"><span class="nav-number">6.2.7.</span> <span class="nav-text">host</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-match"><span class="nav-number">6.2.8.</span> <span class="nav-text">if-match</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-modified-since"><span class="nav-number">6.2.9.</span> <span class="nav-text">if-modified-since</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-none-match"><span class="nav-number">6.2.10.</span> <span class="nav-text">if-none-match</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-range"><span class="nav-number">6.2.11.</span> <span class="nav-text">if-range</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-unmodified-since"><span class="nav-number">6.2.12.</span> <span class="nav-text">if-unmodified-since</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#max-forwards"><span class="nav-number">6.2.13.</span> <span class="nav-text">max-forwards</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#referer"><span class="nav-number">6.2.14.</span> <span class="nav-text">referer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#user-agent"><span class="nav-number">6.2.15.</span> <span class="nav-text">user-agent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-响应首部字段"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 响应首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#accept-ranges"><span class="nav-number">6.3.1.</span> <span class="nav-text">accept-ranges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etags"><span class="nav-number">6.3.2.</span> <span class="nav-text">etags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#location"><span class="nav-number">6.3.3.</span> <span class="nav-text">location</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#retry-after"><span class="nav-number">6.3.4.</span> <span class="nav-text">retry-after</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-实体首部字段"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 实体首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#allow"><span class="nav-number">6.4.1.</span> <span class="nav-text">allow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#content-encoding"><span class="nav-number">6.4.2.</span> <span class="nav-text">content-encoding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conten-type"><span class="nav-number">6.4.3.</span> <span class="nav-text">conten-type</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-确保web安全的HTTPS"><span class="nav-number">7.</span> <span class="nav-text">7. 确保web安全的HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-http的缺点"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 http的缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-1主要缺点"><span class="nav-number">7.1.1.</span> <span class="nav-text">7.1.1主要缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-2-加密手段"><span class="nav-number">7.1.2.</span> <span class="nav-text">7.1.2 加密手段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通信的加密"><span class="nav-number">7.1.2.1.</span> <span class="nav-text">通信的加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内容的加密"><span class="nav-number">7.1.2.2.</span> <span class="nav-text">内容的加密</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-3-不验证通信方的身份就可能遭遇伪装"><span class="nav-number">7.1.3.</span> <span class="nav-text">7.1.3 不验证通信方的身份就可能遭遇伪装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#验证对手的证书"><span class="nav-number">7.1.3.1.</span> <span class="nav-text">验证对手的证书</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-4-无法证明报文完整性，可能已遭篡改"><span class="nav-number">7.1.4.</span> <span class="nav-text">7.1.4 无法证明报文完整性，可能已遭篡改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接收到的内容可能有误"><span class="nav-number">7.1.4.1.</span> <span class="nav-text">接收到的内容可能有误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何防止篡改"><span class="nav-number">7.1.4.2.</span> <span class="nav-text">如何防止篡改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-http-加密-认证-完整性保护-https"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 http+加密+认证+完整性保护 = https</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-https的一些弊病"><span class="nav-number">7.3.</span> <span class="nav-text">7.3 https的一些弊病</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-确认访问用户身份的验证"><span class="nav-number">8.</span> <span class="nav-text">8.确认访问用户身份的验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1-BASIC认证"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 BASIC认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-DIGEST认证"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 DIGEST认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3-SSL客户端认证"><span class="nav-number">8.3.</span> <span class="nav-text">8.3 SSL客户端认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-4-基于表单的认证"><span class="nav-number">8.4.</span> <span class="nav-text">8.4 基于表单的认证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-基于HTTP的功能追加协议"><span class="nav-number">9.</span> <span class="nav-text">9. 基于HTTP的功能追加协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1-消除HTTP瓶颈的SPDY"><span class="nav-number">9.1.</span> <span class="nav-text">9.1 消除HTTP瓶颈的SPDY</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-1-HTTP的瓶颈"><span class="nav-number">9.1.1.</span> <span class="nav-text">9.1.1 HTTP的瓶颈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-2-SPDY的设计与功能"><span class="nav-number">9.1.2.</span> <span class="nav-text">9.1.2 SPDY的设计与功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2-使用浏览器进行全双工通信的WebSocket"><span class="nav-number">9.2.</span> <span class="nav-text">9.2 使用浏览器进行全双工通信的WebSocket</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-1-功能"><span class="nav-number">9.2.1.</span> <span class="nav-text">9.2.1 功能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-Web的攻击技术"><span class="nav-number">10.</span> <span class="nav-text">10. Web的攻击技术</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-superpowers"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Prozac</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客全站共 </span>
+    
+    <span title="Site words total count">98.5k字</span>
+  
+</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"> 访问人数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  <script>
+　　window.onload = function(){
+　　　　//resize canvas
+　　　　$(window).resize(resizeCanvas);  
+   
+ function resizeCanvas() {  
+ 		  var canvas= $('.fireworks')[0];
+   
+        canvas.height = window.innerHeight;  
+   
+        canvas.width = window.innerWidth; 
+        
+        //console.log(canvas.width,canvas.height);
+ };  
+   
+ resizeCanvas();  
+　　}
+</script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3" style=“z-index: -2”></script>
+
+
+  
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script src="/js/src/anime.min.js"></script>
+  <script src="/js/src/fireworks.js"></script>
+</body>
+</html>
+

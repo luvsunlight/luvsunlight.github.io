@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon.ico?v=5.1.3">
+
+
+
+
+
+
+
+  <meta name="keywords" content="npm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Prozac’s blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="只要你做前端，就必定躲不开npm这个工具。这篇文章总结了npm的入门和对应的指令">
+<meta name="keywords" content="npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm使用指南">
+<meta property="og:url" content="http://yoursite.com/2018/09/27/npm使用指南/index.html">
+<meta property="og:site_name" content="Prozac’s blog">
+<meta property="og:description" content="只要你做前端，就必定躲不开npm这个工具。这篇文章总结了npm的入门和对应的指令">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-05T02:32:28.248Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm使用指南">
+<meta name="twitter:description" content="只要你做前端，就必定躲不开npm这个工具。这篇文章总结了npm的入门和对应的指令">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/27/npm使用指南/"/>
+
+
+
+
+
+  <title>npm使用指南 | Prozac’s blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?baa516ebafd206feff7899dff7e4a966";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+<canvas class="fireworks" style="width: 1226px; height: 680px;position: fixed;left: 0;top: 0; z-index: 1; pointer-events: none" ></canvas>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Prozac’s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录学习的技能和遇到的问题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-生活">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gratipay"></i> <br />
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/27/npm使用指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prozac">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prozac’s blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">npm使用指南</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-27T21:16:08+08:00">
+                2018-09-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-05T10:32:28+08:00">
+                2018-10-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统学习/" itemprop="url" rel="index">
+                    <span itemprop="name">系统学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">浏览量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,651字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+	
+      
+      
+
+      
+	<hr>
+        <p>只要你做前端，就必定躲不开npm这个工具。这篇文章总结了npm的入门和对应的指令<br><a id="more"></a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="npm是什么？"><a href="#npm是什么？" class="headerlink" title="npm是什么？"></a>npm是什么？</h2><p>要说npm是什么，首先要说<a href="http://nodejs.cn/" target="_blank" rel="external">node</a>是什么。</p>
+<blockquote>
+<p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。Node.js 的包管理器 npm，是全球最大的开源库生态系统。</p>
+</blockquote>
+<p>处于安全性等方面的考虑，原本只能存在于浏览器环境的js存在诸多限制比如IO操作，或者是读取本地文件，nodejs的存在，让js可以在系统环境下运行，这大大提升了js的发挥空间</p>
+<p>npm（node package manager）顾名思义即node的包管理工具</p>
+<blockquote>
+<p>为啥我们需要一个包管理工具呢？因为我们在Node.js上开发时，会用到很多别人写的JavaScript代码。如果我们要使用别人写的某个包，每次都根据名称搜索一下官方网站，下载代码，解压，再使用，非常繁琐。于是一个集中管理的工具应运而生：大家都把自己开发的模块打包后放到npm官网上，如果要使用，直接通过npm安装就可以直接用，不用管代码存在哪，应该从哪下载。<br>更重要的是，如果我们要使用模块A，而模块A又依赖于模块B，模块B又依赖于模块X和模块Y，npm可以根据依赖关系，把所有依赖的包都下载下来并管理起来。否则，靠我们自己手动管理，肯定既麻烦又容易出错。</p>
+</blockquote>
+<h1 id="npm-指令"><a href="#npm-指令" class="headerlink" title="npm 指令"></a>npm 指令</h1><p>注：</p>
+<blockquote>
+<p>在npm中，包（package）、模块（module）、依赖（dependency）说的都是一回事儿。</p>
+</blockquote>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li><code>npm init</code> 初始化项目，其实就是创建一个package.json文件。</li>
+<li><code>npm install</code> 安装所有项目依赖。</li>
+<li><code>npm help xxx</code> 查看xxx命令的帮助信息。</li>
+</ul>
+<h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><ul>
+<li><code>npm -g install npm</code></li>
+</ul>
+<h2 id="设置npm配置"><a href="#设置npm配置" class="headerlink" title="设置npm配置"></a>设置npm配置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm config set &lt;key&gt; <span class="xml"><span class="tag">&lt;<span class="name">value</span>&gt;</span> [–global]</span></div></pre></td></tr></table></figure>
+<h3 id="查看npm配置"><a href="#查看npm配置" class="headerlink" title="查看npm配置"></a>查看npm配置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm config ls</div></pre></td></tr></table></figure>
+<h3 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm config set proxy=http:<span class="comment">//xx.xx.xx.xx:8080</span></div></pre></td></tr></table></figure>
+<h3 id="设置npm的镜像源"><a href="#设置npm的镜像源" class="headerlink" title="设置npm的镜像源"></a>设置npm的镜像源</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm config set registry https:<span class="comment">//registry.npm.taobao.org</span></div></pre></td></tr></table></figure>
+<h2 id="发布项目到npm"><a href="#发布项目到npm" class="headerlink" title="发布项目到npm"></a>发布项目到npm</h2><p>1.在官网注册npm账号</p>
+<p>2.用户验证，命令行执行</p>
+<blockquote>
+<p>npm adduser</p>
+</blockquote>
+<p>3.发布模块，在模块的根文件夹执行</p>
+<blockquote>
+<p>npm publish</p>
+</blockquote>
+<p>4.更新版本</p>
+<blockquote>
+<p>如果是git库时，会为新版本号创建一条提交信息，package版本号会自动递增。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm version <span class="number">0.0</span><span class="number">.4</span></div><div class="line">npm publish</div></pre></td></tr></table></figure>
+<h2 id="npm-search-搜索（快捷方式：find-s）"><a href="#npm-search-搜索（快捷方式：find-s）" class="headerlink" title="npm search 搜索（快捷方式：find, s）"></a>npm search 搜索（快捷方式：find, s）</h2><ul>
+<li><code>xxx</code> 搜索xxx 如：npm search jquery。</li>
+</ul>
+<h2 id="npm-install-安装-（快捷方式：i）"><a href="#npm-install-安装-（快捷方式：i）" class="headerlink" title="npm install 安装 （快捷方式：i）"></a>npm install 安装 （快捷方式：i）</h2><ul>
+<li>xxx 搜索并安装xxx（局部）。安装多个依赖可用空格分割，如npm i jquery bootstrap。</li>
+<li>xxx -g 搜索并安装xxx（全局）。安装多个同上。</li>
+<li>xxx -D 安装并将依赖信息写在package.json中的devDependencies中。</li>
+<li>快捷方式 i均可，如npm i jquery。</li>
+<li>xxx@版本号 指定需要安装的版本号，若不指定将安装最新的稳定版本。</li>
+</ul>
+<h2 id="npm-uninstall-卸载（快捷方式：rm-r）"><a href="#npm-uninstall-卸载（快捷方式：rm-r）" class="headerlink" title="npm uninstall 卸载（快捷方式：rm, r）"></a>npm uninstall 卸载（快捷方式：rm, r）</h2><ul>
+<li>xxx 卸载xxx。多个依赖可用空格分割。</li>
+<li>xxx -D 卸载xxx，并将依赖信息从package.json中的devDependencies中清除。</li>
+</ul>
+<h2 id="npm-list-列出已安装依赖（快捷方式：ls）"><a href="#npm-list-列出已安装依赖（快捷方式：ls）" class="headerlink" title="npm list 列出已安装依赖（快捷方式：ls）"></a>npm list 列出已安装依赖（快捷方式：ls）</h2><ul>
+<li>默认列出局部依赖。</li>
+<li>npm list -g 列出已安装的全局依赖。</li>
+</ul>
+<h2 id="npm-outdated-检查过期依赖"><a href="#npm-outdated-检查过期依赖" class="headerlink" title="npm outdated 检查过期依赖"></a>npm outdated 检查过期依赖</h2><h2 id="npm-update-更新依赖（快捷方式：up）"><a href="#npm-update-更新依赖（快捷方式：up）" class="headerlink" title="npm update 更新依赖（快捷方式：up）"></a>npm update 更新依赖（快捷方式：up）</h2><ul>
+<li>xxx 局部更新xxx。</li>
+<li>xxx -g 全局更新xxx。</li>
+</ul>
+<h2 id="npm-root-查看依赖安装路径（也就是node-modules的路径）"><a href="#npm-root-查看依赖安装路径（也就是node-modules的路径）" class="headerlink" title="npm root 查看依赖安装路径（也就是node_modules的路径）"></a>npm root 查看依赖安装路径（也就是node_modules的路径）</h2><ul>
+<li>默认查看局部安装路径。</li>
+<li>-g 查看全局安装路径。</li>
+</ul>
+<h2 id="npm-view-查看模块的注册信息"><a href="#npm-view-查看模块的注册信息" class="headerlink" title="npm view 查看模块的注册信息"></a>npm view 查看模块的注册信息</h2><ul>
+<li>xxx versions 列出xxx的所有版本， 如：npm view jquery versions。</li>
+<li>xxx dependencies 列出xxx的所有依赖， 如：npm view gulp dependencies。</li>
+</ul>
+<h2 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h2><blockquote>
+<p>npm run <em>*</em></p>
+</blockquote>
+<h1 id="nvm-指令"><a href="#nvm-指令" class="headerlink" title="nvm 指令"></a>nvm 指令</h1><h2 id="nvm是什么"><a href="#nvm是什么" class="headerlink" title="nvm是什么"></a>nvm是什么</h2><blockquote>
+<p>在我们的日常开发中经常会遇到这种情况：手上有好几个项目，每个项目的需求不同，进而不同项目必须依赖不同版的 NodeJS 运行环境。如果没有一个合适的工具，这个问题将非常棘手。</p>
+</blockquote>
+<p>nvm 应运而生，nvm 是 Mac 下的 node 管理工具，有点类似管理 Ruby 的 rvm，如果需要管理 Windows 下的 node，官方推荐使用 nvmw 或 nvm-windows。不过，nvm-windows 并不是 nvm 的简单移植，他们也没有任何关系。但下面介绍的所有命令，都可以在 nvm-windows 中运行。</p>
+<h2 id="安装多版本的node-npm"><a href="#安装多版本的node-npm" class="headerlink" title="安装多版本的node/npm"></a>安装多版本的node/npm</h2><p>例如，我们要安装4.2.2版本，可以用如下命令：</p>
+<blockquote>
+<p>nvm install 4.2.2</p>
+</blockquote>
+<p>nvm 遵守语义化版本命名规则。例如，你想安装最新的 4.2 系列的最新的一个版本的话，可以运行：</p>
+<blockquote>
+<p>nvm install 4.2</p>
+</blockquote>
+<p>nvm 会寻找 4.2.x 中最高的版本来安装。</p>
+<p>你可以通过以下命令来列出远程服务器上所有的可用版本：</p>
+<blockquote>
+<p>nvm ls-remote</p>
+</blockquote>
+<h2 id="在多个版本中个切换"><a href="#在多个版本中个切换" class="headerlink" title="在多个版本中个切换"></a>在多个版本中个切换</h2><p>每当我们安装了一个新版本 Node 后，全局环境会自动把这个新版本设置为默认。</p>
+<p>nvm 提供了 nvm use 命令。这个命令的使用方法和 install 命令类似。</p>
+<p>例如，切换到 4.2.2：</p>
+<blockquote>
+<p>nvm use 4.2.2</p>
+</blockquote>
+<h2 id="列出已安装实例"><a href="#列出已安装实例" class="headerlink" title="列出已安装实例"></a>列出已安装实例</h2><blockquote>
+<p>nvm ls</p>
+</blockquote>
+<h2 id="在项目中使用不同版本的-Node"><a href="#在项目中使用不同版本的-Node" class="headerlink" title="在项目中使用不同版本的 Node"></a>在项目中使用不同版本的 Node</h2><p>我们可以通过创建项目目录中的 .nvmrc 文件来指定要使用的 Node 版本。之后在项目目录中执行 nvm use 即可。.nvmrc 文件内容只需要遵守上文提到的语义化版本规则即可。另外还有个工具叫做 avn，可以自动化这个过程。</p>
+<h2 id="在多环境中，npm该如何使用呢？"><a href="#在多环境中，npm该如何使用呢？" class="headerlink" title="在多环境中，npm该如何使用呢？"></a>在多环境中，npm该如何使用呢？</h2><p>每个版本的 Node 都会自带一个不同版本的 npm，可以用 npm -v 来查看 npm 的版本。全局安装的 npm 包并不会在不同的 Node 环境中共享，因为这会引起兼容问题。它们被放在了不同版本的目录下，例如 <code>~/.nvm/versions/node/&lt;version&gt;/lib/node_modules&lt;/version&gt;</code> 这样的目录。这刚好也省去我们在 Linux 中使用 sudo 的功夫了。因为这是用户的主文件夹，并不会引起权限问题。</p>
+<p>但问题来了，我们安装过的 npm 包，都要重新再装一次？幸运的是，我们有个办法来解决我们的问题，运行下面这个命令，可以从特定版本导入到我们将要安装的新版本 Node：</p>
+<blockquote>
+<p>nvm install v5.0.0 –reinstall-packages-from=4.2</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+<div>
+  
+    <div>
+    
+        <hr>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/npm/" rel="tag"><i class="fa fa-tag"></i> npm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/26/ES5和ES6全面入门/" rel="next" title="ES6和ES7全面入门">
+                <i class="fa fa-chevron-left"></i> ES6和ES7全面入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/29/设计模式/" rel="prev" title="设计模式">
+                设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI4Mi83ODMx"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/image/avatar.png"
+                alt="Prozac" />
+            
+              <p class="site-author-name" itemprop="name">Prozac</p>
+              <p class="site-description motion-element" itemprop="description">childult</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/li-zhi-yuan-51-15/activities" target="_blank" title="知乎">
+                    知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/u/5889835963?refer_flag=1001030101_" target="_blank" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                不妨看看
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wdxtub.com/1997/09/11/booklist-page/" title="小土刀" target="_blank">小土刀</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhangwenli.com/" title="羡辙" target="_blank">羡辙</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#npm是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">npm是什么？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-指令"><span class="nav-number">2.</span> <span class="nav-text">npm 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级"><span class="nav-number">2.2.</span> <span class="nav-text">升级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置npm配置"><span class="nav-number">2.3.</span> <span class="nav-text">设置npm配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看npm配置"><span class="nav-number">2.3.1.</span> <span class="nav-text">查看npm配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置代理"><span class="nav-number">2.3.2.</span> <span class="nav-text">设置代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置npm的镜像源"><span class="nav-number">2.3.3.</span> <span class="nav-text">设置npm的镜像源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布项目到npm"><span class="nav-number">2.4.</span> <span class="nav-text">发布项目到npm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-search-搜索（快捷方式：find-s）"><span class="nav-number">2.5.</span> <span class="nav-text">npm search 搜索（快捷方式：find, s）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-install-安装-（快捷方式：i）"><span class="nav-number">2.6.</span> <span class="nav-text">npm install 安装 （快捷方式：i）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-uninstall-卸载（快捷方式：rm-r）"><span class="nav-number">2.7.</span> <span class="nav-text">npm uninstall 卸载（快捷方式：rm, r）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-list-列出已安装依赖（快捷方式：ls）"><span class="nav-number">2.8.</span> <span class="nav-text">npm list 列出已安装依赖（快捷方式：ls）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-outdated-检查过期依赖"><span class="nav-number">2.9.</span> <span class="nav-text">npm outdated 检查过期依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-update-更新依赖（快捷方式：up）"><span class="nav-number">2.10.</span> <span class="nav-text">npm update 更新依赖（快捷方式：up）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-root-查看依赖安装路径（也就是node-modules的路径）"><span class="nav-number">2.11.</span> <span class="nav-text">npm root 查看依赖安装路径（也就是node_modules的路径）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-view-查看模块的注册信息"><span class="nav-number">2.12.</span> <span class="nav-text">npm view 查看模块的注册信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行脚本"><span class="nav-number">2.13.</span> <span class="nav-text">执行脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nvm-指令"><span class="nav-number">3.</span> <span class="nav-text">nvm 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nvm是什么"><span class="nav-number">3.1.</span> <span class="nav-text">nvm是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装多版本的node-npm"><span class="nav-number">3.2.</span> <span class="nav-text">安装多版本的node/npm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在多个版本中个切换"><span class="nav-number">3.3.</span> <span class="nav-text">在多个版本中个切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列出已安装实例"><span class="nav-number">3.4.</span> <span class="nav-text">列出已安装实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在项目中使用不同版本的-Node"><span class="nav-number">3.5.</span> <span class="nav-text">在项目中使用不同版本的 Node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在多环境中，npm该如何使用呢？"><span class="nav-number">3.6.</span> <span class="nav-text">在多环境中，npm该如何使用呢？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-superpowers"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Prozac</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客全站共 </span>
+    
+    <span title="Site words total count">98.5k字</span>
+  
+</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"> 访问人数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  <script>
+　　window.onload = function(){
+　　　　//resize canvas
+　　　　$(window).resize(resizeCanvas);  
+   
+ function resizeCanvas() {  
+ 		  var canvas= $('.fireworks')[0];
+   
+        canvas.height = window.innerHeight;  
+   
+        canvas.width = window.innerWidth; 
+        
+        //console.log(canvas.width,canvas.height);
+ };  
+   
+ resizeCanvas();  
+　　}
+</script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3" style=“z-index: -2”></script>
+
+
+  
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script src="/js/src/anime.min.js"></script>
+  <script src="/js/src/fireworks.js"></script>
+</body>
+</html>
+

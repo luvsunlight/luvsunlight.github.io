@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon.ico?v=5.1.3">
+
+
+
+
+
+
+
+  <meta name="keywords" content="atom,编辑器," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Prozac’s blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="之前写前端一直使用的是webstorm,这个ide很好，功能也集成得不错，但是缺点太显著那就是慢，启动慢，打字有时候还会卡帧，这导致我不得不寻找一个轻量级的替代品，这次我考虑的有vsc和atom，最终还是决定使用atom，理由就是好看且顺手。我从今天上午开始到现在已经下载了很多好用的插件，写了这篇博客来梳理一下思绪">
+<meta name="keywords" content="atom,编辑器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Atom改造计划">
+<meta property="og:url" content="http://yoursite.com/2017/10/19/Atom改造计划/index.html">
+<meta property="og:site_name" content="Prozac’s blog">
+<meta property="og:description" content="之前写前端一直使用的是webstorm,这个ide很好，功能也集成得不错，但是缺点太显著那就是慢，启动慢，打字有时候还会卡帧，这导致我不得不寻找一个轻量级的替代品，这次我考虑的有vsc和atom，最终还是决定使用atom，理由就是好看且顺手。我从今天上午开始到现在已经下载了很多好用的插件，写了这篇博客来梳理一下思绪">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1508417989030.png">
+<meta property="og:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1508423304575.png">
+<meta property="og:updated_time" content="2017-11-07T01:05:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Atom改造计划">
+<meta name="twitter:description" content="之前写前端一直使用的是webstorm,这个ide很好，功能也集成得不错，但是缺点太显著那就是慢，启动慢，打字有时候还会卡帧，这导致我不得不寻找一个轻量级的替代品，这次我考虑的有vsc和atom，最终还是决定使用atom，理由就是好看且顺手。我从今天上午开始到现在已经下载了很多好用的插件，写了这篇博客来梳理一下思绪">
+<meta name="twitter:image" content="http://oy2kvpd7z.bkt.clouddn.com/md/1508417989030.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/19/Atom改造计划/"/>
+
+
+
+
+
+  <title>Atom改造计划 | Prozac’s blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?baa516ebafd206feff7899dff7e4a966";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+<canvas class="fireworks" style="width: 1226px; height: 680px;position: fixed;left: 0;top: 0; z-index: 1; pointer-events: none" ></canvas>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Prozac’s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录学习的技能和遇到的问题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-生活">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gratipay"></i> <br />
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/19/Atom改造计划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prozac">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prozac’s blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Atom改造计划</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T13:47:46+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-07T09:05:29+08:00">
+                2017-11-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统学习/" itemprop="url" rel="index">
+                    <span itemprop="name">系统学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">浏览量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  923字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+	
+      
+      
+
+      
+	<hr>
+        <blockquote>
+<p>之前写前端一直使用的是<code>webstorm</code>,这个ide很好，功能也集成得不错，但是缺点太显著那就是慢，启动慢，打字有时候还会卡帧，这导致我不得不寻找一个轻量级的替代品，这次我考虑的有<code>vsc</code>和<code>atom</code>，最终还是决定使用atom，理由就是好看且顺手。我从今天上午开始到现在已经下载了很多好用的插件，写了这篇博客来梳理一下思绪</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="关于atom"><a href="#关于atom" class="headerlink" title="关于atom"></a>关于atom</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>atom是<code>github</code>出版的编辑器，插件也非常丰富。<a href="https://atom.io/" target="_blank" rel="external">官网</a></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="http://www.cnblogs.com/fuhuixiang/p/4840866.html" target="_blank" rel="external">1</a></li>
+<li><a href="https://github.com/shery15/awesome-atom-packages/blob/master/README-zh.md" target="_blank" rel="external">2</a></li>
+</ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>UI好看(感觉比spacemacs还好看)<br><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1508417989030.png" alt=""></li>
+<li>前端友好</li>
+<li>插件市场简便且强大</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>在介绍atom配置之前首先需要更改一下源（参考<a href="http://blog.csdn.net/qianghaohao/article/details/52331432" target="_blank" rel="external">这篇文章</a>），我最开始的时候就没有改，下载速度非常慢而且易出错，f**kGFW！</p>
+<p>首先找到这个路径<code>\Users\用户名\.atom</code>，在这个下面新建一个<code>.apmrc</code>的文件，代码如下</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">registry</span>=https://registry.npm.taobao.org/  </div><div class="line"><span class="attr">strict-ssl</span>=<span class="literal">false</span></div></pre></td></tr></table></figure>
+<p>也就是把源换成淘宝源（brew，npm，pip也应该同理换一下，当然这就不是本文的讨论范围了）</p>
+<h2 id="atom安装插件"><a href="#atom安装插件" class="headerlink" title="atom安装插件"></a>atom安装插件</h2><h3 id="应用内打开"><a href="#应用内打开" class="headerlink" title="应用内打开"></a>应用内打开</h3><p>我更偏爱这种方法，一是简单，而是内容也更丰富（可以看到评价和简介）mac下直接按<code>command + ,</code>，在里面找到<code>install</code>栏即可</p>
+<h3 id="终端安装"><a href="#终端安装" class="headerlink" title="终端安装"></a>终端安装</h3><p><code>apm install + 插件名</code>，不太推荐这种方法，不要为了装逼冒这个风险。python，node都可以通过终端安装包，但atom没必要，应用内更丰富且易定制。</p>
+<h2 id="atom快捷键"><a href="#atom快捷键" class="headerlink" title="atom快捷键"></a>atom快捷键</h2><ul>
+<li><code>command+\</code> toggle文件夹</li>
+<li><code>command+p</code> 查找文件</li>
+<li><code>command+enter</code>跳转到下一行</li>
+<li><code>command+k  + 方向键</code>分屏</li>
+</ul>
+<h1 id="插件篇"><a href="#插件篇" class="headerlink" title="插件篇"></a>插件篇</h1><h2 id="主题插件"><a href="#主题插件" class="headerlink" title="主题插件"></a>主题插件</h2><h3 id="atom-material-ui"><a href="#atom-material-ui" class="headerlink" title="atom-material-ui"></a>atom-material-ui</h3><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><ul>
+<li>git-plus<br>这个方便git使用，我之后写git的文章时会结合这个来说的（主要是方便我这种不记命令的懒人XD）<br>##markdown<br>说一下，我最开始的时候也是想把atom改造成一个markdown编辑器的，后来尝试了很多插件，最后发现还是<code>macdown</code>好用，配色鲜明（这个很重要）+空间大（屏幕小的痛）</li>
+</ul>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="project-manager"><a href="#project-manager" class="headerlink" title="project-manager"></a>project-manager</h3><p>暂时没有搞明白</p>
+<h3 id="file-icons"><a href="#file-icons" class="headerlink" title="file-icons"></a>file-icons</h3><p>为文件添加各种icon，方便识别</p>
+<h3 id="expose"><a href="#expose" class="headerlink" title="expose"></a>expose</h3><p>主要就是呈现跟手机端一样，当tab栏过多时，按下<code>comamnd+shift+e</code>查看所有的tab</p>
+<h2 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h2><h3 id="emmet"><a href="#emmet" class="headerlink" title="emmet"></a>emmet</h3><p>不解释</p>
+<h3 id="auto-completepaths"><a href="#auto-completepaths" class="headerlink" title="auto-completepaths"></a>auto-completepaths</h3><p>文件路径补全</p>
+<h3 id="autocomplete-modules"><a href="#autocomplete-modules" class="headerlink" title="autocomplete-modules"></a>autocomplete-modules</h3><p>自动补全模组名</p>
+<h3 id="atom-ternjs"><a href="#atom-ternjs" class="headerlink" title="atom-ternjs"></a>atom-ternjs</h3><p>ES5, ES6, ES7, Node.js, jQuery, Angular 等等 js 代码自动补全</p>
+<h3 id="css-snippets"><a href="#css-snippets" class="headerlink" title="css-snippets"></a>css-snippets</h3><h2 id="代码检查"><a href="#代码检查" class="headerlink" title="代码检查"></a>代码检查</h2><h3 id="linter"><a href="#linter" class="headerlink" title="linter"></a>linter</h3><p>这是一个系列，主要作用是代码优化和检测</p>
+<h3 id="linter-jshint"><a href="#linter-jshint" class="headerlink" title="linter-jshint"></a>linter-jshint</h3><p>基于 jshint 的 JavaScript 语法检查插件</p>
+<h3 id="linter-eslint"><a href="#linter-eslint" class="headerlink" title="linter-eslint"></a>linter-eslint</h3><p>基于 ESLint 的 JavaScript 语法检查插件</p>
+<h3 id="linter-htmlhint"><a href="#linter-htmlhint" class="headerlink" title="linter-htmlhint"></a>linter-htmlhint</h3><h3 id="linter-jsonhint"><a href="#linter-jsonhint" class="headerlink" title="linter-jsonhint"></a>linter-jsonhint</h3><h3 id="linter-csslint"><a href="#linter-csslint" class="headerlink" title="linter-csslint"></a>linter-csslint</h3><h2 id="前端细节"><a href="#前端细节" class="headerlink" title="前端细节"></a>前端细节</h2><h3 id="autoprefixer"><a href="#autoprefixer" class="headerlink" title="autoprefixer"></a>autoprefixer</h3><p>这个是用来解决兼容性前缀的，你只需要写完之后，使用控制命令调用<code>autofixer</code>即可，非常方便</p>
+<h3 id="open-in-browser"><a href="#open-in-browser" class="headerlink" title="open-in-browser"></a>open-in-browser</h3><p>按下组合键<code>control+alt+o</code>，即可使用默认浏览器打开当前html（默认是chrome），当然也可以通过底栏的按钮来打开html</p>
+<h3 id="hyperclick"><a href="#hyperclick" class="headerlink" title="hyperclick"></a>hyperclick</h3><h3 id="js-hyperclick"><a href="#js-hyperclick" class="headerlink" title="js-hyperclick"></a>js-hyperclick</h3><h2 id="拓展功能"><a href="#拓展功能" class="headerlink" title="拓展功能"></a>拓展功能</h2><h3 id="color-picker"><a href="#color-picker" class="headerlink" title="color-picker"></a>color-picker</h3><p><code>conmand+shift+c</code>直接显示出选色器，非常方便！！！！</p>
+<h3 id="docblockr"><a href="#docblockr" class="headerlink" title="docblockr"></a>docblockr</h3><p>这个功能<strong>非常强大</strong>，可定制型也比较高…我琢磨了很久也只挖掘了几个我目前暂时能用到的。主打功能：高级注释。<code>/*</code>或<code>/**</code>之后按下<code>tab</code>，就能自动转化成批量注释。另外，在函数前使用这个功能，就能自动衍生出有关函数的相关注释</p>
+<h3 id="minimap"><a href="#minimap" class="headerlink" title="minimap"></a>minimap</h3><p><img src="http://oy2kvpd7z.bkt.clouddn.com/md/1508423304575.png" alt=""><br>缩略图</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+<div>
+  
+    <div>
+    
+        <hr>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/atom/" rel="tag"><i class="fa fa-tag"></i> atom</a>
+          
+            <a href="/tags/编辑器/" rel="tag"><i class="fa fa-tag"></i> 编辑器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/18/近期开荒计划/" rel="next" title="近期开荒计划">
+                <i class="fa fa-chevron-left"></i> 近期开荒计划
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/19/一键图床指南/" rel="prev" title="一键图床指南">
+                一键图床指南 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTI4Mi83ODMx"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/image/avatar.png"
+                alt="Prozac" />
+            
+              <p class="site-author-name" itemprop="name">Prozac</p>
+              <p class="site-description motion-element" itemprop="description">childult</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/li-zhi-yuan-51-15/activities" target="_blank" title="知乎">
+                    知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/u/5889835963?refer_flag=1001030101_" target="_blank" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                不妨看看
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wdxtub.com/1997/09/11/booklist-page/" title="小土刀" target="_blank">小土刀</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhangwenli.com/" title="羡辙" target="_blank">羡辙</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于atom"><span class="nav-number">1.</span> <span class="nav-text">关于atom</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">1.2.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">1.4.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atom安装插件"><span class="nav-number">1.5.</span> <span class="nav-text">atom安装插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用内打开"><span class="nav-number">1.5.1.</span> <span class="nav-text">应用内打开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终端安装"><span class="nav-number">1.5.2.</span> <span class="nav-text">终端安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atom快捷键"><span class="nav-number">1.6.</span> <span class="nav-text">atom快捷键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件篇"><span class="nav-number">2.</span> <span class="nav-text">插件篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主题插件"><span class="nav-number">2.1.</span> <span class="nav-text">主题插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#atom-material-ui"><span class="nav-number">2.1.1.</span> <span class="nav-text">atom-material-ui</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本控制"><span class="nav-number">2.2.</span> <span class="nav-text">版本控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件管理"><span class="nav-number">2.3.</span> <span class="nav-text">文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#project-manager"><span class="nav-number">2.3.1.</span> <span class="nav-text">project-manager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file-icons"><span class="nav-number">2.3.2.</span> <span class="nav-text">file-icons</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expose"><span class="nav-number">2.3.3.</span> <span class="nav-text">expose</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动补全"><span class="nav-number">2.4.</span> <span class="nav-text">自动补全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#emmet"><span class="nav-number">2.4.1.</span> <span class="nav-text">emmet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#auto-completepaths"><span class="nav-number">2.4.2.</span> <span class="nav-text">auto-completepaths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#autocomplete-modules"><span class="nav-number">2.4.3.</span> <span class="nav-text">autocomplete-modules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#atom-ternjs"><span class="nav-number">2.4.4.</span> <span class="nav-text">atom-ternjs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css-snippets"><span class="nav-number">2.4.5.</span> <span class="nav-text">css-snippets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码检查"><span class="nav-number">2.5.</span> <span class="nav-text">代码检查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linter"><span class="nav-number">2.5.1.</span> <span class="nav-text">linter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linter-jshint"><span class="nav-number">2.5.2.</span> <span class="nav-text">linter-jshint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linter-eslint"><span class="nav-number">2.5.3.</span> <span class="nav-text">linter-eslint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linter-htmlhint"><span class="nav-number">2.5.4.</span> <span class="nav-text">linter-htmlhint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linter-jsonhint"><span class="nav-number">2.5.5.</span> <span class="nav-text">linter-jsonhint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linter-csslint"><span class="nav-number">2.5.6.</span> <span class="nav-text">linter-csslint</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端细节"><span class="nav-number">2.6.</span> <span class="nav-text">前端细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#autoprefixer"><span class="nav-number">2.6.1.</span> <span class="nav-text">autoprefixer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#open-in-browser"><span class="nav-number">2.6.2.</span> <span class="nav-text">open-in-browser</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hyperclick"><span class="nav-number">2.6.3.</span> <span class="nav-text">hyperclick</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js-hyperclick"><span class="nav-number">2.6.4.</span> <span class="nav-text">js-hyperclick</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展功能"><span class="nav-number">2.7.</span> <span class="nav-text">拓展功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#color-picker"><span class="nav-number">2.7.1.</span> <span class="nav-text">color-picker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docblockr"><span class="nav-number">2.7.2.</span> <span class="nav-text">docblockr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#minimap"><span class="nav-number">2.7.3.</span> <span class="nav-text">minimap</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-superpowers"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Prozac</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客全站共 </span>
+    
+    <span title="Site words total count">98.5k字</span>
+  
+</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"> 访问人数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  <script>
+　　window.onload = function(){
+　　　　//resize canvas
+　　　　$(window).resize(resizeCanvas);  
+   
+ function resizeCanvas() {  
+ 		  var canvas= $('.fireworks')[0];
+   
+        canvas.height = window.innerHeight;  
+   
+        canvas.width = window.innerWidth; 
+        
+        //console.log(canvas.width,canvas.height);
+ };  
+   
+ resizeCanvas();  
+　　}
+</script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3" style=“z-index: -2”></script>
+
+
+  
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script src="/js/src/anime.min.js"></script>
+  <script src="/js/src/fireworks.js"></script>
+</body>
+</html>
+
