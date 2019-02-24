@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2019年新计划]]></title>
+    <url>%2F2019%2F02%2F18%2F2019%E5%B9%B4%E6%96%B0%E8%AE%A1%E5%88%92%2F</url>
+    <content type="text"><![CDATA[新的一年已经开始了，去年做的还不够好，新的一年在技术上还是应该多抓紧一些 1.研究生生活 下个学期每天认真看论文，还有自己写论文，主题暂定为动物迁徙，主要是去认真看一些有意思的话题 公众号完善一下 2.生活方面 去蹭日语课，今年要达到日语N3的水平 上公开课（苏德超，赵林，周玄毅） 健身 学会基础的摄影 有闲暇的时间就去看书 3.编程方面 学习node的教程 看自己之前买的几本书，并且开始做笔记 微信的开发 极客时间上的教程]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[js类型详解]]></title>
     <url>%2F2018%2F09%2F29%2Fjs%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[js的类型实际上是一个基本问题，但它总能在一些小的细节上给人困扰，这次就一口气把这个问题好好解决了 参考资料 阮一峰的教程 一个博客 js类型详解 js分为基本类型和引用类型 基本类型基本类型一共5种 1.Undefined 使用var声明变量时，如果没有对其赋值就引用它就会产生undefined值 1234567var aa // -&gt; undefineda == undefined // -&gt; truec === undefined // -&gt; true 2.Null 从逻辑上说，null值表示一个空对象指针，这也正是使用typeof来检测null会返回object的原因 1console.log(typeof(null)) // -&gt; 'object' 3.boolean4.number5.string引用类型Object类型Array类型Date类型RegExp类型Function类型Symbol类型（es6新加）基本包装类型 ECMAScript提供了3种特殊的引用类型 Boolean，Number，String.也就是是它们三个实际上都是function的实例罢辽 1234567let a = "a"let b = String("a")let c = new String("a")console.log(typeof(a)) // -&gt; "string"console.log(typeof(b)) // -&gt; "string"console.log(typeof(c)) // -&gt; "object" 特殊情况1.NaN的类型12345console.log(typeof(NaN))// -&gt; 'number'console.log(NaN == NaN)// -&gt; false 2.Undefined和Null null表示此处不该有值，undefined表示此处应该有值 12345console.log(undefined == null)// -&gt; trueconsole.log(undefined === null)// -&gt; false 3.== 和 === 的区别 Show code 12100 == "100" // -&gt; true100 === "100" // -&gt; false 3.1 === 判断规则首先要等号两边类型相同，然后才是值相同 3.2 == 判断规则 如果两边存在boolean，string，number任意两者进行比较，优先转化为数字 null == undefined]]></content>
