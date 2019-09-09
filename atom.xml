@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-09T08:30:54.460Z</updated>
+  <updated>2019-09-09T08:38:31.185Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>DIY Vue UI组件库之路</title>
+    <title>zIndex为什么会无效</title>
     <link href="http://yoursite.com/2019/05/31/zIndex%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%97%A0%E6%95%88/"/>
     <id>http://yoursite.com/2019/05/31/zIndex为什么会无效/</id>
     <published>2019-05-31T14:24:01.000Z</published>
-    <updated>2019-09-09T08:30:54.460Z</updated>
+    <updated>2019-09-09T08:38:31.185Z</updated>
     
     <content type="html"><![CDATA[<p>在做项目的过程中遇到了这样的问题，即z-index为什么会有时候没有效果？</p><a id="more"></a><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我们首先来看看<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index" target="_blank" rel="external">MDN</a>里，z-index是怎么描述的</p><blockquote><p>z-index 属性指定了一个具有定位属性的元素及其子代元素的 z-order。 当元素之间重叠的时候，z-order 决定哪一个元素覆盖在其余元素的上方显示。 通常来说 z-index 较大的元素会覆盖较小的一个。</p><p>对于一个已经定位的元素（即position属性值不是static的元素），z-index 属性指定：</p><p>元素在当前堆叠上下文中的堆叠层级。<br>元素是否创建一个新的本地堆叠上下文</p></blockquote><p>z-index 可以取值<code>auto</code>或者数字（auto会互相层叠，但是只要指定正的z-index，就会比auto高）</p><p>需要注意的是z-index需要是对有<code>position</code>不为<code>static</code>属性的元素才做效的</p><h1 id="一般情况"><a href="#一般情况" class="headerlink" title="一般情况"></a>一般情况</h1><p>该标签无<code>position</code>属性</p><h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>添加position标签</p>]]></content>
     
