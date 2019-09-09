@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[DIY Vue UI组件库之路]]></title>
+    <url>%2F2019%2F05%2F31%2FzIndex%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%97%A0%E6%95%88%2F</url>
+    <content type="text"><![CDATA[在做项目的过程中遇到了这样的问题，即z-index为什么会有时候没有效果？ 原理我们首先来看看MDN里，z-index是怎么描述的 z-index 属性指定了一个具有定位属性的元素及其子代元素的 z-order。 当元素之间重叠的时候，z-order 决定哪一个元素覆盖在其余元素的上方显示。 通常来说 z-index 较大的元素会覆盖较小的一个。 对于一个已经定位的元素（即position属性值不是static的元素），z-index 属性指定： 元素在当前堆叠上下文中的堆叠层级。元素是否创建一个新的本地堆叠上下文 z-index 可以取值auto或者数字（auto会互相层叠，但是只要指定正的z-index，就会比auto高） 需要注意的是z-index需要是对有position不为static属性的元素才做效的 一般情况该标签无position属性 解决办法添加position标签]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[DIY Vue UI组件库之路]]></title>
+    <url>%2F2019%2F05%2F31%2FDIY-Vue-UI%E7%BB%84%E4%BB%B6%E5%BA%93%E4%B9%8B%E8%B7%AF%2F</url>
+    <content type="text"><![CDATA[写vue的项目多了，感觉越来越需要自己从头开始写一个UI组件库来系统地升华自己的能力 技术栈 vue vuex vueRouter less 过程首先使用vue-cli3.x来构建项目，因为是特别正式的项目，不是平时的业务开发，所以加入了单测和eslinit 测试了下npm发布包的功能首先在npm官网注册账号，然后在本地项目文件夹下npm login,然后npm publish --access public 注意npm的淘宝源是不行的，最好是使用nrm来管理npm源。常用操作nrm ls，nrm use *** 新建examples文件夹做组件库跟业务开发不一样，它主要的文件全部用来放库，展示页面应该另起一个文件夹，在根目录下新建examples文件夹，并且加入main.js,app.vue,index.html 之前习惯的事用vuecli2.x，但是毕竟3.x才是潮流，这次还是用了3.x 在package.json里配置serve的属性， 将原来的serve改为&quot;serve&quot;: &quot;vue-cli-service serve --open ./examples/main.js&quot;,，这样就指定了新的入口文件，测试一下，ok 文档的编写直接采用docsify 配置挺复杂的，折腾了一天]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[自定义vue-cli脚手架]]></title>
     <url>%2F2019%2F03%2F25%2F%E8%87%AA%E5%AE%9A%E4%B9%89vue-cli%E8%84%9A%E6%89%8B%E6%9E%B6%2F</url>
     <content type="text"><![CDATA[因为最近写了很多的vue小工程练手，但是越来越发现vuecli的webpack模板不够用了，每次重新构建的时候都需要花很多心思，花了一天的时间来研究和使用vuecli的自定义构建，非常好用 Fork一份标准库去vue-webpack模板的标准库下fork一份，并且创建一份自己的分支 在本地进行修改将fork的项目clone到本地，进行修改 具体的步骤和解释参考这个文章 我只讲一下我做了哪些改动 1 打开config/index.js中的autoOpenBrowser2 .editorConfig中调整indent_size为4，并且将其风格改为tab3 增加 vuex版块4 增加mock和api版块5 增加page版块6 增加less7 增加common文件夹，并且写了一些公共样式8 增加less的全局变量参考这篇文章 注意，增加的全部变量只能引用一个less文件，不能在这个文件里引用其他的文件]]></content>
