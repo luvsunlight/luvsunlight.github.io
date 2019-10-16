@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-09T08:38:31.185Z</updated>
+  <updated>2019-10-16T02:35:13.531Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>超实用的文档管理工具DASH</title>
+    <link href="http://yoursite.com/2019/10/16/%E8%B6%85%E5%AE%9E%E7%94%A8%E7%9A%84%E6%96%87%E6%A1%A3%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7DASH/"/>
+    <id>http://yoursite.com/2019/10/16/超实用的文档管理工具DASH/</id>
+    <published>2019-10-16T02:14:53.000Z</published>
+    <updated>2019-10-16T02:35:13.531Z</updated>
+    
+    <content type="html"><![CDATA[<p>一般人管理文档的方式可能是需要的时候就去查，更仔细一点的可能是在chrome建个书签文件夹专门用来整理遇到的api文档网站，那么有没有更为可靠的软件可以帮我们做到这一点呢?</p><a id="more"></a><p><a href="https://kapeli.com/dash" target="_blank" rel="external">DASH</a></p><p>Dash is an API Documentation Browser and Code Snippet Manager. Dash stores snippets of code and instantly searches offline documentation sets for 200+ APIs, 100+ cheat sheets and more. You can even generate your own docsets or request docsets to be included.</p><h1 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h1><h3 id="1-海量文档"><a href="#1-海量文档" class="headerlink" title="1. 海量文档"></a>1. 海量文档</h3><p>DASH上有海量的文档，几乎包含了所以你可能接触到的语言或者工具</p><h3 id="2-文档可离线"><a href="#2-文档可离线" class="headerlink" title="2. 文档可离线"></a>2. 文档可离线</h3><p>我们可以将文档下载下来，这样离线也是可以查询的</p><h3 id="3-内置google和Stackoverflow"><a href="#3-内置google和Stackoverflow" class="headerlink" title="3. 内置google和Stackoverflow"></a>3. 内置google和Stackoverflow</h3><p>在搜索api的同时也会自行搜索stackoverflow上的相关问题提供给你，非常方便</p><h3 id="4-支持自定义snippet"><a href="#4-支持自定义snippet" class="headerlink" title="4. 支持自定义snippet"></a>4. 支持自定义snippet</h3><p>有了它，你就可以有了一个无限量（只要你电脑内存空间够）的snippet管理平台，并且支持高亮，缩紧，搜索，用起来非常非常方便.而且snippet还支持按标签分类，真的谁用谁知道</p><h3 id="5-与其他平台的集成"><a href="#5-与其他平台的集成" class="headerlink" title="5. 与其他平台的集成"></a>5. 与其他平台的集成</h3><p>DASH可以和很多很多平台集成，这里举我最常用的两个</p><h4 id="5-1-Alfred"><a href="#5-1-Alfred" class="headerlink" title="5.1 Alfred"></a>5.1 Alfred</h4><p>直接 dash + 关键字即可</p><h4 id="5-2-VSC"><a href="#5-2-VSC" class="headerlink" title="5.2 VSC"></a>5.2 VSC</h4><p>首先在插件商店搜索DASH，下载对应插件，然后在代码页面选中单词，输入control+h，即可打开dash并且在dash中搜索响应api</p><h3 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h3><p>dash还有很多很多功能，总的来说是一个非常高效的提高开发体验的工具，极其推荐使用</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一般人管理文档的方式可能是需要的时候就去查，更仔细一点的可能是在chrome建个书签文件夹专门用来整理遇到的api文档网站，那么有没有更为可靠的软件可以帮我们做到这一点呢?&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术细节" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>zIndex为什么会无效</title>
     <link href="http://yoursite.com/2019/05/31/zIndex%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%97%A0%E6%95%88/"/>
     <id>http://yoursite.com/2019/05/31/zIndex为什么会无效/</id>
     <published>2019-05-31T14:24:01.000Z</published>
-    <updated>2019-09-09T08:38:31.185Z</updated>
+    <updated>2019-09-09T14:31:53.439Z</updated>
     
-    <content type="html"><![CDATA[<p>在做项目的过程中遇到了这样的问题，即z-index为什么会有时候没有效果？</p><a id="more"></a><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我们首先来看看<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index" target="_blank" rel="external">MDN</a>里，z-index是怎么描述的</p><blockquote><p>z-index 属性指定了一个具有定位属性的元素及其子代元素的 z-order。 当元素之间重叠的时候，z-order 决定哪一个元素覆盖在其余元素的上方显示。 通常来说 z-index 较大的元素会覆盖较小的一个。</p><p>对于一个已经定位的元素（即position属性值不是static的元素），z-index 属性指定：</p><p>元素在当前堆叠上下文中的堆叠层级。<br>元素是否创建一个新的本地堆叠上下文</p></blockquote><p>z-index 可以取值<code>auto</code>或者数字（auto会互相层叠，但是只要指定正的z-index，就会比auto高）</p><p>需要注意的是z-index需要是对有<code>position</code>不为<code>static</code>属性的元素才做效的</p><h1 id="一般情况"><a href="#一般情况" class="headerlink" title="一般情况"></a>一般情况</h1><p>该标签无<code>position</code>属性</p><h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>添加position标签</p>]]></content>
+    <content type="html"><![CDATA[<p>在做项目的过程中遇到了这样的问题，即z-index为什么会有时候没有效果？</p><a id="more"></a><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>我们首先来看看<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index" target="_blank" rel="external">MDN</a>里，z-index是怎么描述的</p><blockquote><p>z-index 属性指定了一个具有定位属性的元素及其子代元素的 z-order。 当元素之间重叠的时候，z-order 决定哪一个元素覆盖在其余元素的上方显示。 通常来说 z-index 较大的元素会覆盖较小的一个。</p><p>对于一个已经定位的元素（即position属性值不是static的元素），z-index 属性指定：</p><p>元素在当前堆叠上下文中的堆叠层级。<br>元素是否创建一个新的本地堆叠上下文</p></blockquote><p>z-index 可以取值<code>auto</code>或者数字（auto会互相层叠，但是只要指定正的z-index，就会比auto高）</p><p>需要注意的是z-index需要是对有<code>position</code>不为<code>static</code>属性的元素才做效的</p><h1 id="一般情况"><a href="#一般情况" class="headerlink" title="一般情况"></a>一般情况</h1><ul><li>该标签无<code>position</code>属性</li><li>该标签父元素是relative（IE6）</li><li>该标签为浮动元素（IE6）</li></ul><h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>添加position标签</p>]]></content>
     
     <summary type="html">
     
@@ -438,32 +458,6 @@
     
     
       <category term="test" scheme="http://yoursite.com/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【css布局之position】</title>
-    <link href="http://yoursite.com/2018/03/03/%E3%80%90css%E5%B8%83%E5%B1%80%E4%B9%8Bposition%E3%80%91/"/>
-    <id>http://yoursite.com/2018/03/03/【css布局之position】/</id>
-    <published>2018-03-03T03:59:11.000Z</published>
-    <updated>2018-03-03T04:20:55.426Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>这段时间在刷百度前端学院，从最基础的task开始刷。好久没有碰css了，一年前做起来轻车熟路的东西，现在竟然要花很久来调试，于是想着干脆写几篇文章来彻底整理一下有关css布局的东西，这一篇从position开始。</p></blockquote><a id="more"></a><h1 id="css中的positon"><a href="#css中的positon" class="headerlink" title="css中的positon"></a>css中的positon</h1><h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><h2 id="relative"><a href="#relative" class="headerlink" title="relative"></a>relative</h2><h2 id="absolute"><a href="#absolute" class="headerlink" title="absolute"></a>absolute</h2><h2 id="sticky"><a href="#sticky" class="headerlink" title="sticky"></a>sticky</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;这段时间在刷百度前端学院，从最基础的task开始刷。好久没有碰css了，一年前做起来轻车熟路的东西，现在竟然要花很久来调试，于是想着干脆写几篇文章来彻底整理一下有关css布局的东西，这一篇从position开始。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="系统学习" scheme="http://yoursite.com/categories/%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="css" scheme="http://yoursite.com/tags/css/"/>
-    
-      <category term="布局" scheme="http://yoursite.com/tags/%E5%B8%83%E5%B1%80/"/>
     
   </entry>
   
