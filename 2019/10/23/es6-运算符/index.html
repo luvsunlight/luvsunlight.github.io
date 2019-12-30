@@ -122,7 +122,7 @@
 <meta property="og:site_name" content="Prozac’s blog">
 <meta property="og:description" content="很多人可能看见三个点的运算符都不知道能干什么。我从最开始的不知道，到现在知道能用来展开数据，但是你知道它的具体含义和进阶用法吗">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-23T14:40:21.257Z">
+<meta property="og:updated_time" content="2019-10-24T07:43:54.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6...运算符">
 <meta name="twitter:description" content="很多人可能看见三个点的运算符都不知道能干什么。我从最开始的不知道，到现在知道能用来展开数据，但是你知道它的具体含义和进阶用法吗">
@@ -389,8 +389,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-23T22:40:21+08:00">
-                2019-10-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-24T15:43:54+08:00">
+                2019-10-24
               </time>
             
           </span>
@@ -444,7 +444,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  754字
+                  770字
                 </span>
               
 
@@ -500,7 +500,7 @@
 <h2 id="1-2-收集"><a href="#1-2-收集" class="headerlink" title="1.2 收集"></a>1.2 收集</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">(a, b, <span class="rest_arg">...c</span>)</span> </span>&#123;</div><div class="line">    console.log(a, b, c)     </div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>); <span class="comment">// 1, 2, [3, 4, 5]</span></div></pre></td></tr></table></figure>
 <p>注意，这里的运算符一定要在最后一个参数的位置或者只有它一个参数</p>
 <h2 id="1-3-类数组转化为数组"><a href="#1-3-类数组转化为数组" class="headerlink" title="1.3 类数组转化为数组"></a>1.3 类数组转化为数组</h2><blockquote>
-<p>类数组，即和数组非常接近，都拥有一系列元素，也有length属性,也支持按下标访问，常见的如字符串，选择器返回的结果等</p>
+<p>类数组，即和数组非常接近，都拥有一系列元素，也有length属性,也支持按下标访问，常见的如字符串，选择器返回的结果,arguments</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> nodeList = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"test"</span>);</div><div class="line"><span class="keyword">const</span> array = [...nodeList];</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(nodeList); <span class="comment">//Result: HTMLCollection [ div.test, div.test ]</span></div><div class="line"><span class="built_in">console</span>.log(array); <span class="comment">//Result: Array [ div.test, div.test ]</span></div><div class="line"></div><div class="line"><span class="comment">// 在es5时代，我们需要</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</div></pre></td></tr></table></figure>
 <h2 id="1-4-增加元素或者属性"><a href="#1-4-增加元素或者属性" class="headerlink" title="1.4 增加元素或者属性"></a>1.4 增加元素或者属性</h2><blockquote>
@@ -523,7 +523,7 @@
 <li>deepClone</li>
 <li>增加条件属性</li>
 </ul>
-<h2 id="2-1-复制一个嵌套对象"><a href="#2-1-复制一个嵌套对象" class="headerlink" title="2.1 复制一个嵌套对象"></a>2.1 复制一个嵌套对象</h2><p>修改克隆对象的属性时，原对象属性不变。但是原对象属性变化时，克隆对象属性改变。因为复制过来的对象是一个引用类型</p>
+<h2 id="2-1-复制一个嵌套对象"><a href="#2-1-复制一个嵌套对象" class="headerlink" title="2.1 复制一个嵌套对象"></a>2.1 复制一个嵌套对象</h2><p>修改克隆对象的属性时，原对象属性不变。但是原对象如果有数组或者对象类型的属性，这些属性变化时，克隆对象属性改变。因为复制过来的对象是一个引用类型</p>
 <figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> pokemon = &#123;</div><div class="line">  name: <span class="string">'Squirtle'</span>,</div><div class="line">  type: <span class="string">'Water'</span>,</div><div class="line">  abilities: [<span class="string">'Torrent'</span>, <span class="string">'Rain Dish'</span>]</div><div class="line">&#125;<span class="comment">;</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> squirtleClone = &#123; ...pokemon &#125;<span class="comment">;</span></div><div class="line"></div><div class="line">pokemon.name = <span class="string">'Charmander'</span><span class="comment">;</span></div><div class="line">pokemon.abilities.push(<span class="string">'Surf'</span>)<span class="comment">;</span></div><div class="line"></div><div class="line">console.<span class="built_in">log</span>(squirtleClone)<span class="comment">; </span></div><div class="line"></div><div class="line">//Result: &#123; name: <span class="string">'Squirtle'</span>, type: <span class="string">'Water'</span>, abilities: [ <span class="string">'Torrent'</span>, <span class="string">'Rain Dish'</span>, <span class="string">'Surf'</span> ]</div></pre></td></tr></table></figure>
 <p>解决方法也很简单</p>
 <p>复制引用类型的数据/deepClone</p>
@@ -581,6 +581,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/30/2019年终总结/" rel="prev" title="2019年终总结">
+                2019年终总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -666,7 +670,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -677,7 +681,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -688,7 +692,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -796,7 +800,7 @@
     
       <span class="post-meta-item-text">博客全站共 </span>
     
-    <span title="Site words total count">100.7k字</span>
+    <span title="Site words total count">103.7k字</span>
   
 </div>
 
